@@ -2,7 +2,7 @@
   "use strict";
   const copy = {
     en: {
-      skip: "Skip to content", navCourses: "Online AI courses", navInPerson: "In person", navAbout: "About", login: "Log in",
+      skip: "Skip to content", navCourses: "Online AI courses", navInPerson: "In person", navAbout: "About", login: "Log in", languageLabel: "Language selection",
       heroEyebrow: "European University of Armenia", heroTitle: "AI learning,<br><em>built around you.</em>",
       heroCopy: "Practical courses for the way you study, teach, and serve.", explore: "Explore courses <span aria-hidden=\"true\">↓</span>",
       coursesEyebrow: "Learn online", coursesTitle: "Online AI courses.", coursesSubtitle: "Choose your path.", explorersCopy: "For curious minds discovering how AI works.",
@@ -24,7 +24,7 @@
       formatWeeks: "weeks", formatDays: "days per week", formatSession: "per session", formatPeople: "participants maximum", viewOutline: "View course outline"
     },
     hy: {
-      skip: "Անցնել բովանդակությանը", navCourses: "Առցանց ԱԲ դասընթացներ", navInPerson: "Առկա ուսուցում", navAbout: "Մեր մասին", login: "Մուտք",
+      skip: "Անցնել բովանդակությանը", navCourses: "Առցանց ԱԲ դասընթացներ", navInPerson: "Առկա ուսուցում", navAbout: "Մեր մասին", login: "Մուտք", languageLabel: "Լեզվի ընտրություն",
       heroEyebrow: "Հայաստանի Եվրոպական Համալսարան", heroTitle: "ԱԲ կրթություն՝<br><em>ձեզ համար։</em>",
       heroCopy: "Գործնական դասընթացներ՝ սովորելու, դասավանդելու և ծառայելու համար։", explore: "Տեսնել դասընթացները <span aria-hidden=\"true\">↓</span>",
       coursesEyebrow: "Սովորեք առցանց", coursesTitle: "Առցանց ԱԲ դասընթացներ։", coursesSubtitle: "Ընտրեք ձեր ուղին։", explorersCopy: "Հետաքրքրասերների համար, ովքեր բացահայտում են ԱԲ-ը։",
@@ -70,7 +70,6 @@
     ]
   };
 
-  const select = document.getElementById("language");
   let language = localStorage.getItem("eua-ai-language") === "hy" ? "hy" : "en";
 
   function t(key) {
@@ -79,10 +78,16 @@
 
   function applyLanguage() {
     document.documentElement.lang = language;
-    if (select) select.value = language;
     document.querySelectorAll("[data-copy]").forEach((element) => {
       const value = copy[language][element.dataset.copy];
       if (value) element.innerHTML = value;
+    });
+    document.querySelectorAll("[data-copy-aria]").forEach((element) => {
+      const value = copy[language][element.dataset.copyAria];
+      if (value) element.setAttribute("aria-label", value);
+    });
+    document.querySelectorAll("[data-language]").forEach((button) => {
+      button.setAttribute("aria-pressed", String(button.dataset.language === language));
     });
     const offlineGridA = document.getElementById("offline-course-grid-a");
     const offlineGridB = document.getElementById("offline-course-grid-b");
@@ -99,11 +104,11 @@
     }
   }
 
-  select?.addEventListener("change", () => {
-    language = select.value;
+  document.querySelectorAll("[data-language]").forEach((button) => button.addEventListener("click", () => {
+    language = button.dataset.language;
     localStorage.setItem("eua-ai-language", language);
     applyLanguage();
-  });
+  }));
   document.getElementById("year").textContent = new Date().getFullYear();
   applyLanguage();
   document.querySelectorAll("[data-placeholder-link]").forEach((link) => link.addEventListener("click", (event) => event.preventDefault()));
