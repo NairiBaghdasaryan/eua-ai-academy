@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta id="meta-description" name="description" content="Practical AI learning for students, educators, young people, and public service professionals.">
+  <meta name="theme-color" content="#071c3b">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ai.eua.am/">
+  <meta property="og:title" content="EUA AI Academy">
+  <meta property="og:description" content="AI learning, built around your role.">
+  <meta property="og:image" content="https://ai.eua.am/assets/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="EUA AI Academy">
+  <meta name="twitter:description" content="AI learning, built around your role.">
+  <meta name="twitter:image" content="https://ai.eua.am/assets/og.png">
+  <link rel="canonical" href="https://ai.eua.am/">
+  <title>EUA AI Academy</title>
+  <link rel="stylesheet" href="styles/academy.css">
+  <script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+  <a class="skip-link" href="#main" data-copy="skip">Skip to content</a>
+
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="index.html" aria-label="EUA AI Academy home">
+        <span class="brand-mark" aria-hidden="true">EUA</span>
+        <span>EUA AI Academy</span>
+      </a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="#courses" data-copy="navCourses">Courses</a>
+        <a href="#in-person" data-copy="navInPerson">In person</a>
+        <a href="about.html" data-copy="navAbout">About</a>
+      </nav>
+      <div class="header-actions">
+        <label class="sr-only" for="language">Language</label>
+        <select id="language" class="language-select" aria-label="Language">
+          <option value="en">English</option>
+          <option value="hy">Հայերեն</option>
+        </select>
+        <a class="text-link" href="login.html" data-copy="login" id="account-link">Log in</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="shell hero-inner">
+        <p class="eyebrow" data-copy="heroEyebrow">European University of Armenia</p>
+        <h1 data-copy="heroTitle">AI learning,<br><em>built around you.</em></h1>
+        <p class="hero-copy" data-copy="heroCopy">Practical courses for the way you study, teach, and serve.</p>
+        <a class="button button-primary" href="#courses" data-copy="explore">Explore courses <span aria-hidden="true">↓</span></a>
+      </div>
+      <div class="hero-orbit" aria-hidden="true">
+        <span class="orbit orbit-one"></span>
+        <span class="orbit orbit-two"></span>
+        <span class="orbit-dot dot-one"></span>
+        <span class="orbit-dot dot-two"></span>
+      </div>
+    </section>
+
+    <section class="course-section" id="courses">
+      <div class="shell">
+        <div class="section-heading online-heading">
+          <div>
+            <p class="eyebrow" data-copy="coursesEyebrow">Learn online</p>
+            <h2 data-copy="coursesTitle">Online courses.</h2>
+          </div>
+          <p data-copy="coursesSubtitle">Choose your path.</p>
+        </div>
+        <div class="course-grid">
+          <a class="course-card course-card-featured" href="ai-explorers.html">
+            <span class="course-icon" aria-hidden="true">01</span>
+            <div><span class="catalog-status catalog-status-open" data-copy="available">Enrollment open</span><h3 data-copy="explorersTitle">AI Explorers</h3><p data-copy="explorersCopy">For curious minds discovering how AI works.</p></div>
+            <span class="card-arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="course-card" href="track.html?track=students">
+            <span class="course-icon" aria-hidden="true">02</span>
+            <div><span class="catalog-status" data-copy="comingSoon">Coming soon</span><h3 data-copy="studentsTitle">AI for Students</h3><p data-copy="studentsCopy">Study smarter. Research better. Create responsibly.</p></div>
+            <span class="card-arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="course-card" href="track.html?track=educators">
+            <span class="course-icon" aria-hidden="true">03</span>
+            <div><span class="catalog-status" data-copy="comingSoon">Coming soon</span><h3 data-copy="educatorsTitle">AI for Educators</h3><p data-copy="educatorsCopy">Bring thoughtful AI practice into the classroom.</p></div>
+            <span class="card-arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="course-card" href="track.html?track=government">
+            <span class="course-icon" aria-hidden="true">04</span>
+            <div><span class="catalog-status" data-copy="comingSoon">Coming soon</span><h3 data-copy="governmentTitle">AI for Government</h3><p data-copy="governmentCopy">Use AI with confidence, care, and public purpose.</p></div>
+            <span class="card-arrow" aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="in-person-section" id="in-person">
+      <div class="shell">
+        <div class="section-heading in-person-heading">
+          <div><p class="eyebrow" data-copy="offlineEyebrow">Live at EUA</p><h2 data-copy="offlineTitle">In-person professional courses.</h2></div>
+          <p data-copy="offlineIntro">Focused two-week programmes for professionals who want practical AI workflows, expert guidance, and a workplace-ready final project.</p>
+        </div>
+        <div class="format-strip" aria-label="Course format">
+          <div><strong>2</strong><span data-copy="formatWeeks">weeks</span></div>
+          <div><strong>2×</strong><span data-copy="formatDays">days per week</span></div>
+          <div><strong>2h</strong><span data-copy="formatSession">per session</span></div>
+          <div><strong>20</strong><span data-copy="formatPeople">participants maximum</span></div>
+        </div>
+        <div class="offline-grid" id="offline-course-grid"></div>
+      </div>
+    </section>
+
+    <section class="about-section" id="about">
+      <div class="shell about-grid">
+        <p class="eyebrow" data-copy="aboutEyebrow">EUA AI Academy</p>
+        <div>
+          <h2 data-copy="aboutTitle"><em>Human judgment first.</em></h2>
+          <p data-copy="aboutCopy">Learn by doing, questioning, and applying AI to real work.</p>
+        </div>
+        <button type="button" class="button button-light" id="contact-btn" data-copy="contact">Contact us <span aria-hidden="true">↗</span></button>
+      </div>
+    </section>
+  </main>
+
+  <div class="contact-modal hidden" id="contact-modal" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title">
+    <div class="contact-modal-card">
+      <button type="button" class="contact-modal-close" id="contact-modal-close" aria-label="Close">×</button>
+      <p class="eyebrow" data-copy="contactEyebrow">Get in touch</p>
+      <h2 id="contact-modal-title" data-copy="contactTitle">Contact EUA AI Academy</h2>
+      <p data-copy="contactLead">Write to us and we will get back to you.</p>
+      <form class="contact-form" id="contact-form" novalidate>
+        <div class="form-group">
+          <label for="contact-name" data-copy="contactName">Full name</label>
+          <input type="text" id="contact-name" name="name" autocomplete="name" required maxlength="120">
+        </div>
+        <div class="form-group">
+          <label for="contact-email" data-copy="contactEmail">Email</label>
+          <input type="email" id="contact-email" name="email" autocomplete="email" required maxlength="254">
+        </div>
+        <div class="form-group">
+          <label for="contact-message" data-copy="contactMessage">Message</label>
+          <textarea id="contact-message" name="message" rows="4" required maxlength="2000"></textarea>
+        </div>
+        <button type="submit" class="button button-primary contact-submit" id="contact-submit" data-copy="contactSubmit">Submit</button>
+        <p class="contact-error hidden" id="contact-error"></p>
+        <p class="contact-toast hidden" id="contact-toast" data-copy="contactSuccess">Thank you. Your message was sent.</p>
+      </form>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <span>© <span id="year"></span> EUA AI Academy</span>
+      <nav class="footer-social" aria-label="Social media">
+        <a href="#" data-placeholder-link>LinkedIn</a><a href="#" data-placeholder-link>Instagram</a><a href="#" data-placeholder-link>Facebook</a><a href="#" data-placeholder-link>X</a><a href="#" data-placeholder-link>YouTube</a><a href="#" data-placeholder-link>Telegram</a>
+      </nav>
+      <a href="https://www.eua.am/en" target="_blank" rel="noopener">eua.am</a>
+      <a href="mailto:info@eua.am">info@eua.am</a>
+    </div>
+  </footer>
+  <script src="js/academy.js" defer></script>
+</body>
+</html>
