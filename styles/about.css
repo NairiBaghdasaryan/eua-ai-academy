@@ -1,0 +1,71 @@
+.detail-header .nav-current { color: var(--blue); }
+.about-hero { padding: 104px 0 96px; color: white; background: radial-gradient(circle at 86% 12%, #174f89 0, #0b315e 30%, var(--navy) 70%); }
+.about-hero-grid { display: grid; grid-template-columns: 1.5fr .65fr; align-items: end; gap: 86px; }
+.about-hero .eyebrow { color: var(--gold); }
+.about-hero h1 { max-width: 900px; margin: 0; font-size: clamp(3.2rem, 6.4vw, 6rem); font-weight: 650; line-height: .99; letter-spacing: -.058em; }
+.about-hero-statement { padding-top: 22px; border-top: 1px solid rgba(255,255,255,.2); }
+.about-hero-statement p { margin: 0; color: rgba(255,255,255,.7); line-height: 1.72; }
+.belief-section { padding: 92px 0; background: white; }
+.belief-grid { display: grid; grid-template-columns: .55fr 1.5fr .75fr; align-items: start; gap: 54px; }
+.belief-grid blockquote { margin: 0; color: var(--blue); font-family: var(--serif); font-size: clamp(2.3rem, 4.6vw, 4.2rem); font-style: italic; line-height: 1.08; letter-spacing: -.045em; }
+.belief-grid > p:last-child { margin: 0; color: var(--muted); line-height: 1.75; }
+.purpose-section { color: white; background: var(--navy); }
+.purpose-grid { display: grid; grid-template-columns: 1fr 1fr; }
+.purpose-card { min-height: 570px; padding: 62px 54px; }
+.purpose-card + .purpose-card { border-left: 1px solid rgba(255,255,255,.14); }
+.purpose-vision { background: #0d2d58; }
+.purpose-label { display: flex; justify-content: space-between; color: var(--gold); font-size: .7rem; font-weight: 850; letter-spacing: .11em; text-transform: uppercase; }
+.purpose-card h2 { max-width: 540px; margin: 118px 0 24px; font-size: clamp(2.4rem, 4.3vw, 4rem); line-height: 1; letter-spacing: -.052em; }
+.purpose-card p { max-width: 570px; margin: 0; color: rgba(255,255,255,.65); font-size: 1.02rem; line-height: 1.75; }
+.standards-section { padding: 112px 0; }
+.standards-grid { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 62px; border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+.standard-card { min-height: 245px; padding: 26px; background: white; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.standard-card span { color: var(--blue); font-size: .7rem; font-weight: 850; letter-spacing: .1em; }
+.standard-card h3 { margin: 58px 0 12px; font-size: 1.25rem; letter-spacing: -.025em; }
+.standard-card p { margin: 0; color: var(--muted); font-size: .9rem; line-height: 1.6; }
+.team-section { padding: 112px 0 120px; color: white; background: var(--blue); }
+.team-heading { display: grid; grid-template-columns: 1.25fr .75fr; align-items: end; gap: 72px; margin-bottom: 56px; }
+.team-heading .eyebrow { color: rgba(255,255,255,.62); }
+.team-heading h2 { max-width: 760px; margin: 0; color: var(--gold); font-size: clamp(2.8rem, 5.2vw, 4.8rem); line-height: 1; letter-spacing: -.055em; }
+.team-heading > p { margin: 0; color: rgba(255,255,255,.7); line-height: 1.7; }
+.team-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.18); }
+.team-card { min-height: 420px; display: grid; grid-template-columns: 96px 1fr; gap: 26px; padding: 32px; background: var(--blue); }
+.team-photo-placeholder { width: 96px; height: 112px; background: linear-gradient(145deg, rgba(255,255,255,.18), rgba(255,255,255,.06)); border: 1px solid rgba(255,255,255,.22); }
+.team-card-meta { display: flex; flex-direction: column; }
+.team-position { color: rgba(255,255,255,.55); font-size: .7rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.team-card h3 { margin: 10px 0 4px; font-size: 1.75rem; letter-spacing: -.035em; }
+.team-headline { margin: 0; color: var(--gold); font-size: .93rem; font-weight: 700; line-height: 1.45; }
+.team-bio { margin: 26px 0 0; color: rgba(255,255,255,.68); line-height: 1.65; }
+.team-expertise { display: flex; flex-wrap: wrap; gap: 7px; margin: 22px 0 28px; padding: 0; list-style: none; }
+.team-expertise li { padding: 7px 9px; border: 1px solid rgba(255,255,255,.2); border-radius: 99px; color: rgba(255,255,255,.72); font-size: .68rem; }
+.team-profile { width: max-content; margin-top: auto; color: white; font-size: .8rem; font-weight: 800; text-underline-offset: 4px; }
+.team-note-section { padding: 92px 0; background: #e9e4d8; }
+.team-note-grid { display: grid; grid-template-columns: .65fr 1.7fr; gap: 64px; }
+.team-note-grid h2 { margin: 0; font-size: clamp(2.4rem, 4.5vw, 4rem); letter-spacing: -.05em; }
+.team-note-grid p:not(.eyebrow) { max-width: 720px; color: var(--muted); line-height: 1.7; }
+.about-cta { padding: 94px 0; color: white; background: var(--navy); }
+.about-cta-inner { display: flex; align-items: end; justify-content: space-between; gap: 48px; }
+.about-cta .eyebrow { color: var(--gold); }
+.about-cta h2 { margin: 0; font-size: clamp(2.7rem, 5vw, 4.6rem); letter-spacing: -.055em; }
+.about-cta-inner > div:last-child { display: flex; align-items: center; gap: 28px; }
+.about-cta .button-primary { margin: 0; }
+.about-contact-link { color: rgba(255,255,255,.72); font-size: .84rem; font-weight: 750; text-underline-offset: 4px; }
+
+@media (max-width: 900px) {
+  .belief-grid { grid-template-columns: 1fr 2fr; }
+  .belief-grid > p:last-child { grid-column: 2; }
+  .standards-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 780px) {
+  .about-hero { padding: 72px 0; }
+  .about-hero-grid, .belief-grid, .purpose-grid, .team-heading, .team-note-grid { grid-template-columns: 1fr; gap: 34px; }
+  .belief-grid > p:last-child { grid-column: auto; }
+  .purpose-card { min-height: auto; padding: 48px 28px; }
+  .purpose-card + .purpose-card { border-top: 1px solid rgba(255,255,255,.14); border-left: 0; }
+  .purpose-card h2 { margin-top: 70px; }
+  .standards-grid, .team-grid { grid-template-columns: 1fr; }
+  .team-card { grid-template-columns: 72px 1fr; min-height: 390px; padding: 26px; }
+  .team-photo-placeholder { width: 72px; height: 88px; }
+  .about-cta-inner, .about-cta-inner > div:last-child { align-items: flex-start; flex-direction: column; }
+}
