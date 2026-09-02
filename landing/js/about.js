@@ -3,7 +3,7 @@
 
   const copy = {
     en: {
-      skip: "Skip to content", brand: "EUA AI Academy", navOnline: "Online courses", navInPerson: "In person", navAbout: "About", language: "Language", contact: "Contact",
+      skip: "Skip to content", brand: "EUA AI Academy", navOnline: "Online AI courses", navInPerson: "In person", navAbout: "About", language: "Language", contact: "Contact",
       heroEyebrow: "About EUA AI Academy", heroTitle: "Helping Armenia move into the AI era - with knowledge, ethics, and purpose.", heroCopy: "We believe AI is a powerful general-purpose tool that will transform how people learn, work, create, manage, and serve society. That transformation should be led responsibly, with informed human judgment at its center.",
       beliefEyebrow: "What we believe", beliefQuote: "AI should expand human capability - not replace responsibility.", beliefCopy: "Successful adoption is not simply access to the newest tools. It requires knowledge, critical thinking, ethical practice, data awareness, safety, and the confidence to know when human review matters most.",
       missionLabel: "Our mission", missionTitle: "Make responsible AI capability practical and accessible across Armenia.", missionCopy: "We equip students, educators, professionals, leaders, and institutions with the knowledge and applied skills to use AI confidently, critically, ethically, and safely. Our programmes connect global advances with Armenia's real educational, economic, and public-service needs.",
@@ -14,7 +14,7 @@
       ctaEyebrow: "Build the future responsibly", ctaTitle: "Learn with EUA AI Academy.", explore: "Explore courses →", talk: "Talk to our team", profileLink: "Profile link placeholder ↗", meta: "The mission, vision, professional standards, and team behind EUA AI Academy."
     },
     hy: {
-      skip: "Անցնել բովանդակությանը", brand: "ՀԵՀ ԱԲ ակադեմիա", navOnline: "Առցանց դասընթացներ", navInPerson: "Առկա ուսուցում", navAbout: "Մեր մասին", language: "Լեզու", contact: "Կապ",
+      skip: "Անցնել բովանդակությանը", brand: "ՀԵՀ ԱԲ ակադեմիա", navOnline: "Առցանց ԱԲ դասընթացներ", navInPerson: "Առկա ուսուցում", navAbout: "Մեր մասին", language: "Լեզու", contact: "Կապ",
       heroEyebrow: "ՀԵՀ ԱԲ ակադեմիայի մասին", heroTitle: "Օգնում ենք Հայաստանին մուտք գործել ԱԲ դարաշրջան՝ գիտելիքով, էթիկայով և նպատակով։", heroCopy: "Մենք հավատում ենք, որ ԱԲ-ը հզոր համընդհանուր գործիք է, որը փոխելու է մարդկանց սովորելու, աշխատելու, ստեղծագործելու, կառավարելու և հասարակությանը ծառայելու ձևերը։ Այդ անցումը պետք է ղեկավարել պատասխանատու կերպով՝ կենտրոնում պահելով տեղեկացված մարդկային դատողությունը։",
       beliefEyebrow: "Մեր համոզմունքը", beliefQuote: "ԱԲ-ը պետք է ընդլայնի մարդկային կարողությունները, ոչ թե փոխարինի պատասխանատվությունը։", beliefCopy: "Հաջող ներդրումը միայն նորագույն գործիքների հասանելիություն չէ։ Այն պահանջում է գիտելիք, քննադատական մտածողություն, էթիկական աշխատանք, տվյալների իրազեկություն, անվտանգություն և վստահություն՝ հասկանալու, թե երբ է մարդկային ստուգումն ամենակարևորը։",
       missionLabel: "Մեր առաքելությունը", missionTitle: "Պատասխանատու ԱԲ կարողությունները դարձնել գործնական և հասանելի ամբողջ Հայաստանում։", missionCopy: "Մենք ուսանողներին, դասավանդողներին, մասնագետներին, ղեկավարներին և հաստատություններին տալիս ենք գիտելիք ու կիրառական հմտություններ՝ ԱԲ-ը վստահ, քննադատաբար, էթիկապես և անվտանգ օգտագործելու համար։ Մեր ծրագրերը համաշխարհային առաջընթացը կապում են Հայաստանի իրական կրթական, տնտեսական և հանրային ծառայության կարիքների հետ։",
