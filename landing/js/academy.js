@@ -2,10 +2,10 @@
   "use strict";
   const copy = {
     en: {
-      skip: "Skip to content", navCourses: "Online courses", navInPerson: "In person", navAbout: "About", login: "Log in",
+      skip: "Skip to content", navCourses: "Online AI courses", navInPerson: "In person", navAbout: "About", login: "Log in",
       heroEyebrow: "European University of Armenia", heroTitle: "AI learning,<br><em>built around you.</em>",
       heroCopy: "Practical courses for the way you study, teach, and serve.", explore: "Explore courses <span aria-hidden=\"true\">↓</span>",
-      coursesEyebrow: "Learn online", coursesTitle: "Online courses.", coursesSubtitle: "Choose your path.", explorersCopy: "For curious minds discovering how AI works.",
+      coursesEyebrow: "Learn online", coursesTitle: "Online AI courses.", coursesSubtitle: "Choose your path.", explorersCopy: "For curious minds discovering how AI works.",
       available: "Enrollment open", comingSoon: "Coming soon",
       explorersTitle: "AI Explorers",
       studentsTitle: "AI for Students", studentsCopy: "Study smarter. Research better. Create responsibly.",
@@ -24,10 +24,10 @@
       formatWeeks: "weeks", formatDays: "days per week", formatSession: "per session", formatPeople: "participants maximum", viewOutline: "View course outline"
     },
     hy: {
-      skip: "Անցնել բովանդակությանը", navCourses: "Առցանց դասընթացներ", navInPerson: "Առկա ուսուցում", navAbout: "Մեր մասին", login: "Մուտք",
+      skip: "Անցնել բովանդակությանը", navCourses: "Առցանց ԱԲ դասընթացներ", navInPerson: "Առկա ուսուցում", navAbout: "Մեր մասին", login: "Մուտք",
       heroEyebrow: "Հայաստանի Եվրոպական Համալսարան", heroTitle: "ԱԲ կրթություն՝<br><em>ձեզ համար։</em>",
       heroCopy: "Գործնական դասընթացներ՝ սովորելու, դասավանդելու և ծառայելու համար։", explore: "Տեսնել դասընթացները <span aria-hidden=\"true\">↓</span>",
-      coursesEyebrow: "Սովորեք առցանց", coursesTitle: "Առցանց դասընթացներ։", coursesSubtitle: "Ընտրեք ձեր ուղին։", explorersCopy: "Հետաքրքրասերների համար, ովքեր բացահայտում են ԱԲ-ը։",
+      coursesEyebrow: "Սովորեք առցանց", coursesTitle: "Առցանց ԱԲ դասընթացներ։", coursesSubtitle: "Ընտրեք ձեր ուղին։", explorersCopy: "Հետաքրքրասերների համար, ովքեր բացահայտում են ԱԲ-ը։",
       available: "Գրանցումը բաց է", comingSoon: "Շուտով",
       explorersTitle: "ԱԲ հետազոտողներ",
       studentsTitle: "ԱԲ ուսանողների համար", studentsCopy: "Սովորել, հետազոտել և ստեղծել պատասխանատու կերպով։",
@@ -84,14 +84,18 @@
       const value = copy[language][element.dataset.copy];
       if (value) element.innerHTML = value;
     });
-    const offlineGrid = document.getElementById("offline-course-grid");
-    if (offlineGrid) {
-      offlineGrid.innerHTML = offlineCourses[language].map((course, index) => `
+    const offlineGridA = document.getElementById("offline-course-grid-a");
+    const offlineGridB = document.getElementById("offline-course-grid-b");
+    if (offlineGridA && offlineGridB) {
+      const renderOfflineCard = (course, index) => `
         <a class="offline-card" href="in-person.html?course=${course[0]}">
           <div class="offline-card-top"><span>${String(index + 1).padStart(2, "0")}</span></div>
           <div><h3>${course[1]}</h3><p>${course[3]}</p></div>
           <div class="offline-audience"><span>${course[2]}</span><strong>${copy[language].viewOutline} →</strong></div>
-        </a>`).join("");
+        </a>`;
+      const courses = offlineCourses[language];
+      offlineGridA.innerHTML = courses.slice(0, 4).map((course, index) => renderOfflineCard(course, index)).join("");
+      offlineGridB.innerHTML = courses.slice(4, 8).map((course, index) => renderOfflineCard(course, index + 4)).join("");
     }
   }
 

@@ -278,7 +278,7 @@
       const week = index < 2 ? 1 : 2;
       const day = index % 2 + 1;
       const timing = text.weekDay.replace("{w}", week).replace("{d}", day);
-      return `<article class="session-card"><div class="session-index">${text.session} 0${index + 1}<strong>${timing}</strong></div><div><h3>${esc(session[0])}</h3><p class="session-focus">${esc(session[1])}</p></div><div><ul>${session[2].map((item) => `<li>${esc(item)}</li>`).join("")}</ul></div><div class="session-lab"><strong>${text.lab}</strong><span>${esc(session[3])}</span></div></article>`;
+      return `<article class="session-card"><div class="session-index">${text.session} 0${index + 1} · <strong>${timing}</strong></div><div><h3>${esc(session[0])}</h3><p class="session-focus">${esc(session[1])}</p></div><div><ul>${session[2].map((item) => `<li>${esc(item)}</li>`).join("")}</ul></div><div class="session-lab"><strong>${text.lab}</strong><span>${esc(session[3])}</span></div></article>`;
     }).join("");
     document.getElementById("tools-grid").innerHTML = course.tools.map((tool) => `<article class="tool-card"><strong>${esc(tool[0])}</strong><p>${esc(tool[1])}</p></article>`).join("");
     document.getElementById("capstone-title").textContent = course.capstoneTitle;
