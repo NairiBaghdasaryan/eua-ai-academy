@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+platform/node_modules/
+
+# Local data / secrets
+platform/data/*.db
+platform/data/*.db-*
+.env
+.env.*
+!.env.example
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+.idea/
+
+# Build / temp
+dist/
+tmp/
+*.tmp
