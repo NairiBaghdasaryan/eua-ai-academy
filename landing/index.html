@@ -34,11 +34,10 @@
         <a href="about.html" data-copy="navAbout">About</a>
       </nav>
       <div class="header-actions">
-        <label class="sr-only" for="language">Language</label>
-        <select id="language" class="language-select" aria-label="Language">
-          <option value="en">English</option>
-          <option value="hy">Հայերեն</option>
-        </select>
+        <div class="language-toggle" role="group" aria-label="Language selection" data-copy-aria="languageLabel">
+          <button type="button" data-language="en" aria-pressed="true" aria-label="English">EN</button>
+          <button type="button" data-language="hy" aria-pressed="false" aria-label="Հայերեն">ՀՅ</button>
+        </div>
         <a class="text-link" href="login.html" data-copy="login" id="account-link">Log in</a>
       </div>
     </div>
