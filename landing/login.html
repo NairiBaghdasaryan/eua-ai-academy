@@ -35,18 +35,18 @@
     <div class="auth-card">
       <p class="eyebrow" data-copy="academyName">EUA AI Academy</p>
       <h1 data-copy="title">Understand it. Question it. Build with it.</h1>
-      <p class="auth-lead" data-copy="lead">Log in or create an account to watch lessons and take module quizzes.</p>
+      <p class="auth-lead" data-copy="lead">Click Log in to enter the demo academy — no account needed.</p>
 
       <div id="login-panel">
         <div class="form-group">
-          <label for="email" data-copy="email">Email</label>
-          <input type="email" id="email" autocomplete="email" required>
+          <label for="email" data-copy="email">Email (optional)</label>
+          <input type="email" id="email" autocomplete="email">
         </div>
         <div class="form-group">
-          <label for="password" data-copy="password">Password</label>
-          <input type="password" id="password" autocomplete="current-password" required>
+          <label for="password" data-copy="password">Password (optional)</label>
+          <input type="password" id="password" autocomplete="current-password">
         </div>
-        <button type="button" class="btn btn-primary btn-full" id="btn-login" data-copy="login">Log in</button>
+        <button type="button" class="btn btn-primary btn-full" id="btn-login" data-copy="login">Enter demo</button>
         <p class="auth-switch"><span data-copy="noAccount">No account?</span> <a href="#" id="show-register" data-copy="register">Register</a></p>
       </div>
 
@@ -74,6 +74,7 @@
       <p class="error-msg hidden" id="auth-error"></p>
     </div>
   </main>
+  <script src="js/demo-data.js"></script>
   <script src="js/login.js"></script>
 </body>
 </html>
