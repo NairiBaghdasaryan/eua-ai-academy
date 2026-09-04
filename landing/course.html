@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EUA AI Explorers - Course</title>
+  <link rel="stylesheet" href="css/platform.css">
+</head>
+<body>
+  <div class="course-shell">
+    <aside class="sidebar" id="sidebar"></aside>
+    <div class="main">
+      <header class="topbar">
+        <a href="dashboard.html" id="academy-link" style="font-weight:700;text-decoration:none">← My academy</a>
+        <div>
+          <span id="user-name"></span>
+          <button class="btn btn-outline" id="btn-logout" style="margin-left:0.75rem;padding:0.4rem 0.75rem;font-size:0.8rem">Log out</button>
+        </div>
+      </header>
+      <div class="content" id="main-content">
+        <p id="course-loading">Loading course…</p>
+      </div>
+      <div style="padding:0 2rem 1rem">
+        <div class="progress-bar-wrap"><div class="progress-bar-fill" id="progress-fill" style="width:0%"></div></div>
+        <p style="font-size:0.8rem;color:var(--muted);margin-top:0.35rem" id="progress-text"></p>
+      </div>
+    </div>
+  </div>
+  <script src="js/demo-data.js"></script>
+  <script src="js/course.js"></script>
+</body>
+</html>
