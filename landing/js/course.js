@@ -1,8 +1,10 @@
 const language = localStorage.getItem("eua-ai-language") === "hy" ? "hy" : "en";
 const t = language === "hy" ? {
-  academy: "← Իմ ակադեմիան", logout: "Ելք", loading: "Դասընթացը բեռնվում է…", course: "ԱԲ բացահայտողներ", courseMeta: "22 դաս · 6 մոդուլ", quizPassed: "✓ Մոդուլի թեստը հանձնված է", quiz: "→ Մոդուլի թեստ", videoSoon: "Տեսանյութը շուտով կավելացվի։", videoAdmin: "Դեմո ռեժիմում տեսանյութերը դեռ չեն միացված։", previous: "← Նախորդ", next: "Հաջորդ →", finish: "Ավարտել մոդուլը", noQuiz: "Այս մոդուլի համար թեստ դեռ չկա։", quizTitle: "Մոդուլի թեստ", quizIntro: "Հաջորդ մոդուլը բացելու համար հավաքեք առնվազն 70%։", submit: "Ուղարկել թեստը", passed: "Հանձնված է", unlocked: "Հաջորդ մոդուլը բացված է։", notYet: "Դեռ ոչ", need: "Պետք է հավաքեք 70%։ Փորձեք կրկին։", completed: "դասն ավարտված է", of: "-ից", failed: "Հարցումը չհաջողվեց"
+  academy: "← Իմ ակադեմիան", logout: "Ելք", loading: "Դասընթացը բեռնվում է…", course: "ԱԲ բացահայտողներ", courseMeta: "22 դաս · սլայդներ և տեքստ", quizPassed: "✓ Մոդուլի թեստը հանձնված է", quiz: "→ Մոդուլի թեստ", previous: "← Նախորդ դաս", next: "Հաջորդ դաս →", finish: "Ավարտել մոդուլը", noQuiz: "Այս մոդուլի համար թեստ դեռ չկա։", quizTitle: "Մոդուլի թեստ", quizIntro: "Հաջորդ մոդուլը բացելու համար հավաքեք առնվազն 70%։", submit: "Ուղարկել թեստը", passed: "Հանձնված է", unlocked: "Հաջորդ մոդուլը բացված է։", notYet: "Դեռ ոչ", need: "Պետք է հավաքեք 70%։ Փորձեք կրկին։", completed: "դասն ավարտված է", of: "-ից", failed: "Հարցումը չհաջողվեց",
+  slideOf: "Սլայդ", slidePrev: "← Նախորդ սլայդ", slideNext: "Հաջորդ սլայդ →", readTitle: "Կարդալ և կիրառել", practiceTitle: "Փորձեք", takeawayTitle: "Հիմնական եզրակացություն", markComplete: "Նշել որպես ավարտված և շարունակել"
 } : {
-  academy: "← My academy", logout: "Log out", loading: "Loading course…", course: "EUA AI Explorers", courseMeta: "22 lessons · 6 modules", quizPassed: "✓ Module quiz passed", quiz: "→ Module quiz", videoSoon: "Video coming soon.", videoAdmin: "Demo mode — videos will appear when linked by admin.", previous: "← Previous", next: "Next →", finish: "Finish module", noQuiz: "No quiz for this module yet.", quizTitle: "Module quiz", quizIntro: "Pass with 70% or higher to unlock the next module.", submit: "Submit quiz", passed: "Passed", unlocked: "Next module unlocked.", notYet: "Not yet", need: "You need 70%. Try again.", completed: "lessons completed", of: "of", failed: "Request failed"
+  academy: "← My academy", logout: "Log out", loading: "Loading course…", course: "EUA AI Explorers", courseMeta: "22 lessons · slides & text", quizPassed: "✓ Module quiz passed", quiz: "→ Module quiz", previous: "← Previous lesson", next: "Next lesson →", finish: "Finish module", noQuiz: "No quiz for this module yet.", quizTitle: "Module quiz", quizIntro: "Pass with 70% or higher to unlock the next module.", submit: "Submit quiz", passed: "Passed", unlocked: "Next module unlocked.", notYet: "Not yet", need: "You need 70%. Try again.", completed: "lessons completed", of: "of", failed: "Request failed",
+  slideOf: "Slide", slidePrev: "← Previous slide", slideNext: "Next slide →", readTitle: "Read and apply", practiceTitle: "Try this", takeawayTitle: "Key takeaway", markComplete: "Mark complete and continue"
 };
 const optionHy = {
   "Understand, question, and apply AI responsibly": "Հասկանալ, հարցադրել և պատասխանատու կերպով կիրառել ԱԲ-ը",
@@ -53,6 +55,21 @@ async function api(path, opts = {}) {
 let courseData = [];
 let accessMap = {};
 let currentLesson = null;
+let slideIndex = 0;
+
+function escapeHtml(value) {
+  return String(value ?? "").replaceAll("&", "&amp;").replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+}
+
+function lessonPayload(lessonId) {
+  return window.EuaLessonContent?.get(lessonId, language) || {
+    slides: [{ title: language === "hy" ? "Բովանդակությունը շուտով" : "Content coming soon", points: [] }],
+    paragraphs: [language === "hy" ? "Այս դասի ընթերցանությունը շուտով կավելացվի։" : "Reading content for this lesson will be added soon."],
+    practice: "",
+    takeaway: ""
+  };
+}
 
 async function init() {
   if (!window.EuaDemo?.isDemo()) window.EuaDemo?.enterDemo();
@@ -122,30 +139,64 @@ function openLesson(lessonId) {
   const flat = allLessons();
   currentLesson = flat.find((l) => l.id === lessonId);
   if (!currentLesson || !accessMap[currentLesson.module.id]) return;
+  slideIndex = 0;
 
   document.querySelectorAll(".lesson-link").forEach((el) => {
     el.classList.toggle("active", parseInt(el.dataset.id, 10) === lessonId);
   });
 
+  renderLessonView();
+}
+
+function renderLessonView() {
   const { module } = currentLesson;
-  const embed = currentLesson.embed_url;
+  const payload = lessonPayload(currentLesson.id);
+  const slides = payload.slides || [];
+  const slide = slides[Math.min(slideIndex, Math.max(slides.length - 1, 0))] || { title: "", points: [] };
   const main = document.getElementById("main-content");
 
   main.innerHTML = `
     <p class="module-label">${language === "hy" ? armenianize(module.title_hy) : module.title_en}</p>
     <h2 class="lesson-title">${language === "hy" ? armenianize(currentLesson.title_hy) : currentLesson.title_en}</h2>
-    <div class="video-wrap">
-      ${
-        embed
-          ? `<iframe src="${embed}" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>`
-          : `<div class="video-placeholder">${t.videoSoon}<br><small>${t.videoAdmin}</small></div>`
-      }
-    </div>
+
+    <section class="lesson-stage" aria-label="Lesson slides">
+      <div class="slide-card">
+        <div class="slide-meta">${t.slideOf} ${slides.length ? slideIndex + 1 : 0} / ${slides.length}</div>
+        <h3>${escapeHtml(slide.title)}</h3>
+        <ul>${(slide.points || []).map((point) => `<li>${escapeHtml(point)}</li>`).join("")}</ul>
+      </div>
+      <div class="slide-nav">
+        <button class="btn btn-outline" type="button" id="btn-slide-prev" ${slideIndex <= 0 ? "disabled" : ""}>${t.slidePrev}</button>
+        <button class="btn btn-secondary" type="button" id="btn-slide-next" ${slideIndex >= slides.length - 1 ? "disabled" : ""}>${t.slideNext}</button>
+      </div>
+      <div class="slide-dots" aria-hidden="true">
+        ${slides.map((_, index) => `<span class="${index === slideIndex ? "active" : ""}"></span>`).join("")}
+      </div>
+    </section>
+
+    <section class="lesson-reading">
+      <h3>${t.readTitle}</h3>
+      ${(payload.paragraphs || []).map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join("")}
+      ${payload.practice ? `<div class="lesson-callout practice"><strong>${t.practiceTitle}</strong><p>${escapeHtml(payload.practice)}</p></div>` : ""}
+      ${payload.takeaway ? `<div class="lesson-callout takeaway"><strong>${t.takeawayTitle}</strong><p>${escapeHtml(payload.takeaway)}</p></div>` : ""}
+    </section>
+
     <div class="nav-row">
       <button class="btn btn-outline" id="btn-prev" ${prevLesson() ? "" : "disabled"}>${t.previous}</button>
-      <button class="btn btn-primary" id="btn-next">${nextLesson() ? t.next : t.finish}</button>
+      <button class="btn btn-primary" id="btn-next">${nextLesson() ? t.markComplete : t.finish}</button>
     </div>
   `;
+
+  document.getElementById("btn-slide-prev")?.addEventListener("click", () => {
+    if (slideIndex <= 0) return;
+    slideIndex -= 1;
+    renderLessonView();
+  });
+  document.getElementById("btn-slide-next")?.addEventListener("click", () => {
+    if (slideIndex >= slides.length - 1) return;
+    slideIndex += 1;
+    renderLessonView();
+  });
 
   document.getElementById("btn-prev").addEventListener("click", () => {
     const p = prevLesson();
@@ -153,6 +204,7 @@ function openLesson(lessonId) {
   });
 
   document.getElementById("btn-next").addEventListener("click", async () => {
+    const lessonId = currentLesson.id;
     await api(`/api/progress/${lessonId}`, { method: "POST" });
     currentLesson.completed = true;
     const mod = courseData.find((m) => m.id === module.id);

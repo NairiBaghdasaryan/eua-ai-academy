@@ -163,6 +163,94 @@ a { color: var(--blue); }
 .lesson-title { margin: 0 0 0.25rem; font-size: 1.5rem; color: var(--blue); }
 .module-label { margin: 0 0 1.25rem; color: var(--muted); font-size: 0.9rem; }
 
+.lesson-stage { margin: 1.25rem 0 1.75rem; }
+.slide-card {
+  min-height: 280px;
+  padding: 28px 30px;
+  color: white;
+  background: linear-gradient(145deg, #071c3b 0%, #0d2d58 55%, #165ca6 100%);
+  border-radius: 14px;
+  box-shadow: 0 12px 30px rgba(7, 28, 59, 0.18);
+}
+.slide-meta {
+  margin-bottom: 18px;
+  color: rgba(225, 184, 76, 0.95);
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.slide-card h3 {
+  margin: 0 0 16px;
+  font-size: clamp(1.35rem, 2.4vw, 1.85rem);
+  line-height: 1.2;
+  letter-spacing: -.03em;
+}
+.slide-card ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  color: rgba(255,255,255,.86);
+  line-height: 1.55;
+}
+.slide-card li + li { margin-top: 8px; }
+.slide-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 12px;
+}
+.btn-secondary {
+  color: var(--blue-dark);
+  background: #e8eef6;
+}
+.slide-dots {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 12px;
+}
+.slide-dots span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #c9d3e0;
+}
+.slide-dots span.active { background: var(--gold); }
+
+.lesson-reading {
+  padding: 22px 24px;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+}
+.lesson-reading h3 {
+  margin: 0 0 12px;
+  font-size: 1.05rem;
+  color: var(--blue);
+}
+.lesson-reading > p {
+  margin: 0 0 12px;
+  color: #314257;
+  line-height: 1.65;
+}
+.lesson-callout {
+  margin-top: 16px;
+  padding: 14px 16px;
+  border-radius: 10px;
+  border-left: 3px solid var(--gold);
+  background: #f7f4ea;
+}
+.lesson-callout.practice { border-left-color: #165ca6; background: #eef4fb; }
+.lesson-callout strong {
+  display: block;
+  margin-bottom: 6px;
+  font-size: .78rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+.lesson-callout p { margin: 0; color: #314257; line-height: 1.55; }
+
 .video-wrap {
   position: relative;
   padding-bottom: 56.25%;
