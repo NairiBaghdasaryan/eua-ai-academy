@@ -29,7 +29,7 @@
       heroCopy: "Գործնական դասընթացներ՝ սովորելու, դասավանդելու և ծառայելու համար։", explore: "Տեսնել դասընթացները <span aria-hidden=\"true\">↓</span>",
       coursesEyebrow: "Սովորեք առցանց", coursesTitle: "Առցանց ԱԲ դասընթացներ։", coursesSubtitle: "Ընտրեք ձեր ուղին։", explorersCopy: "Հետաքրքրասերների համար, ովքեր բացահայտում են ԱԲ-ը։",
       available: "Գրանցումը բաց է", comingSoon: "Շուտով",
-      explorersTitle: "ԱԲ հետազոտողներ",
+      explorersTitle: "ԱԲ բացահայտողներ",
       studentsTitle: "ԱԲ ուսանողների համար", studentsCopy: "Սովորել, հետազոտել և ստեղծել պատասխանատու կերպով։",
       educatorsTitle: "ԱԲ դասավանդողների համար", educatorsCopy: "ԱԲ-ի մտածված կիրառումը բերել լսարան։",
       governmentTitle: "ԱԲ-ը հանրային կառավարման և պետական հատվածի համար", governmentCopy: "ԱԲ-ը կիրառել վստահ, հոգատար և հանրային նպատակով։",

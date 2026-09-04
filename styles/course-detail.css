@@ -27,6 +27,7 @@
 .curriculum-row p { color: var(--muted); line-height: 1.55; }
 .curriculum-modules { margin-top: 64px; border-top: 1px solid var(--line); }
 .curriculum-module { display: grid; grid-template-columns: 1.05fr 1.25fr 1fr; gap: 40px; padding: 34px 0; border-bottom: 1px solid var(--line); }
+.curriculum-module-standalone { grid-template-columns: 1.05fr 2.25fr; }
 .module-identity { display: grid; grid-template-columns: 52px 1fr; gap: 18px; }
 .module-identity > span { color: var(--blue); font-size: .72rem; font-weight: 850; letter-spacing: .1em; }
 .module-identity small { display: block; margin-bottom: 6px; color: var(--muted); font-size: .68rem; font-weight: 750; letter-spacing: .08em; text-transform: uppercase; }
@@ -71,6 +72,7 @@
   .curriculum-row { grid-template-columns: 48px 1fr; }
   .curriculum-row p { grid-column: 2; }
   .curriculum-module { grid-template-columns: 1fr; gap: 20px; padding: 28px 0; }
+  .curriculum-module-standalone { grid-template-columns: 1fr; }
   .curriculum-enroll { align-items: flex-start; flex-direction: column; }
   .detail-cta-inner { align-items: flex-start; flex-direction: column; }
   .assessment-grid, .reminder-grid { grid-template-columns: 1fr; gap: 36px; }
