@@ -77,6 +77,20 @@ function seed() {
     console.log("Created admin: admin@eua.am / admin123  (change before production!)");
   }
 
+  const studentEmail = "student@eua.am";
+  const existingStudent = db.prepare("SELECT id FROM users WHERE email = ?").get(studentEmail);
+  if (!existingStudent) {
+    const studentHash = bcrypt.hashSync("student123", 10);
+    const result = db.prepare(
+      "INSERT INTO users (email, password_hash, name, first_name, last_name, role) VALUES (?, ?, ?, ?, ?, 'student')"
+    ).run(studentEmail, studentHash, "Test Student", "Test", "Student");
+    db.prepare(`
+      INSERT OR IGNORE INTO enrollments (user_id, course_slug, status, payment_status, amount_amd, promo_code)
+      VALUES (?, 'ai-explorers', 'active', 'discounted', 0, 'EUA100-DEMO')
+    `).run(result.lastInsertRowid);
+    console.log("Created student: student@eua.am / student123");
+  }
+
   const modCount = db.prepare("SELECT COUNT(*) AS c FROM modules").get().c;
   if (modCount === 0) {
     const insertMod = db.prepare(
