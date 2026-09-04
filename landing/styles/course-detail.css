@@ -33,8 +33,14 @@
 .module-identity small { display: block; margin-bottom: 6px; color: var(--muted); font-size: .68rem; font-weight: 750; letter-spacing: .08em; text-transform: uppercase; }
 .module-identity h3 { margin: 0; font-size: 1.35rem; line-height: 1.2; letter-spacing: -.025em; }
 .curriculum-module > p { margin: 0; color: var(--muted); line-height: 1.65; }
+.module-content { display: grid; align-content: start; gap: 18px; }
 .curriculum-module ul { display: flex; align-content: start; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
-.curriculum-module li { width: max-content; padding: 7px 10px; color: #34465e; background: white; border: 1px solid var(--line); border-radius: 99px; font-size: .72rem; line-height: 1.25; }
+.curriculum-module li { width: max-content; max-width: 100%; padding: 7px 10px; color: #34465e; background: white; border: 1px solid var(--line); border-radius: 99px; font-size: .72rem; line-height: 1.25; }
+.curriculum-module li a { color: inherit; font-weight: 700; text-decoration: none; }
+.curriculum-module li a:hover { color: var(--blue); }
+.module-output { padding: 15px 16px; background: #edf2f7; border-left: 3px solid var(--blue); border-radius: 0 7px 7px 0; }
+.module-output > span { display: block; margin-bottom: 5px; color: var(--blue); font-size: .65rem; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
+.module-output p { margin: 0; color: #34465e; font-size: .8rem; line-height: 1.5; }
 .curriculum-enroll { display: flex; align-items: center; justify-content: space-between; gap: 34px; margin-top: 42px; padding: 30px; color: white; background: var(--navy); border-radius: 12px; }
 .curriculum-enroll div { display: grid; gap: 6px; }
 .curriculum-enroll strong { font-size: 1.25rem; }

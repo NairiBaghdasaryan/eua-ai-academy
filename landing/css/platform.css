@@ -250,6 +250,10 @@ a { color: var(--blue); }
   text-transform: uppercase;
 }
 .lesson-callout p { margin: 0; color: #314257; line-height: 1.55; }
+.lesson-resources { margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--border); }
+.lesson-resources ul { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.lesson-resources a { display: inline-flex; gap: 6px; color: var(--blue); font-weight: 700; text-decoration: none; }
+.lesson-resources a:hover { text-decoration: underline; }
 
 .video-wrap {
   position: relative;

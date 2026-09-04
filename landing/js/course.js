@@ -1,30 +1,11 @@
 const language = localStorage.getItem("eua-ai-language") === "hy" ? "hy" : "en";
 const t = language === "hy" ? {
-  academy: "← Իմ ակադեմիան", logout: "Ելք", loading: "Դասընթացը բեռնվում է…", course: "ԱԲ բացահայտողներ", courseMeta: "22 դաս · սլայդներ և տեքստ", quizPassed: "✓ Մոդուլի թեստը հանձնված է", quiz: "→ Մոդուլի թեստ", previous: "← Նախորդ դաս", next: "Հաջորդ դաս →", finish: "Ավարտել մոդուլը", noQuiz: "Այս մոդուլի համար թեստ դեռ չկա։", quizTitle: "Մոդուլի թեստ", quizIntro: "Հաջորդ մոդուլը բացելու համար հավաքեք առնվազն 70%։", submit: "Ուղարկել թեստը", passed: "Հանձնված է", unlocked: "Հաջորդ մոդուլը բացված է։", notYet: "Դեռ ոչ", need: "Պետք է հավաքեք 70%։ Փորձեք կրկին։", completed: "դասն ավարտված է", of: "-ից", failed: "Հարցումը չհաջողվեց",
+  academy: "← Իմ ակադեմիան", logout: "Ելք", loading: "Դասընթացը բեռնվում է…", course: "ԱԲ բացահայտողներ", courseMeta: "35 դաս · 10 մոդուլ · գործնական առաջադրանքներ", quizPassed: "✓ Մոդուլի թեստը հանձնված է", quiz: "→ Մոդուլի թեստ", previous: "← Նախորդ դաս", next: "Հաջորդ դաս →", finish: "Ավարտել մոդուլը", noQuiz: "Այս մոդուլի համար թեստ դեռ չկա։", quizTitle: "Մոդուլի թեստ", quizIntro: "Հաջորդ մոդուլը բացելու համար հավաքեք առնվազն 70%։", submit: "Ուղարկել թեստը", passed: "Հանձնված է", unlocked: "Հաջորդ մոդուլը բացված է։", notYet: "Դեռ ոչ", need: "Պետք է հավաքեք 70%։ Փորձեք կրկին։", completed: "դասն ավարտված է", of: "-ից", failed: "Հարցումը չհաջողվեց",
   slideOf: "Սլայդ", slidePrev: "← Նախորդ սլայդ", slideNext: "Հաջորդ սլայդ →", readTitle: "Կարդալ և կիրառել", practiceTitle: "Փորձեք", takeawayTitle: "Հիմնական եզրակացություն", markComplete: "Նշել որպես ավարտված և շարունակել"
 } : {
-  academy: "← My academy", logout: "Log out", loading: "Loading course…", course: "EUA AI Explorers", courseMeta: "22 lessons · slides & text", quizPassed: "✓ Module quiz passed", quiz: "→ Module quiz", previous: "← Previous lesson", next: "Next lesson →", finish: "Finish module", noQuiz: "No quiz for this module yet.", quizTitle: "Module quiz", quizIntro: "Pass with 70% or higher to unlock the next module.", submit: "Submit quiz", passed: "Passed", unlocked: "Next module unlocked.", notYet: "Not yet", need: "You need 70%. Try again.", completed: "lessons completed", of: "of", failed: "Request failed",
+  academy: "← My academy", logout: "Log out", loading: "Loading course…", course: "EUA AI Explorers", courseMeta: "35 lessons · 10 modules · practical challenges", quizPassed: "✓ Module quiz passed", quiz: "→ Module quiz", previous: "← Previous lesson", next: "Next lesson →", finish: "Finish module", noQuiz: "No quiz for this module yet.", quizTitle: "Module quiz", quizIntro: "Pass with 70% or higher to unlock the next module.", submit: "Submit quiz", passed: "Passed", unlocked: "Next module unlocked.", notYet: "Not yet", need: "You need 70%. Try again.", completed: "lessons completed", of: "of", failed: "Request failed",
   slideOf: "Slide", slidePrev: "← Previous slide", slideNext: "Next slide →", readTitle: "Read and apply", practiceTitle: "Try this", takeawayTitle: "Key takeaway", markComplete: "Mark complete and continue"
 };
-const optionHy = {
-  "Understand, question, and apply AI responsibly": "Հասկանալ, հարցադրել և պատասխանատու կերպով կիրառել ԱԲ-ը",
-  "Memorise tool brand names only": "Միայն անգիր սովորել գործիքների անունները",
-  "Use AI for every answer without checking": "ԱԲ-ի բոլոր պատասխաններն օգտագործել առանց ստուգելու",
-  "Avoid AI completely": "Ամբողջությամբ խուսափել ԱԲ-ից",
-  "Submit it immediately": "Անմիջապես հանձնել",
-  "Check, verify, or question before using it": "Օգտագործելուց առաջ ստուգել, հաստատել կամ հարցադրել",
-  "Share it publicly without reading": "Հանրայնացնել՝ առանց կարդալու",
-  "Assume it is always true": "Ենթադրել, որ այն միշտ ճիշտ է",
-  "The AI company": "ԱԲ ընկերությունը",
-  "Your teacher only": "Միայն ձեր դասավանդողը",
-  "You are": "Դուք",
-  "Nobody": "Ոչ ոք"
-};
-const questionHy = [
-  "Ո՞րն է այս մոդուլի հիմնական ուսումնական նպատակը։",
-  "Երբ ԱԲ-ի արդյունքը կատարյալ է թվում, ի՞նչ պետք է անել առաջին հերթին։",
-  "Ո՞վ է պատասխանատու ԱԲ-ի օգնությամբ ձեր ներկայացրած աշխատանքի համար։"
-];
 const armenianize = (value) => String(value || "").replace(/\bAI\b/g, "ԱԲ");
 document.documentElement.lang = language;
 document.title = language === "hy" ? "ԱԲ բացահայտողներ - Դասընթաց" : "EUA AI Explorers - Course";
@@ -72,7 +53,6 @@ function lessonPayload(lessonId) {
 }
 
 async function init() {
-  if (!window.EuaDemo?.isDemo()) window.EuaDemo?.enterDemo();
   const { user } = await api("/api/auth/me");
   if (!user) {
     window.location.href = "login.html";
@@ -179,11 +159,12 @@ function renderLessonView() {
       ${(payload.paragraphs || []).map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join("")}
       ${payload.practice ? `<div class="lesson-callout practice"><strong>${t.practiceTitle}</strong><p>${escapeHtml(payload.practice)}</p></div>` : ""}
       ${payload.takeaway ? `<div class="lesson-callout takeaway"><strong>${t.takeawayTitle}</strong><p>${escapeHtml(payload.takeaway)}</p></div>` : ""}
+      ${payload.resources?.length ? `<div class="lesson-resources"><h3>${escapeHtml(payload.resourcesTitle)}</h3><ul>${payload.resources.map((resource) => `<li><a href="${escapeHtml(resource.href)}" target="_blank" rel="noopener noreferrer">${escapeHtml(resource.title)} <span aria-hidden="true">↗</span></a></li>`).join("")}</ul></div>` : ""}
     </section>
 
     <div class="nav-row">
       <button class="btn btn-outline" id="btn-prev" ${prevLesson() ? "" : "disabled"}>${t.previous}</button>
-      <button class="btn btn-primary" id="btn-next">${nextLesson() ? t.markComplete : t.finish}</button>
+      <button class="btn btn-primary" id="btn-next">${isLastLessonInModule() ? t.finish : t.markComplete}</button>
     </div>
   `;
 
@@ -218,9 +199,11 @@ function renderLessonView() {
     document.querySelector(`.lesson-link[data-id="${lessonId}"]`)?.classList.add("done", "active");
     updateProgress();
 
-    const n = nextLesson();
-    if (n) openLesson(n.id);
-    else if (mod.all_lessons_done) openQuiz(module.id);
+    if (mod.all_lessons_done) openQuiz(module.id);
+    else {
+      const n = nextLesson();
+      if (n) openLesson(n.id);
+    }
   });
 }
 
@@ -234,6 +217,12 @@ function nextLesson() {
   const flat = allLessons();
   const i = flat.findIndex((l) => l.id === currentLesson.id);
   return i < flat.length - 1 ? flat[i + 1] : null;
+}
+
+function isLastLessonInModule() {
+  if (!currentLesson) return false;
+  const moduleLessons = currentLesson.module.lessons;
+  return moduleLessons[moduleLessons.length - 1]?.id === currentLesson.id;
 }
 
 async function openQuiz(moduleId) {
@@ -255,13 +244,13 @@ async function openQuiz(moduleId) {
         .map(
           (q, qi) => `
         <div class="quiz-question" data-qid="${q.id}">
-          <h3>${qi + 1}. ${language === "hy" ? questionHy[qi] : q.question_en}</h3>
-          ${q.options
+          <h3>${qi + 1}. ${language === "hy" ? q.question_hy : q.question_en}</h3>
+          ${(language === "hy" && q.options_hy?.length ? q.options_hy : q.options)
             .map(
               (opt, oi) => `
             <label class="quiz-option">
               <input type="radio" name="q${q.id}" value="${oi}" required>
-              <span>${language === "hy" ? (optionHy[opt] || opt) : opt}</span>
+              <span>${escapeHtml(opt)}</span>
             </label>`
             )
             .join("")}

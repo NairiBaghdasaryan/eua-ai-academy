@@ -301,12 +301,12 @@ app.get("/api/enrollments/:id/checkout", requireAuth, (req, res) => {
 app.get("/api/course", requireAuth, requireExplorerEnrollment, (req, res) => {
   const userId = req.session.userId;
   const modules = db
-    .prepare("SELECT * FROM modules ORDER BY sort_order")
+    .prepare("SELECT * FROM modules WHERE active = 1 ORDER BY sort_order")
     .all()
     .map((mod) => {
       const lessons = db
         .prepare(
-          "SELECT l.*, CASE WHEN p.lesson_id IS NOT NULL THEN 1 ELSE 0 END AS completed FROM lessons l LEFT JOIN progress p ON p.lesson_id = l.id AND p.user_id = ? WHERE l.module_id = ? ORDER BY l.sort_order"
+          "SELECT l.*, CASE WHEN p.lesson_id IS NOT NULL THEN 1 ELSE 0 END AS completed FROM lessons l LEFT JOIN progress p ON p.lesson_id = l.id AND p.user_id = ? WHERE l.module_id = ? AND l.active = 1 ORDER BY l.sort_order"
         )
         .all(userId, mod.id)
         .map((l) => ({
@@ -342,7 +342,7 @@ app.get("/api/quiz/:moduleId", requireAuth, requireExplorerEnrollment, (req, res
   const moduleId = parseInt(req.params.moduleId, 10);
   const questions = db
     .prepare(
-      "SELECT id, question_en, question_hy, options_json FROM quiz_questions WHERE module_id = ? ORDER BY sort_order"
+      "SELECT id, question_en, question_hy, options_json, options_hy_json FROM quiz_questions WHERE module_id = ? ORDER BY sort_order"
     )
     .all(moduleId)
     .map((q) => ({
@@ -350,6 +350,7 @@ app.get("/api/quiz/:moduleId", requireAuth, requireExplorerEnrollment, (req, res
       question_en: q.question_en,
       question_hy: q.question_hy,
       options: JSON.parse(q.options_json),
+      options_hy: JSON.parse(q.options_hy_json || "[]"),
     }));
   res.json({ moduleId, questions });
 });
@@ -377,7 +378,7 @@ app.post("/api/quiz/:moduleId/submit", requireAuth, requireExplorerEnrollment, (
 function moduleUnlocked(userId, moduleSortOrder) {
   if (moduleSortOrder <= 1) return true;
   const prev = db
-    .prepare("SELECT id FROM modules WHERE sort_order = ?")
+    .prepare("SELECT id FROM modules WHERE active = 1 AND sort_order = ?")
     .get(moduleSortOrder - 1);
   if (!prev) return true;
   const quiz = db
@@ -388,7 +389,7 @@ function moduleUnlocked(userId, moduleSortOrder) {
 
 app.get("/api/course/access", requireAuth, requireExplorerEnrollment, (req, res) => {
   const userId = req.session.userId;
-  const mods = db.prepare("SELECT id, sort_order FROM modules ORDER BY sort_order").all();
+  const mods = db.prepare("SELECT id, sort_order FROM modules WHERE active = 1 ORDER BY sort_order").all();
   const access = mods.map((m) => ({
     module_id: m.id,
     unlocked: moduleUnlocked(userId, m.sort_order),
@@ -403,6 +404,7 @@ app.get("/api/admin/lessons", requireAdmin, (req, res) => {
     .prepare(
       `SELECT l.*, m.title_en AS module_title, m.sort_order AS module_sort
        FROM lessons l JOIN modules m ON m.id = l.module_id
+       WHERE l.active = 1 AND m.active = 1
        ORDER BY m.sort_order, l.sort_order`
     )
     .all();
@@ -431,16 +433,20 @@ app.get("/api/admin/quiz/:moduleId", requireAdmin, (req, res) => {
   const questions = db
     .prepare("SELECT * FROM quiz_questions WHERE module_id = ? ORDER BY sort_order")
     .all(moduleId)
-    .map((q) => ({ ...q, options: JSON.parse(q.options_json) }));
+    .map((q) => ({ ...q, options: JSON.parse(q.options_json), options_hy: JSON.parse(q.options_hy_json || "[]") }));
   res.json({ questions });
 });
 
 app.put("/api/admin/quiz/:questionId", requireAdmin, (req, res) => {
   const id = parseInt(req.params.questionId, 10);
-  const { question_en, question_hy, options, correct_index } = req.body;
+  const { question_en, question_hy, options, options_hy, correct_index } = req.body;
+  const existing = db.prepare("SELECT options_hy_json FROM quiz_questions WHERE id = ?").get(id);
+  const localizedOptions = Array.isArray(options_hy)
+    ? options_hy
+    : JSON.parse(existing?.options_hy_json || "[]");
   db.prepare(
-    "UPDATE quiz_questions SET question_en = ?, question_hy = ?, options_json = ?, correct_index = ? WHERE id = ?"
-  ).run(question_en, question_hy, JSON.stringify(options), correct_index, id);
+    "UPDATE quiz_questions SET question_en = ?, question_hy = ?, options_json = ?, options_hy_json = ?, correct_index = ? WHERE id = ?"
+  ).run(question_en, question_hy, JSON.stringify(options), JSON.stringify(localizedOptions), correct_index, id);
   res.json({ ok: true });
 });
 
@@ -455,7 +461,7 @@ app.get("/api/admin/stats", requireAdmin, (req, res) => {
 });
 
 app.get("/api/admin/modules", requireAdmin, (req, res) => {
-  res.json({ modules: db.prepare("SELECT * FROM modules ORDER BY sort_order").all() });
+  res.json({ modules: db.prepare("SELECT * FROM modules WHERE active = 1 ORDER BY sort_order").all() });
 });
 
 app.listen(PORT, () => {

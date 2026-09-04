@@ -25,7 +25,8 @@ db.exec(`
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     sort_order INTEGER NOT NULL,
     title_en TEXT NOT NULL,
-    title_hy TEXT NOT NULL
+    title_hy TEXT NOT NULL,
+    active INTEGER NOT NULL DEFAULT 1
   );
 
   CREATE TABLE IF NOT EXISTS lessons (
@@ -36,7 +37,8 @@ db.exec(`
     title_hy TEXT NOT NULL,
     youtube_url TEXT DEFAULT '',
     description_en TEXT DEFAULT '',
-    description_hy TEXT DEFAULT ''
+    description_hy TEXT DEFAULT '',
+    active INTEGER NOT NULL DEFAULT 1
   );
 
   CREATE TABLE IF NOT EXISTS progress (
@@ -53,6 +55,7 @@ db.exec(`
     question_en TEXT NOT NULL,
     question_hy TEXT NOT NULL,
     options_json TEXT NOT NULL,
+    options_hy_json TEXT NOT NULL DEFAULT '[]',
     correct_index INTEGER NOT NULL
   );
 
@@ -152,6 +155,15 @@ const userColumns = db.prepare("PRAGMA table_info(users)").all().map((column) =>
 if (!userColumns.includes("first_name")) db.exec("ALTER TABLE users ADD COLUMN first_name TEXT");
 if (!userColumns.includes("last_name")) db.exec("ALTER TABLE users ADD COLUMN last_name TEXT");
 if (!userColumns.includes("phone")) db.exec("ALTER TABLE users ADD COLUMN phone TEXT");
+
+const moduleColumns = db.prepare("PRAGMA table_info(modules)").all().map((column) => column.name);
+if (!moduleColumns.includes("active")) db.exec("ALTER TABLE modules ADD COLUMN active INTEGER NOT NULL DEFAULT 1");
+
+const lessonColumns = db.prepare("PRAGMA table_info(lessons)").all().map((column) => column.name);
+if (!lessonColumns.includes("active")) db.exec("ALTER TABLE lessons ADD COLUMN active INTEGER NOT NULL DEFAULT 1");
+
+const quizColumns = db.prepare("PRAGMA table_info(quiz_questions)").all().map((column) => column.name);
+if (!quizColumns.includes("options_hy_json")) db.exec("ALTER TABLE quiz_questions ADD COLUMN options_hy_json TEXT NOT NULL DEFAULT '[]'");
 
 db.pragma("optimize");
 
