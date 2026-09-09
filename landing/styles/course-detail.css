@@ -13,7 +13,7 @@
 .fact-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
 .fact-grid div { min-height: 145px; display: flex; flex-direction: column; justify-content: center; padding: 28px 30px; border-right: 1px solid rgba(255,255,255,.12); }
 .fact-grid div:first-child { border-left: 1px solid rgba(255,255,255,.12); }
-.fact-grid strong { color: var(--gold); font-size: 1.75rem; letter-spacing: -.03em; }
+.fact-grid strong { color: var(--gold); font-size: var(--type-card); letter-spacing: -.02em; }
 .fact-grid span { margin-top: 5px; color: rgba(255,255,255,.62); font-size: .8rem; }
 .detail-section { padding: 104px 0; }
 .detail-intro { display: grid; grid-template-columns: .65fr 1.7fr; gap: 64px; }
@@ -23,7 +23,7 @@
 .curriculum-row { display: grid; grid-template-columns: 70px 1fr 1fr; gap: 30px; padding: 27px 0; border-bottom: 1px solid var(--line); }
 .curriculum-row span { color: var(--blue); font-size: .72rem; font-weight: 800; letter-spacing: .1em; }
 .curriculum-row h3, .curriculum-row p { margin: 0; }
-.curriculum-row h3 { font-size: 1.15rem; line-height: 1.3; }
+.curriculum-row h3 { font-size: var(--type-card); line-height: 1.3; }
 .curriculum-row p { color: var(--muted); line-height: 1.55; }
 .curriculum-modules { margin-top: 64px; border-top: 1px solid var(--line); }
 .curriculum-module { display: grid; grid-template-columns: 1.05fr 1.25fr 1fr; gap: 40px; padding: 34px 0; border-bottom: 1px solid var(--line); }
@@ -43,7 +43,7 @@
 .module-output p { margin: 0; color: #34465e; font-size: .8rem; line-height: 1.5; }
 .curriculum-enroll { display: flex; align-items: center; justify-content: space-between; gap: 34px; margin-top: 42px; padding: 30px; color: white; background: var(--navy); border-radius: 12px; }
 .curriculum-enroll div { display: grid; gap: 6px; }
-.curriculum-enroll strong { font-size: 1.25rem; }
+.curriculum-enroll strong { font-size: var(--type-card); }
 .curriculum-enroll div span { color: rgba(255,255,255,.64); font-size: .86rem; }
 .curriculum-enroll .button { flex: 0 0 auto; margin: 0; }
 .detail-cta { padding: 86px 0; color: white; background: var(--blue); }
