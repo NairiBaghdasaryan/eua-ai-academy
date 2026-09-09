@@ -1,15 +1,15 @@
-.inperson-hero h1 { max-width: 840px; font-size: clamp(3rem, 6.3vw, 5.9rem); }
+.inperson-hero h1 { max-width: 840px; font-size: var(--type-hero); line-height: 1.15; letter-spacing: -.035em; }
 .course-overview { background: var(--paper); }
 .outcome-grid { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 58px; border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
 .outcome-card { min-height: 210px; padding: 28px; background: white; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .outcome-card span { color: var(--blue); font-size: .7rem; font-weight: 850; letter-spacing: .12em; }
-.outcome-card h3 { margin: 38px 0 10px; font-size: 1.3rem; letter-spacing: -.025em; }
+.outcome-card h3 { margin: 38px 0 10px; font-size: 1.15rem; letter-spacing: -.02em; line-height: 1.3; }
 .outcome-card p { margin: 0; color: var(--muted); line-height: 1.6; }
 .industry-section { padding: 92px 0; color: white; background: var(--blue); }
 .industry-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 80px; }
 .industry-grid .eyebrow { color: rgba(255,255,255,.62); }
-.industry-grid h2 { max-width: 530px; margin: 0; color: var(--gold); font-size: clamp(2.5rem, 4.7vw, 4.2rem); line-height: 1; letter-spacing: -.05em; }
-.industry-grid > div > p { max-width: 680px; margin: 0; color: rgba(255,255,255,.72); font-size: 1.07rem; line-height: 1.7; }
+.industry-grid h2 { max-width: 530px; margin: 0; color: var(--gold); font-size: var(--type-display); line-height: 1.15; letter-spacing: -.035em; }
+.industry-grid > div > p { max-width: 680px; margin: 0; color: rgba(255,255,255,.72); font-size: var(--type-lead); line-height: 1.7; }
 .state-points { display: grid; gap: 14px; margin-top: 30px; }
 .state-point { display: grid; grid-template-columns: 34px 1fr; gap: 12px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,.17); }
 .state-point span { color: var(--gold); font-size: .7rem; font-weight: 850; }
@@ -18,7 +18,7 @@
 .session-card { display: grid; grid-template-columns: 148px 1fr 1.08fr; gap: 34px; padding: 38px 0; border-bottom: 1px solid var(--line); }
 .session-index { color: var(--blue); font-size: .72rem; font-weight: 850; letter-spacing: .09em; line-height: 1.35; }
 .session-index strong { display: inline; margin-left: 0; color: var(--ink); font-size: .92rem; font-weight: 750; letter-spacing: 0; white-space: nowrap; }
-.session-card h3 { margin: 0 0 12px; font-size: 1.6rem; letter-spacing: -.035em; }
+.session-card h3 { margin: 0 0 12px; font-size: var(--type-card); letter-spacing: -.025em; line-height: 1.25; }
 .session-focus { margin: 0; color: var(--muted); line-height: 1.65; }
 .session-card ul { margin: 0; padding-left: 18px; color: var(--muted); line-height: 1.55; }
 .session-card li + li { margin-top: 7px; }
@@ -28,7 +28,7 @@
 .tools-section { padding: 94px 0; color: white; background: var(--navy); }
 .tools-heading { display: grid; grid-template-columns: .45fr 1fr 1fr; align-items: end; gap: 42px; }
 .tools-heading .eyebrow { color: var(--gold); }
-.tools-heading h2 { margin: 0; font-size: clamp(2.25rem, 4vw, 3.6rem); letter-spacing: -.045em; }
+.tools-heading h2 { margin: 0; font-size: var(--type-display); line-height: 1.15; letter-spacing: -.035em; }
 .tools-heading > p { margin: 0; color: rgba(255,255,255,.58); line-height: 1.6; }
 .tools-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 48px; background: rgba(255,255,255,.13); border: 1px solid rgba(255,255,255,.13); }
 .tool-card { min-height: 130px; padding: 22px; background: var(--navy); }
@@ -36,9 +36,9 @@
 .tool-card p { margin: 9px 0 0; color: rgba(255,255,255,.6); font-size: .84rem; line-height: 1.5; }
 .capstone-section { padding: 104px 0; background: #e9e4d8; }
 .capstone-grid { display: grid; grid-template-columns: .65fr 1.7fr; gap: 64px; }
-.capstone-number { display: block; margin-top: 70px; color: rgba(16,33,58,.12); font-size: 8rem; font-weight: 800; line-height: .7; }
-.capstone-grid h2 { max-width: 760px; margin: 0; font-size: clamp(2.6rem, 5vw, 4.4rem); line-height: 1; letter-spacing: -.055em; }
-.capstone-grid > div > p { max-width: 720px; color: var(--muted); font-size: 1.05rem; line-height: 1.7; }
+.capstone-number { display: block; margin-top: 70px; color: rgba(16,33,58,.12); font-size: clamp(3.5rem, 8vw, 5.5rem); font-weight: 800; line-height: .7; }
+.capstone-grid h2 { max-width: 760px; margin: 0; font-size: var(--type-display); line-height: 1.15; letter-spacing: -.035em; }
+.capstone-grid > div > p { max-width: 720px; color: var(--muted); font-size: var(--type-body); line-height: 1.7; }
 .capstone-grid ul { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 30px; margin: 28px 0 0; padding: 0; list-style: none; }
 .capstone-grid li { padding: 13px 0; border-top: 1px solid var(--line); font-weight: 700; }
 .enrollment-note { display: grid; gap: 6px; margin-top: 28px; padding: 18px; background: var(--paper); border-left: 3px solid var(--gold); }
