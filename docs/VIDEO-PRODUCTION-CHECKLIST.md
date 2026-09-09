@@ -27,7 +27,7 @@ Based on Programme Design v2.0, Section 14.
 - [ ] Module master matches its approved total: **60–88 minutes**
 - [ ] Armenian audio + **English subtitles**
 - [ ] Armenian captions (accessibility + SEO)
-- [ ] Chapter markers per segment
+- [ ] Section markers per segment
 - [ ] 2-page workbook PDF
 - [ ] Upload to LMS with progress tracking
 

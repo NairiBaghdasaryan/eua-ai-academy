@@ -64,4 +64,4 @@ async function readerFlow(lang) {
   assert.ok(node('#lesson').innerHTML.includes(learning.copy[nextLang].congrats),'Milestone survives language switch within this page');
   assert.ok(node('#lesson').innerHTML.includes(`chapter=2&lesson=1&lang=${nextLang}`));
 }
-(async()=>{await readerFlow('en');await readerFlow('hy');console.log('PASS: bilingual examples, visual outputs, all 8 chapter endings, exact next routes, explicit completion event, focus, and language switching.');})().catch(e=>{console.error(e);process.exitCode=1;});
+(async()=>{await readerFlow('en');await readerFlow('hy');console.log('PASS: bilingual examples, visual outputs, all 8 lesson endings, exact next routes, explicit completion event, focus, and language switching.');})().catch(e=>{console.error(e);process.exitCode=1;});

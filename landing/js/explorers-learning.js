@@ -6,12 +6,12 @@
     en: {
       welcome:'Your journey starts with a question.', welcomeText:'What would you like AI to help you do? Keep that task in mind as you read, experiment, and check the results.',
       journey:['Understand the basics','Give clear instructions','Check the result','Apply it responsibly'],
-      welcomeAction:'Explore the learning pathway', position:'Your place in this chapter', section:'Section', of:'of',
+      welcomeAction:'Explore the learning pathway', position:'Your place in this lesson', section:'Section', of:'of',
       example:'SEE IT IN PRACTICE', note:'Illustrative teaching example, not a live AI response. Your results may differ.',
       input:'The task / input', result:'Illustrative result', reveal:'Reveal the example result', check:'Human checkpoint', try:'Now try it',
-      finishTitle:'Ready to move on?', finishText:'Review the chapter and any practice or self-check explanations, then finish when you feel ready.',
-      finish:'Finish chapter', congrats:'Well done, explorer!', covered:'You have explored', next:'Continue to',
-      endNote:'A personal learning milestone, not a grade or certificate. Remembered only while this page stays open.', review:'Revisit this chapter',
+      finishTitle:'Ready to move on?', finishText:'Review the lesson and any practice or self-check explanations, then finish when you feel ready.',
+      finish:'Finish lesson', congrats:'Well done, explorer!', covered:'You have explored', next:'Continue to',
+      endNote:'A personal learning milestone, not a grade or certificate. Remembered only while this page stays open.', review:'Revisit this lesson',
       outcomes:[
         ['what AI is, how language models work, and why their answers need judgment.','Now let’s turn your questions into clear instructions for AI.'],
         ['how to give context, set constraints, and improve a prompt through iteration.','A clear answer is not always a correct one. Next, let’s learn how to check it.'],
@@ -20,18 +20,18 @@
         ['how to compare AI tools by task, quality, cost, and data controls.','Next, see how individual tools become supervised workflows and agents.'],
         ['the difference between chatbots, workflows, and agents, with human approval at key steps.','Let’s make those workflows practical by managing tokens, context, and costs.'],
         ['how to manage context, reuse prompts, and estimate the cost of a useful result.','Now explore 100 ways to apply what you have learned.'],
-        ['100 applications of AI and ways to turn an idea into a practical task.','You have reached the end of the eight core chapters. Next, test your skills in the practice labs.']
+        ['100 applications of AI and ways to turn an idea into a practical task.','You have reached the end of the eight core lessons. Next, test your skills in the practice labs.']
       ]
     },
     hy: {
       welcome:'Ձեր ուղին սկսվում է մեկ հարցից։', welcomeText:'Ի՞նչ կցանկանայիք անել ԱԲ-ի օգնությամբ։ Մտքում պահեք այդ առաջադրանքը՝ ընթերցելիս, փորձարկելիս և արդյունքները ստուգելիս։',
       journey:['Հասկանալ հիմունքները','Տալ հստակ հրահանգներ','Ստուգել արդյունքը','Կիրառել պատասխանատու կերպով'],
-      welcomeAction:'Տեսնել ուսուցման ուղին', position:'Ձեր տեղը այս գլխում', section:'Բաժին', of:'/',
+      welcomeAction:'Տեսնել ուսուցման ուղին', position:'Ձեր տեղը այս դասում', section:'Բաժին', of:'/',
       example:'ՏԵՍԵՔ ԳՈՐԾՆԱԿԱՆՈՒՄ', note:'Ուսումնական օրինակ է, ոչ ԱԲ-ի ուղիղ պատասխան։ Ձեր արդյունքները կարող են տարբերվել։',
       input:'Առաջադրանք / մուտք', result:'Արդյունքի օրինակ', reveal:'Բացել արդյունքի օրինակը', check:'Մարդու ստուգումը', try:'Հիմա փորձեք ինքներդ',
-      finishTitle:'Պատրա՞ստ եք շարունակել', finishText:'Վերանայեք գլուխը և առկա գործնական աշխատանքն ու ինքնաստուգման բացատրությունները։ Ավարտեք, երբ պատրաստ լինեք։',
-      finish:'Ավարտել գլուխը', congrats:'Շնորհավորում ենք, բացահայտո՛ղ։', covered:'Դուք ուսումնասիրեցիք՝', next:'Շարունակել՝',
-      endNote:'Ուսուցման անձնական հանգրվան է, ոչ գնահատական կամ վկայական։ Հիշվում է միայն այս էջը բաց պահելու ընթացքում։', review:'Վերանայել այս գլուխը',
+      finishTitle:'Պատրա՞ստ եք շարունակել', finishText:'Վերանայեք դասը և առկա գործնական աշխատանքն ու ինքնաստուգման բացատրությունները։ Ավարտեք, երբ պատրաստ լինեք։',
+      finish:'Ավարտել դասը', congrats:'Շնորհավորում ենք, բացահայտո՛ղ։', covered:'Դուք ուսումնասիրեցիք՝', next:'Շարունակել՝',
+      endNote:'Ուսուցման անձնական հանգրվան է, ոչ գնահատական կամ վկայական։ Հիշվում է միայն այս էջը բաց պահելու ընթացքում։', review:'Վերանայել այս դասը',
       outcomes:[
         ['ինչ է ԱԲ-ն, ինչպես են աշխատում լեզվային մոդելները և ինչու են դրանց պատասխանները պահանջում մարդկային դատողություն։','Այժմ սովորենք ձեր հարցերը վերածել ԱԲ-ին ուղղված հստակ հրահանգների։'],
         ['ինչպես տալ համատեքստ, սահմանել սահմանափակումներ և քայլ առ քայլ բարելավել հրահանգը։','Հստակ պատասխանը միշտ չէ, որ ճիշտ է։ Հաջորդիվ սովորենք ստուգել այն։'],
@@ -40,7 +40,7 @@
         ['ինչպես համեմատել ԱԲ գործիքներն ըստ առաջադրանքի, որակի, ծախսի և տվյալների վերահսկման։','Հաջորդիվ տեսնենք՝ ինչպես են գործիքները դառնում վերահսկվող աշխատանքային հոսքեր և գործակալներ։'],
         ['չաթբոտերի, աշխատանքային հոսքերի և գործակալների տարբերությունները՝ կարևոր քայլերում մարդու հաստատմամբ։','Այժմ կառավարենք թոքենները, համատեքստը և ծախսերը՝ այդ հոսքերն արդյունավետ կիրառելու համար։'],
         ['ինչպես կառավարել համատեքստը, կրկին օգտագործել հրահանգները և գնահատել օգտակար արդյունքի արժեքը։','Այժմ բացահայտեք սովորածը կիրառելու 100 հնարավորություն։'],
-        ['ԱԲ-ի 100 կիրառություն և գաղափարը գործնական առաջադրանք դարձնելու եղանակներ։','Դուք հասաք ութ հիմնական գլուխների ավարտին։ Հաջորդիվ փորձարկեք ձեր հմտությունները գործնական աշխատանքներում։']
+        ['ԱԲ-ի 100 կիրառություն և գաղափարը գործնական առաջադրանք դարձնելու եղանակներ։','Դուք հասաք ութ հիմնական դասերի ավարտին։ Հաջորդիվ փորձարկեք ձեր հմտությունները գործնական աշխատանքներում։']
       ]
     }
   };

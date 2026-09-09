@@ -8,7 +8,7 @@ Shared tokens live in `landing/styles/tokens.css`. Every marketing, course, and 
 | H1 long | `--type-hero-long` | About mission / multi-line statements |
 | H2 | `--type-display` | Section titles only |
 | Pull quote | `--type-subhead` | Rare emphasis (belief quote) |
-| H3 / cards | `--type-card` | Cards, chapters, sessions, auth title |
+| H3 / cards | `--type-card` | Cards, lessons, sessions, auth title |
 | Lesson title | `--type-lesson` | Course reader lesson H1 |
 | Lead | `--type-lead` | Hero supporting sentence |
 | Body | `--type-body` | Paragraphs |

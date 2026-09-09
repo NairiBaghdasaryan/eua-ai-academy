@@ -48,4 +48,4 @@ for (const lang of ['en','hy']) {
   if(lang==='hy') assert.match(content.sections.find(s=>s.id==='guide-8').lessons[0].html,/\(AI agent\)/);
 }
 for(const file of ['ai-explorers.html','styles/explorers.css','js/explorers.js','content/explorers/downloads/EUA_AI_Explorers_Practice_Pack_v1_1.zip','content/explorers/downloads/AI_Cost_Workbook.xlsx']) assert.ok(fs.existsSync(path.join(root,'landing',file)));
-console.log('PASS: pricing edge cases, 8 chapters, 105 paired routes, 28 bilingual Q&A pairs, 100 use cases per language, 40 tools, safe markup and local assets.');
+console.log('PASS: pricing edge cases, 8 lessons, 105 paired routes, 28 bilingual Q&A pairs, 100 use cases per language, 40 tools, safe markup and local assets.');
