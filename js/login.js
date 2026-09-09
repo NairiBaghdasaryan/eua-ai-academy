@@ -53,7 +53,16 @@
   applyLanguage();
 
   const errEl = document.getElementById("auth-error");
-  const returnTo = new URLSearchParams(window.location.search).get("return") || "dashboard.html";
+  const requestedReturn = new URLSearchParams(window.location.search).get("return") || "dashboard.html";
+  function destination() {
+    // Keep post-login navigation within this academy, including GitHub subpaths.
+    const target = new URL(requestedReturn, window.location.href);
+    const base = new URL('.', window.location.href);
+    const name = target.pathname.slice(base.pathname.length);
+    if (target.origin !== base.origin || !target.pathname.startsWith(base.pathname) || !['course.html','dashboard.html','admin.html','ai-explorers.html'].includes(name)) return 'dashboard.html';
+    if (name === 'course.html') target.searchParams.set('lang', language);
+    return name + target.search;
+  }
 
   function showError(msg) {
     if (!errEl) return;
@@ -63,7 +72,7 @@
 
   function enterDemoAcademy() {
     window.EuaDemo?.enterDemo();
-    window.location.href = returnTo.startsWith("/") ? returnTo.slice(1) : returnTo;
+    window.location.href = destination();
   }
 
   async function api(path, opts = {}) {
@@ -115,7 +124,7 @@
         body: JSON.stringify({ email, password }),
       });
       window.EuaDemo?.exitDemo();
-      window.location.href = returnTo.startsWith("/") ? returnTo.slice(1) : returnTo;
+      window.location.href = destination();
     } catch (error) {
       if (error.message === "offline") enterDemoAcademy();
       else showError(error.message);
@@ -128,11 +137,11 @@
 
   // If already in demo, skip the form
   if (window.EuaDemo?.isDemo()) {
-    window.location.href = returnTo.startsWith("/") ? returnTo.slice(1) : returnTo;
+    window.location.href = destination();
     return;
   }
 
   api("/api/auth/me").then(({ user }) => {
-    if (user) window.location.href = user.role === "admin" ? "admin.html" : (returnTo.startsWith("/") ? returnTo.slice(1) : returnTo);
+    if (user) window.location.href = user.role === "admin" ? "admin.html" : destination();
   }).catch(() => {});
 })();

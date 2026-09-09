@@ -1,0 +1,41 @@
+.explorers-overview .shell{max-width:1280px}
+.explorers-overview .detail-hero{padding-bottom:64px}
+.explorers-overview .detail-hero h1{font-size:clamp(2.8rem,5vw,4.8rem);max-width:760px;line-height:1.1}
+.explorers-overview .detail-hero-copy{font-size:1.12rem}
+.explorers-overview .detail-note{font-size:.875rem;color:#d1dced}
+.explorers-overview .fact-grid div{min-height:114px}
+.explorers-overview .fact-grid span{font-size:.9375rem;color:#d1dced}
+.explorers-overview .detail-section{background:#123e75;padding:76px 0 90px}
+.explorers-overview .detail-intro{display:block;max-width:820px;margin-bottom:48px}
+.explorers-overview .detail-intro .eyebrow{color:#f2ca5c;font-size:.875rem;margin-bottom:16px}
+.explorers-overview .detail-intro h2{color:white;font-size:clamp(2.2rem,4vw,3.4rem);line-height:1.15;letter-spacing:-.035em}
+.explorers-overview .detail-intro-copy{color:#d5e1f2;font-size:1.05rem;line-height:1.8}
+.explorers-overview .curriculum-modules{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px 26px;margin-top:0;border:0;align-items:start}
+.chapter-card{min-width:0;overflow:hidden;background:white;border-radius:5px;box-shadow:0 6px 22px #071c3b24;transition:transform 180ms ease,box-shadow 180ms ease}
+.chapter-card:hover{transform:translateY(-4px);box-shadow:0 16px 30px #071c3b38}
+.chapter-art-link{display:block;overflow:hidden;background:#edc34e;aspect-ratio:16/9}
+.chapter-art{display:block;width:100%;height:100%;object-fit:cover}
+.chapter-card-body{padding:26px 25px 22px}
+.chapter-label{margin:0 0 8px;color:#29415d;font-size:.9375rem}
+.chapter-card h3{margin:0 0 28px;min-height:64px;font-size:1.7rem;line-height:1.2;letter-spacing:-.035em;color:#071c3b}
+.chapter-card h3 a{text-decoration:none}
+.chapter-card h3 a:hover{text-decoration:underline;text-underline-offset:5px}
+.chapter-table-head{display:flex;justify-content:space-between;gap:16px;padding-bottom:12px;color:#657389;font-size:.875rem;border-bottom:1px solid #dbe1e9}
+.chapter-topics{list-style:none;margin:0;padding:0}
+.chapter-topics li{border-bottom:1px solid #e0e5ed}
+.chapter-topics a{display:flex;align-items:start;justify-content:space-between;gap:12px;padding:15px 0;text-decoration:none;color:#132b4c;font-size:.9375rem;line-height:1.6}
+.chapter-topics a:hover{color:#144fab;background:#f5f8fc}
+.topic-number{color:#5a6980}.topic-checks{flex:none;color:#657389;font-weight:650}
+.more-topics{margin-top:4px}
+.more-topics>summary{cursor:pointer;color:#315580;font-size:.875rem;padding:14px 0;line-height:1.6}
+.more-topics>summary>span{margin-left:5px;font-size:.8125rem;background:#edf2f9;border-radius:4px;padding:2px 6px}
+.chapter-start{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:18px;margin-top:8px;color:#124da1;font-weight:700;font-size:.9375rem;text-decoration:none}
+.chapter-start:hover{color:#071c3b}.chapter-start>span{font-size:1.4rem}
+.explorers-overview .curriculum-enroll{border-color:#6b8daf;color:white;margin-top:60px}
+.explorers-overview .curriculum-enroll span{color:#d5e1f2}
+.explorers-overview .assessment-section h2{font-size:clamp(1.8rem,3vw,3rem);line-height:1.2}
+html[lang=hy] .chapter-card h3{font-size:1.5rem;line-height:1.4;letter-spacing:-.02em;min-height:72px}
+html[lang=hy] .chapter-table-head{font-size:.8125rem}
+@media(max-width:1050px){.explorers-overview .curriculum-modules{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:640px){.explorers-overview .curriculum-modules{grid-template-columns:1fr}.explorers-overview .detail-section{padding:52px 0}.chapter-card h3{min-height:0!important}.chapter-card-body{padding:24px}.explorers-overview .detail-hero h1{font-size:2.8rem}.explorers-overview .shell{width:calc(100% - 36px)}.explorers-overview .header-actions{gap:12px}}
+@media(prefers-reduced-motion:reduce){.chapter-card{transition:none}.chapter-card:hover{transform:none}}

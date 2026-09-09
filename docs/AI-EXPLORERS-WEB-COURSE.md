@@ -1,6 +1,8 @@
 # AI Explorers web course
 
-The public reading experience is at `landing/ai-explorers.html`. This replaces the old marketing-only overview. The existing sign-in, dashboard, enrolled lesson player, database, and certificate rules are unchanged.
+The public illustrated chapter overview is at `landing/ai-explorers.html`. The handbook reader now lives at `landing/course.html`, replacing the previous slide-based player. Both the overview's chapter links and the dashboard's Continue course button enter that reader through the existing login flow. Database records, legacy progress and quiz records, and certificate rules are unchanged; the new handbook self-checks are not synced to those old records.
+
+The current GitHub Pages login is an explicitly labelled static demo. `course-access.js` recognizes that existing demo session; otherwise it checks the platform session and active AI Explorers enrollment. This is a navigation gate only: static course JSON and downloads are still public. Genuine private materials require deploying the backend and enforcing access on every content/download endpoint. Backend failures do not automatically turn the new reader into demo mode.
 
 ## Design rationale
 
@@ -15,12 +17,14 @@ English reading uses Georgia with system sans-serif headings. Armenian uses Sylf
 - A searchable catalogue of 100 use cases and a 40-tool directory in each language, with the original handbook's logos reused when available.
 - An interactive four-step text-generation explanation and responsive HTML versions of the handbook's workflow diagrams.
 - A hypothetical USD cost calculator including retries, human review, fixed costs, and cost per accepted result. This is not live pricing or an API connection.
-- Deep links use `?chapter=1&lesson=1&lang=en`. Language switching preserves the route. Existing `eua-ai-language` preferences are reused.
+- Reader deep links use `course.html?chapter=1&lesson=1&lang=en`. Language switching preserves the route. Existing `eua-ai-language` preferences are reused. Login return destinations are restricted to local academy pages.
 - Self-check responses are held only in the current tab's memory, separately for each language. They are not uploaded, graded, or saved to an account. Reloading clears them.
 
 ## Editing and rebuilding
 
-The Word handbooks are unchanged. `tools/export_explorers.py` converts the two edition 1.1 DOCX files in `output/docx/` and the curated CSVs in `output/practice-pack-v1.1/` into `landing/content/explorers/{en,hy}.json`. It reads quiz explanations directly from the DOCX and copies only explicitly selected downloadable practice files. It does not require the old temporary handbook-builder scripts.
+The Word handbooks are unchanged. `tools/export_explorers.py` converts the two edition 1.1 DOCX files in `output/docx/` and the curated CSVs in `output/practice-pack-v1.1/` into `landing/content/explorers/{en,hy}.json`, plus the lightweight public chapter outline `overview.json`. It reads quiz explanations directly from the DOCX and copies only explicitly selected downloadable practice files. It does not require the old temporary handbook-builder scripts.
+
+The signed-out card grid uses `styles/explorers-overview.css`, `js/explorers-overview.js`, and eight banner paths in `landing/assets/explorers/`. Seven original banners were generated with the built-in image tool. Chapter 07 temporarily shares chapter 05's tools illustration because its generation was interrupted. Original images and the exact prompt set are in `output/imagegen/`. Card self-check numbers are question counts, not invented progress.
 
 Use the configured Python runtime with `python-docx`/`lxml` available to run the exporter. Run `node tools/test_explorers.cjs` for route parity, content counts, pricing, safety and asset checks. The website itself has no new package dependency or build step; serve `landing/` using the existing platform server or a static server.
 
