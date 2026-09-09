@@ -32,6 +32,16 @@ Each JSON reading unit has an ID, title, HTML content, estimated reading time, a
 
 ## Publication status
 
+### Reader learning enhancements
+
+`landing/js/explorers-learning.js` contains the bilingual web-only welcome, eight authored worked examples, chapter-position navigation, and eight chapter-end messages. `landing/styles/explorers-learning.css` styles these and refines reading typography. These additions are separate from generated handbook JSON and survive handbook exports.
+
+The introduction reuses the course character from `assets/explorers/chapter-01.png`; completion panels reuse `chapter-04.png`. No new illustration was generated for this update. Examples distinguish source input, illustrative output, human verification, and learner practice. Structured visuals include supported/unsupported claims, an action table, a supervised workflow, and a hypothetical token comparison. No live AI service or vendor pricing is connected.
+
+The last section of each core chapter offers an explicit “Finish chapter” action. It reveals a topic-specific recap and a link to the next chapter; chapter 8 links to the practice labs. Milestones live only in page memory and survive in-page navigation and language switches, not reloads. They do not validate mastery, update account progress, award certificates, or gate the next chapter. Keyboard focus moves to the congratulatory heading and a live status announces it. The numbered chapter strip shows the current location, not completion percentage.
+
+Run `node tools/test_explorers_learning.cjs` for bilingual renderers, all chapter-end routes, the actual reader completion handler, focus, and language-switch behavior using a minimal document adapter. Browser-based visual QA was not performed in this update.
+
 Prepared locally for review. No commit, push, public deployment, hosting migration, student-data change, or account-access change was performed. The repository already deploys `landing/` through its existing GitHub Pages workflow; retain that destination rather than creating an unrelated new site.
 
 Before public release, review the Armenian editorial wording, current vendor capabilities and terms, copyright/trademark notices, responsive behavior and keyboard/screen-reader access. The source handbook's academic-review approval remains a separate human decision. The current interactive self-checks must not be advertised as graded completion or certification. Account-synced progress would require a separate backend integration.
