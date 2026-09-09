@@ -5,7 +5,7 @@
     en: {
       brand: "EUA AI Academy", primaryNav: "Primary navigation", allCourses: "All courses", language: "Language", login: "Log in", back: "← All courses",
       courseTitle: "AI Explorers", heroTitle: "Understand.<br>Question.<br><em>Build.</em>", heroCopy: "A current, practical introduction to AI for young people - from how models work to safe, creative, and useful real-world application.",
-      enroll: "Enroll now <span aria-hidden=\"true\">→</span>", selfPaced: "Self-paced · Armenian and English", courseFacts: "Course facts",
+      enroll: "Enroll now <span aria-hidden=\"true\">→</span>", courseFacts: "Course facts",
       learnEyebrow: "What you will learn", learnTitle: "AI literacy for the world students are entering now.", learnCopy: "Understand modern generative AI, write effective instructions, verify outputs, work with text and media, compare tools, and design a safe AI-assisted workflow.", curriculumAria: "Course curriculum",
       ready: "Ready to begin?", readyCopy: "Create your account, enroll, and start with your AI use agreement.", enrollCourse: "Enroll in AI Explorers <span aria-hidden=\"true\">→</span>",
       assessment: "Learning approach", assessmentTitle: "Understand, test, create, and reflect.", assessmentCopy: "Every section combines a clear explanation, a guided experiment, and a practical output. Learners finish with a tested capstone and a short statement explaining where human judgment remains essential.", ctaTitle: "Ready to explore?",
@@ -15,7 +15,7 @@
     hy: {
       brand: "ՀԵՀ ԱԲ ակադեմիա", primaryNav: "Հիմնական նավարկում", allCourses: "Բոլոր դասընթացները", language: "Լեզու", login: "Մուտք", back: "← Բոլոր դասընթացները",
       courseTitle: "ԱԲ բացահայտողներ", heroTitle: "Հասկացիր։<br>Հարցադրիր։<br><em>Կառուցիր։</em>", heroCopy: "ԱԲ-ի արդիական և գործնական ներածություն երիտասարդների համար՝ մոդելների աշխատանքի սկզբունքներից մինչև անվտանգ, ստեղծագործ և օգտակար կիրառություն։",
-      enroll: "Գրանցվել հիմա <span aria-hidden=\"true\">→</span>", selfPaced: "Ինքնուրույն տեմպով · հայերեն և անգլերեն", courseFacts: "Դասընթացի տվյալներ",
+      enroll: "Գրանցվել հիմա <span aria-hidden=\"true\">→</span>", courseFacts: "Դասընթացի տվյալներ",
       learnEyebrow: "Ինչ եք սովորելու", learnTitle: "ԱԲ գրագիտություն այն աշխարհի համար, ուր մուտք են գործում այսօրվա սովորողները։", learnCopy: "Հասկացեք ժամանակակից գեներատիվ ԱԲ-ը, կազմեք արդյունավետ հրահանգներ, ստուգեք արդյունքները, աշխատեք տեքստի ու մեդիայի հետ, համեմատեք գործիքները և նախագծեք անվտանգ ԱԲ-աջակցությամբ աշխատանքային ընթացք։", curriculumAria: "Դասընթացի ծրագիր",
       ready: "Պատրա՞ստ եք սկսել։", readyCopy: "Ստեղծեք հաշիվ, գրանցվեք և սկսեք ԱԲ-ի օգտագործման ձեր համաձայնագրից։", enrollCourse: "Գրանցվել «ԱԲ բացահայտողներ» դասընթացին <span aria-hidden=\"true\">→</span>",
       assessment: "Ուսուցման մոտեցում", assessmentTitle: "Հասկանալ, փորձարկել, ստեղծել և վերլուծել։", assessmentCopy: "Յուրաքանչյուր բաժին միավորում է հստակ բացատրություն, ուղղորդվող փորձ և գործնական արդյունք։ Վերջում սովորողները ներկայացնում են փորձարկված ամփոփիչ նախագիծ և բացատրում, թե որտեղ է մարդկային դատողությունը մնում անփոխարինելի։", ctaTitle: "Պատրա՞ստ եք բացահայտել։",

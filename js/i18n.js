@@ -1,7 +1,7 @@
 const translations = {
   hy: {
     "meta.title": "ԱԲ բացահայտողներ",
-    "meta.description": "«ԱԲ բացահայտողներ» - Հայաստանում 14–16 տարեկանների համար նախատեսվող անվճար, ինքնուրույն տեմպով ԱԲ գրագիտության ծրագիր։",
+    "meta.description": "«ԱԲ բացահայտողներ» - Հայաստանում 14–16 տարեկանների համար նախատեսվող անվճար ԱԲ գրագիտության ծրագիր։",
     "a11y.skip": "Անցնել հիմնական բովանդակությանը",
     "brand.initiative": "Հայաստանի Եվրոպական Համալսարանի նախաձեռնություն",
     "nav.programme": "Ծրագիր",
@@ -15,12 +15,12 @@ const translations = {
     "hero.status": "Փիլոտային փուլը նախապատրաստվում է",
     "hero.eyebrow": "ԱԲ գրագիտություն · 14–16 տարեկանների համար",
     "hero.title": "Հասկացիր։ Հարցրու։ Կառուցիր դրանով։",
-    "hero.lead": "Նախատեսվող անվճար, ինքնուրույն տեմպով ծրագիր, որն օգնում է դեռահասներին մտածված օգտագործել ԱԲ-ը, ստուգել դրա պատասխանները և ստեղծել իրական նախագծեր։",
+    "hero.lead": "Նախատեսվող անվճար ծրագիր, որն օգնում է դեռահասներին մտածված օգտագործել ԱԲ-ը, ստուգել դրա պատասխանները և ստեղծել իրական նախագծեր։",
     "hero.primary": "Սկսել դասընթացը",
     "hero.secondary": "Տեսնել 20 դասերը",
     "hero.note": "Թիրախային հանրային մեկնարկ՝ 2027 թ. հունվար, ծրագրային, իրավական և տեխնիկական հաստատումներից հետո։",
     "hero.panel.label": "Սովորողի ուղին",
-    "hero.panel.mode": "ինքնուրույն տեմպով",
+    "hero.panel.mode": "առցանց",
     "hero.panel.title": "Սովորել՝ գործելով",
     "hero.path.1.title": "Հասկանալ",
     "hero.path.1.copy": "Տարբերակել հնարավորությունն ու մարքեթինգային խոստումը",
@@ -103,7 +103,7 @@ const translations = {
   },
   en: {
     "meta.title": "EUA AI Explorers",
-    "meta.description": "EUA AI Explorers - a planned free, self-paced AI literacy programme for learners aged 14–16 in Armenia.",
+    "meta.description": "EUA AI Explorers - a planned free AI literacy programme for learners aged 14–16 in Armenia.",
     "a11y.skip": "Skip to main content",
     "brand.initiative": "An initiative of the European University of Armenia",
     "nav.programme": "Programme",
@@ -117,12 +117,12 @@ const translations = {
     "hero.status": "Pilot preparation in progress",
     "hero.eyebrow": "AI literacy · ages 14–16",
     "hero.title": "Understand it. Question it. Build with it.",
-    "hero.lead": "A planned free, self-paced programme that helps teenagers use AI deliberately, challenge its answers, and turn ideas into real projects.",
+    "hero.lead": "A planned free programme that helps teenagers use AI deliberately, challenge its answers, and turn ideas into real projects.",
     "hero.primary": "Start the course",
     "hero.secondary": "Explore the 20 lessons",
     "hero.note": "Target public launch: January 2027, subject to programme, legal, and technical approval.",
     "hero.panel.label": "Learner pathway",
-    "hero.panel.mode": "self-paced",
+    "hero.panel.mode": "online",
     "hero.panel.title": "Learn by doing",
     "hero.path.1.title": "Understand",
     "hero.path.1.copy": "Separate genuine capability from marketing promise",
@@ -622,7 +622,7 @@ const faqs = {
   hy: [
     { q: "Գրանցումը բացվա՞ծ է", a: "Ոչ։ Էջը նախամեկնարկային նախադիտում է։ Գրանցումը կբացվի միայն ծրագրային, իրավական և տեխնիկական ելքի չափանիշներից հետո։" },
     { q: "Ծրագիրը անվճա՞ր է լինելու", a: "Ներկայիս առաջարկով՝ այո։ Վերջնական ֆինանսավորման և ղեկավարության հաստատումը դեռ պետք է ավարտվի։" },
-    { q: "Պետք է՞ ապրել Երևանում", a: "Տեսադասերը նախատեսվում են առցանց և ինքնուրույն տեմպով։ Demo Day-ը նախատեսվում է Երևանում, իսկ տարածաշրջանային հասանելիությունը կպլանավորվի հաջորդ փուլում։" },
+    { q: "Պետք է՞ ապրել Երևանում", a: "Տեսադասերը նախատեսվում են առցանց։ Demo Day-ը նախատեսվում է Երևանում, իսկ տարածաշրջանային հասանելիությունը կպլանավորվի հաջորդ փուլում։" },
     { q: "Քննությունները պարտադի՞ր են", a: "Առաջարկվող մոդելով՝ ոչ։ Դրանք ընտրովի ուղի են դեպի հաստատվող հավաստագիր։ Վերջնական քաղաքականությունը հաստատում է ՀԵՀ-ն։" },
     { q: "Ի՞նչ է պահանջվում մինչև 16 տարեկանների համար", a: "Անձնական տվյալների մշակման համար պահանջվում է օրինական ներկայացուցչի համաձայնություն։ Հաշիվ չի ստեղծվի մինչև հաստատված ընթացակարգի ավարտը։" },
     { q: "Ինչպե՞ս ստանալ նորություններ", a: "Գրեք info@eua.am հասցեին՝ թեմայում նշելով «EUA AI Explorers launch updates»։" }
@@ -630,7 +630,7 @@ const faqs = {
   en: [
     { q: "Is enrolment open?", a: "No. This is a pre-launch preview. Enrolment will open only after programme, legal, and technical exit criteria are met." },
     { q: "Will the programme be free?", a: "That is the current proposal. Final funding and leadership approval are still required." },
-    { q: "Do learners need to live in Yerevan?", a: "Video lessons are planned as online and self-paced. Demo Day is planned for Yerevan; regional access will be designed in a later phase." },
+    { q: "Do learners need to live in Yerevan?", a: "Video lessons are planned as online. Demo Day is planned for Yerevan; regional access will be designed in a later phase." },
     { q: "Are exams compulsory?", a: "Not under the proposed model. They are an optional route to a verified credential. EUA must approve the final policy." },
     { q: "What is required for learners under 16?", a: "Processing personal data requires consent from a legal representative. No account will be created before the approved process is complete." },
     { q: "How can I receive updates?", a: "Email info@eua.am with “EUA AI Explorers launch updates” in the subject line." }
