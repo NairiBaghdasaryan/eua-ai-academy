@@ -1,0 +1,33 @@
+# AI Explorers web course
+
+The public reading experience is at `landing/ai-explorers.html`. This replaces the old marketing-only overview. The existing sign-in, dashboard, enrolled lesson player, database, and certificate rules are unchanged.
+
+## Design rationale
+
+Reference reviewed: https://course.elementsofai.com/1/1 on 9 September 2026. Its useful teaching patterns are a focused reading column, strong heading hierarchy, visual examples, short explanatory notes, embedded exercises, and next-section navigation. This implementation uses EUA's own handbook content, navy and yellow palette, and original workflow diagrams. No reference-site prose, artwork, or branding was copied.
+
+English reading uses Georgia with system sans-serif headings. Armenian uses Sylfaen with system Armenian-capable sans-serif headings. These are local font stacks; the course does not send font requests to a third-party service. Body text is responsive, with a mobile contents disclosure, keyboard focus styles, print styles, and reduced-motion support.
+
+## Content and routes
+
+- Eight core chapters, with 105 paired reading units across the course and supporting materials.
+- Four complete labs, twelve planning briefs, worksheets, explained self-checks, glossary, epilogue, useful resources, and references.
+- A searchable catalogue of 100 use cases and a 40-tool directory in each language, with the original handbook's logos reused when available.
+- An interactive four-step text-generation explanation and responsive HTML versions of the handbook's workflow diagrams.
+- A hypothetical USD cost calculator including retries, human review, fixed costs, and cost per accepted result. This is not live pricing or an API connection.
+- Deep links use `?chapter=1&lesson=1&lang=en`. Language switching preserves the route. Existing `eua-ai-language` preferences are reused.
+- Self-check responses are held only in the current tab's memory, separately for each language. They are not uploaded, graded, or saved to an account. Reloading clears them.
+
+## Editing and rebuilding
+
+The Word handbooks are unchanged. `tools/export_explorers.py` converts the two edition 1.1 DOCX files in `output/docx/` and the curated CSVs in `output/practice-pack-v1.1/` into `landing/content/explorers/{en,hy}.json`. It reads quiz explanations directly from the DOCX and copies only explicitly selected downloadable practice files. It does not require the old temporary handbook-builder scripts.
+
+Use the configured Python runtime with `python-docx`/`lxml` available to run the exporter. Run `node tools/test_explorers.cjs` for route parity, content counts, pricing, safety and asset checks. The website itself has no new package dependency or build step; serve `landing/` using the existing platform server or a static server.
+
+Each JSON reading unit has an ID, title, HTML content, estimated reading time, and optional quiz index. Preserve paired IDs when updating languages. If the Word structure changes, review the exporter's chapter/practice grouping before regenerating. Direct edits to generated JSON are overwritten by export.
+
+## Publication status
+
+Prepared locally for review. No commit, push, public deployment, hosting migration, student-data change, or account-access change was performed. The repository already deploys `landing/` through its existing GitHub Pages workflow; retain that destination rather than creating an unrelated new site.
+
+Before public release, review the Armenian editorial wording, current vendor capabilities and terms, copyright/trademark notices, responsive behavior and keyboard/screen-reader access. The source handbook's academic-review approval remains a separate human decision. The current interactive self-checks must not be advertised as graded completion or certification. Account-synced progress would require a separate backend integration.
