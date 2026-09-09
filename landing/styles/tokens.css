@@ -1,0 +1,62 @@
+/* EUA AI Academy — shared type + brand tokens.
+   Role rules:
+   - H1 short  → --type-hero
+   - H1 long   → --type-hero-long  (mission / multi-line statements)
+   - H2        → --type-display
+   - Pull quote→ --type-subhead
+   - H3 / cards→ --type-card
+   - Lead copy → --type-lead
+   - Body      → --type-body
+   - Eyebrow   → --type-eyebrow
+   - Lesson H1 → --type-lesson
+*/
+:root {
+  --navy: #071c3b;
+  --blue: #165ca6;
+  --gold: #e1b84c;
+  --cream: #f2ead8;
+  --paper: #f6f4ee;
+  --ink: #10213a;
+  --muted: #607087;
+  --line: rgba(16, 33, 58, 0.14);
+  --sans: "Aptos", "Segoe UI", "Noto Sans Armenian", system-ui, sans-serif;
+  --serif: Georgia, "Times New Roman", serif;
+  --shell: 1180px;
+
+  --type-hero: clamp(2.35rem, 4.2vw, 3.55rem);
+  --type-hero-long: clamp(2rem, 3.4vw, 2.85rem);
+  --type-display: clamp(1.95rem, 3.3vw, 3rem);
+  --type-subhead: clamp(1.55rem, 2.4vw, 2.2rem);
+  --type-card: clamp(1.3rem, 1.9vw, 1.55rem);
+  --type-lesson: clamp(1.85rem, 2.8vw, 2.6rem);
+  --type-lead: clamp(1.05rem, 1.35vw, 1.15rem);
+  --type-body: 1.02rem;
+  --type-eyebrow: 0.73rem;
+  --type-ui: 0.86rem;
+}
+
+html[lang="hy"] {
+  --type-hero: clamp(2.15rem, 3.8vw, 3.2rem);
+  --type-hero-long: clamp(1.85rem, 3.1vw, 2.55rem);
+  --type-display: clamp(1.8rem, 3vw, 2.75rem);
+  --type-subhead: clamp(1.45rem, 2.2vw, 2rem);
+  --type-card: clamp(1.2rem, 1.7vw, 1.4rem);
+  --type-lesson: clamp(1.7rem, 2.6vw, 2.35rem);
+  --type-lead: clamp(1.02rem, 1.25vw, 1.12rem);
+  --sans: "Segoe UI", "Noto Sans Armenian", "Aptos", system-ui, sans-serif;
+}
+
+@media (max-width: 780px) {
+  :root {
+    --type-hero: clamp(2.15rem, 8vw, 2.85rem);
+    --type-hero-long: clamp(1.85rem, 6.5vw, 2.35rem);
+    --type-display: clamp(1.7rem, 5.5vw, 2.35rem);
+    --type-lesson: clamp(1.7rem, 7vw, 2.15rem);
+  }
+
+  html[lang="hy"] {
+    --type-hero: clamp(2rem, 7vw, 2.6rem);
+    --type-hero-long: clamp(1.75rem, 6vw, 2.2rem);
+    --type-lesson: clamp(1.6rem, 6.5vw, 2rem);
+  }
+}
