@@ -154,7 +154,7 @@ const translations = {
     "curriculum.lessonsUnit": "lessons",
     "curriculum.moduleGoal": "Module objective",
     "curriculum.outcome": "Learning outcome",
-    "curriculum.chapters": "Video chapters",
+    "curriculum.chapters": "Video sections",
     "curriculum.assignment": "Practical output",
     "curriculum.watch": "Watch",
     "curriculum.done": "Completed",
