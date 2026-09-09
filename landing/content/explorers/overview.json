@@ -1,0 +1,620 @@
+{
+  "en": [
+    {
+      "id": "1",
+      "title": "Understanding AI",
+      "description": "A practical mental model for modern artificial intelligence",
+      "lessons": [
+        {
+          "id": "1",
+          "title": "What is artificial intelligence?"
+        },
+        {
+          "id": "2",
+          "title": "What are large language models?"
+        },
+        {
+          "id": "3",
+          "title": "How language models work"
+        },
+        {
+          "id": "4",
+          "title": "Capabilities and limits"
+        },
+        {
+          "id": "practice",
+          "title": "Practice, reflection and self-check",
+          "quiz": 0
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "title": "Talking to AI",
+      "description": "How to turn an intention into a useful instruction",
+      "lessons": [
+        {
+          "id": "1",
+          "title": "What is prompt engineering?"
+        },
+        {
+          "id": "2",
+          "title": "The CLEAR prompt framework"
+        },
+        {
+          "id": "3",
+          "title": "Constraints, formats, and examples"
+        },
+        {
+          "id": "4",
+          "title": "Decompose, iterate, and debug"
+        },
+        {
+          "id": "5",
+          "title": "Common challenges and pitfalls"
+        },
+        {
+          "id": "practice",
+          "title": "Practice, reflection and self-check",
+          "quiz": 1
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "title": "Checking AI",
+      "description": "Verification, ethics, privacy, and safe decision-making",
+      "lessons": [
+        {
+          "id": "1",
+          "title": "Why fluency is not evidence"
+        },
+        {
+          "id": "2",
+          "title": "Sources, search, and research modes"
+        },
+        {
+          "id": "3",
+          "title": "Bias, fairness, and representation"
+        },
+        {
+          "id": "4",
+          "title": "Privacy, security, and intellectual property"
+        },
+        {
+          "id": "5",
+          "title": "When a human must decide"
+        },
+        {
+          "id": "practice",
+          "title": "Practice, reflection and self-check",
+          "quiz": 2
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "title": "Using AI",
+      "description": "Practical patterns for learning, writing, planning, and everyday work",
+      "lessons": [
+        {
+          "id": "1",
+          "title": "Writing and editing"
+        },
+        {
+          "id": "2",
+          "title": "Ideation and planning"
+        },
+        {
+          "id": "3",
+          "title": "Learning and explanation"
+        },
+        {
+          "id": "4",
+          "title": "Files, images, audio, and data"
+        },
+        {
+          "id": "5",
+          "title": "Everyday activities"
+        },
+        {
+          "id": "6",
+          "title": "Create your own prompt library"
+        },
+        {
+          "id": "practice",
+          "title": "Practice, reflection and self-check",
+          "quiz": 3
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "title": "Choosing AI Tools",
+      "description": "Selecting the right capability, access method, and level of control",
+      "lessons": [
+        {
+          "id": "1",
+          "title": "Ways to access AI"
+        },
+        {
+          "id": "2",
+          "title": "Model, product, and feature"
+        },
+        {
+          "id": "3",
+          "title": "A practical evaluation scorecard"
+        },
+        {
+          "id": "4",
+          "title": "Access, cost, and data controls"
+        },
+        {
+          "id": "5",
+          "title": "AI tools at a glance"
+        },
+        {
+          "id": "6",
+          "title": "Decision routes"
+        },
+        {
+          "id": "7",
+          "title": "Model families are not the same as tools"
+        },
+        {
+          "id": "8",
+          "title": "Curated tool directory"
+        },
+        {
+          "id": "9",
+          "title": "Seven steps to choose a tool"
+        },
+        {
+          "id": "practice",
+          "title": "Practice, reflection and self-check",
+          "quiz": 4
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "title": "From Chatbots to Agents",
+      "description": "Workflows, tools, automation, and controlled action",
+      "lessons": [
+        {
+          "id": "1",
+          "title": "Chat, workflow, or agent?"
+        },
+        {
+          "id": "2",
+          "title": "Research with sources"
+        },
+        {
+          "id": "3",
+          "title": "Automating daily work"
+        },
+        {
+          "id": "4",
+          "title": "Permissions and human approval"
+        },
+        {
+          "id": "5",
+          "title": "Failure recovery"
+        },
+        {
+          "id": "practice",
+          "title": "Practice, reflection and self-check",
+          "quiz": 5
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "title": "Practical Matters",
+      "description": "Costs, context, prompt management, and team governance",
+      "lessons": [
+        {
+          "id": "1",
+          "title": "Calculating language model costs"
+        },
+        {
+          "id": "2",
+          "title": "Managing context and files"
+        },
+        {
+          "id": "3",
+          "title": "Managing prompts efficiently"
+        },
+        {
+          "id": "4",
+          "title": "Team rules and governance"
+        },
+        {
+          "id": "practice",
+          "title": "Practice, reflection and self-check",
+          "quiz": 6
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "title": "100 practical ways to use AI",
+      "description": "",
+      "lessons": [
+        {
+          "id": "intro",
+          "title": "Overview"
+        },
+        {
+          "id": "1",
+          "title": "The 100 use case map"
+        },
+        {
+          "id": "2",
+          "title": "Research and learning"
+        },
+        {
+          "id": "3",
+          "title": "Writing and communication"
+        },
+        {
+          "id": "4",
+          "title": "Presentations and visual design"
+        },
+        {
+          "id": "5",
+          "title": "Video audio and music"
+        },
+        {
+          "id": "6",
+          "title": "Personal productivity"
+        },
+        {
+          "id": "7",
+          "title": "Data and analysis"
+        },
+        {
+          "id": "8",
+          "title": "Business marketing and sales"
+        },
+        {
+          "id": "9",
+          "title": "Education people and management"
+        },
+        {
+          "id": "10",
+          "title": "Coding automation and agents"
+        },
+        {
+          "id": "11",
+          "title": "Creative culture and public value"
+        },
+        {
+          "id": "12",
+          "title": "Four projects step by step"
+        },
+        {
+          "id": "13",
+          "title": "Official tool links"
+        },
+        {
+          "id": "14",
+          "title": "Use the searchable companion catalogue"
+        },
+        {
+          "id": "15",
+          "title": "Catalogue exercise"
+        }
+      ]
+    }
+  ],
+  "hy": [
+    {
+      "id": "1",
+      "title": "Հասկանալ արհեստական բանականությունը",
+      "description": "Ժամանակակից ԱԲ համակարգերի պարզ և գործնական պատկերացում",
+      "lessons": [
+        {
+          "id": "1",
+          "title": "Ինչ է արհեստական բանականությունը"
+        },
+        {
+          "id": "2",
+          "title": "Ինչ են լեզվական մեծ մոդելները"
+        },
+        {
+          "id": "3",
+          "title": "Ինչպես են աշխատում լեզվական մոդելները"
+        },
+        {
+          "id": "4",
+          "title": "Հնարավորություններ և սահմանափակումներ"
+        },
+        {
+          "id": "practice",
+          "title": "Փորձ, ամփոփում և ինքնաստուգում",
+          "quiz": 0
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "title": "Խոսել ԱԲ-ի հետ",
+      "description": "Ինչպես նպատակը վերածել հստակ և արդյունավետ հրահանգի",
+      "lessons": [
+        {
+          "id": "1",
+          "title": "Ինչ է հրահանգների ձևավորումը"
+        },
+        {
+          "id": "2",
+          "title": "CLEAR հրահանգի շրջանակը"
+        },
+        {
+          "id": "3",
+          "title": "Սահմանափակումներ ձևաչափ և օրինակներ"
+        },
+        {
+          "id": "4",
+          "title": "Բաժանել փուլերի կրկնել և շտկել"
+        },
+        {
+          "id": "5",
+          "title": "Տարածված դժվարություններ և սխալներ"
+        },
+        {
+          "id": "practice",
+          "title": "Փորձ, ամփոփում և ինքնաստուգում",
+          "quiz": 1
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "title": "Ստուգել ԱԲ-ի արդյունքը",
+      "description": "Ապացույցներ էթիկա գաղտնիություն և անվտանգ որոշումներ",
+      "lessons": [
+        {
+          "id": "1",
+          "title": "Սահուն լեզուն ապացույց չէ"
+        },
+        {
+          "id": "2",
+          "title": "Աղբյուրներ որոնում և հետազոտական ռեժիմներ"
+        },
+        {
+          "id": "3",
+          "title": "Կողմնակալություն արդարություն և ներկայացվածություն"
+        },
+        {
+          "id": "4",
+          "title": "Գաղտնիություն անվտանգություն և հեղինակային իրավունք"
+        },
+        {
+          "id": "5",
+          "title": "Երբ պետք է որոշի մարդը"
+        },
+        {
+          "id": "practice",
+          "title": "Փորձ, ամփոփում և ինքնաստուգում",
+          "quiz": 2
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "title": "Օգտագործել ԱԲ-ն",
+      "description": "Գործնական մոտեցումներ ուսման գրելու պլանավորման և առօրյա աշխատանքի համար",
+      "lessons": [
+        {
+          "id": "1",
+          "title": "Գրել և խմբագրել"
+        },
+        {
+          "id": "2",
+          "title": "Գաղափարներ և պլանավորում"
+        },
+        {
+          "id": "3",
+          "title": "Սովորել և բացատրել"
+        },
+        {
+          "id": "4",
+          "title": "Ֆայլեր պատկերներ ձայն և տվյալներ"
+        },
+        {
+          "id": "5",
+          "title": "Առօրյա առաջադրանքներ"
+        },
+        {
+          "id": "6",
+          "title": "Ստեղծել սեփական հրահանգների շտեմարանը"
+        },
+        {
+          "id": "practice",
+          "title": "Փորձ, ամփոփում և ինքնաստուգում",
+          "quiz": 3
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "title": "Ընտրել ԱԲ գործիքներ",
+      "description": "Համապատասխան կարողություն հասանելիության ձև և վերահսկման մակարդակ",
+      "lessons": [
+        {
+          "id": "1",
+          "title": "ԱԲ-ի հասանելիության ձևերը"
+        },
+        {
+          "id": "2",
+          "title": "Մոդել արտադրանք և գործառույթ"
+        },
+        {
+          "id": "3",
+          "title": "Գործնական գնահատման քարտ"
+        },
+        {
+          "id": "4",
+          "title": "Հասանելիություն ծախս և տվյալների վերահսկում"
+        },
+        {
+          "id": "5",
+          "title": "ԱԲ գործիքները մեկ հայացքով"
+        },
+        {
+          "id": "6",
+          "title": "Ընտրության ուղիներ"
+        },
+        {
+          "id": "7",
+          "title": "Մոդելների ընտանիքները գործիքներ չեն"
+        },
+        {
+          "id": "8",
+          "title": "Հիմնական գործիքների ուղեցույց"
+        },
+        {
+          "id": "9",
+          "title": "Գործիք ընտրելու յոթ քայլ"
+        },
+        {
+          "id": "practice",
+          "title": "Փորձ, ամփոփում և ինքնաստուգում",
+          "quiz": 4
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "title": "Զրույցից դեպի ԱԲ գործակալներ",
+      "description": "Աշխատանքային հոսքեր գործիքներ ավտոմատացում և վերահսկվող գործողություն",
+      "lessons": [
+        {
+          "id": "1",
+          "title": "Զրույց աշխատանքային հոսք թե գործակալ"
+        },
+        {
+          "id": "2",
+          "title": "Աղբյուրներով հետազոտություն"
+        },
+        {
+          "id": "3",
+          "title": "Առօրյա աշխատանքի ավտոմատացում"
+        },
+        {
+          "id": "4",
+          "title": "Թույլտվություններ և մարդու հաստատում"
+        },
+        {
+          "id": "5",
+          "title": "Սխալից վերականգնում"
+        },
+        {
+          "id": "practice",
+          "title": "Փորձ, ամփոփում և ինքնաստուգում",
+          "quiz": 5
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "title": "Գործնական հարցեր",
+      "description": "Ծախս համատեքստ հրահանգների կառավարում և կազմակերպական կանոններ",
+      "lessons": [
+        {
+          "id": "1",
+          "title": "Լեզվական մոդելների ծախսի հաշվարկ"
+        },
+        {
+          "id": "2",
+          "title": "Համատեքստի և ֆայլերի կառավարում"
+        },
+        {
+          "id": "3",
+          "title": "Հրահանգների արդյունավետ կառավարում"
+        },
+        {
+          "id": "4",
+          "title": "Թիմային կանոններ և կառավարում"
+        },
+        {
+          "id": "practice",
+          "title": "Փորձ, ամփոփում և ինքնաստուգում",
+          "quiz": 6
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "title": "ԱԲ կիրառման 100 գործնական գաղափար",
+      "description": "",
+      "lessons": [
+        {
+          "id": "intro",
+          "title": "Ակնարկ"
+        },
+        {
+          "id": "1",
+          "title": "100 կիրառման քարտեզ"
+        },
+        {
+          "id": "2",
+          "title": "Հետազոտություն եւ ուսուցում"
+        },
+        {
+          "id": "3",
+          "title": "Գրավոր աշխատանք եւ հաղորդակցություն"
+        },
+        {
+          "id": "4",
+          "title": "Ներկայացումներ եւ տեսողական դիզայն"
+        },
+        {
+          "id": "5",
+          "title": "Տեսանյութ ձայն եւ երաժշտություն"
+        },
+        {
+          "id": "6",
+          "title": "Անձնական արդյունավետություն"
+        },
+        {
+          "id": "7",
+          "title": "Տվյալներ եւ վերլուծություն"
+        },
+        {
+          "id": "8",
+          "title": "Բիզնես մարքեթինգ եւ վաճառք"
+        },
+        {
+          "id": "9",
+          "title": "Կրթություն մարդկային ռեսուրսներ եւ կառավարում"
+        },
+        {
+          "id": "10",
+          "title": "Ծրագրավորում ավտոմատացում եւ գործակալներ"
+        },
+        {
+          "id": "11",
+          "title": "Ստեղծագործություն մշակույթ եւ հանրային արժեք"
+        },
+        {
+          "id": "12",
+          "title": "Չորս նախագիծ քայլ առ քայլ"
+        },
+        {
+          "id": "13",
+          "title": "Գործիքների պաշտոնական հղումներ"
+        },
+        {
+          "id": "14",
+          "title": "Օգտագործեք որոնելի ուղեկցող ցանկը"
+        },
+        {
+          "id": "15",
+          "title": "Ցանկի վարժություն"
+        }
+      ]
+    }
+  ]
+}

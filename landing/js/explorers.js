@@ -35,7 +35,7 @@
   function savedLanguage() { try { return localStorage.getItem('eua-ai-language'); } catch (_) { return 'en'; } }
   function route(chapter, unit, lang = language) {
     const p = new URLSearchParams({ chapter, lesson: unit, lang });
-    return 'ai-explorers.html?' + p.toString();
+    return 'course.html?' + p.toString();
   }
   function updateChrome() {
     document.documentElement.lang = language;
@@ -44,6 +44,8 @@
     $('#course-navigation').setAttribute('aria-label', t('contents'));
     $('#breadcrumbs').setAttribute('aria-label', t('breadcrumb'));
     $('#lesson-pagination').setAttribute('aria-label', t('navigation'));
+    const notice = $('#access-notice');
+    if (notice && window.EuaReaderDemo) { notice.hidden=false; notice.textContent=language==='hy'?'Դեմո նախադիտում․ սա իրական հաշվի մուտք չէ։ Նյութերը հրապարակային են։':'Demo preview: this is not a real account login. Course files are public.'; }
   }
   function navigation() {
     let html = '', previousGroup;
@@ -126,6 +128,11 @@
   }
   async function load(focus = false) {
     const version = ++requestVersion;
+    if (document.body.dataset.requiresCourseAccess === 'true') {
+      const access = await window.EuaCourseAccess;
+      if (!access?.allowed) return;
+      window.EuaReaderDemo=access.demo;
+    }
     const params = new URLSearchParams(location.search);
     const lang = params.get('lang') || savedLanguage();
     language = lang === 'hy' ? 'hy' : 'en';
@@ -142,7 +149,7 @@
       }
       if (version !== requestVersion) return;
       data = cache[selectedLanguage];
-      section = data.sections.find(s=>s.id===params.get('chapter')) || data.sections.find(s=>s.id==='1');
+      section = data.sections.find(s=>s.id===params.get('chapter')) || data.sections.find(s=>s.id==='guide-1');
       lesson = section.lessons.find(l=>l.id===params.get('lesson')) || section.lessons[0];
       history.replaceState(null,'',route(section.id,lesson.id));
       render();
@@ -159,7 +166,7 @@
       const next = languageButton.dataset.language;
       try { localStorage.setItem('eua-ai-language',next); } catch (_) { /* storage is optional */ }
       const p = new URLSearchParams(location.search); p.set('lang',next);
-      history.pushState(null,'','ai-explorers.html?'+p.toString()); load(); return;
+      history.pushState(null,'','course.html?'+p.toString()); load(); return;
     }
     const link = event.target.closest('a');
     if (link && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey && event.button===0) {

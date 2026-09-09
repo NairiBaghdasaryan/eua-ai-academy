@@ -255,8 +255,14 @@ def export(lang):
     return data
 
 if __name__ == '__main__':
+    overview = {}
     for lang in ('en', 'hy'):
-        export(lang)
+        data = export(lang)
+        overview[lang] = [{
+            'id': s['id'], 'title': s['title'], 'description': s.get('description', ''),
+            'lessons': [{k: v for k, v in l.items() if k in ('id', 'title', 'quiz')} for l in s['lessons']]
+        } for s in data['sections'] if s['chapter']]
+    (DEST / 'overview.json').write_text(json.dumps(overview, ensure_ascii=False, indent=2), encoding='utf-8')
     downloads = DEST / 'downloads'
     downloads.mkdir(exist_ok=True)
     for filename in ('EUA_AI_Explorers_Practice_Pack_v1_1.zip',):

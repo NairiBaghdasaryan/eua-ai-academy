@@ -67,11 +67,15 @@
     const container = document.getElementById("dashboard-courses");
     container.innerHTML = profile.courses.map((course) => {
       const localized = language === "hy" ? courseHy[course.slug] : [course.title, course.audience, course.summary];
+      if (course.slug === 'ai-explorers') localized[2] = language === 'hy' ? 'Ուսումնասիրեք ԱԲ-ը երկլեզու ձեռնարկի, տեսողական բացատրությունների և գործնական աշխատանքների միջոցով։' : 'Learn with the bilingual handbook, visual explanations, practical labs, and AI tool directory.';
+      const meta = course.slug === 'ai-explorers'
+        ? (language === 'hy' ? '<span>8 գլուխ</span><span>4 գործնական աշխատանք</span><span>100 կիրառման գաղափար</span>' : '<span>8 chapters</span><span>4 practice labs</span><span>100 use cases</span>')
+        : `<span>${formatMinutes(course.video_minutes)}</span><span>${course.module_count} ${ui.modules}</span><span>${course.exam_count} ${ui.tests}</span>`;
       return `
       <article class="dashboard-course-card ${course.enrollment_status === "active" ? "is-enrolled" : ""}">
         <div class="dashboard-card-top"><span>${escapeHtml(localized[1])}</span><span class="course-state">${course.enrollment_status === "active" ? ui.enrolled : course.course_status === "coming_soon" ? ui.coming : ui.available}</span></div>
         <div><h3>${escapeHtml(localized[0])}</h3><p>${escapeHtml(localized[2])}</p></div>
-        <div class="course-meta"><span>${formatMinutes(course.video_minutes)}</span><span>${course.module_count} ${ui.modules}</span><span>${course.exam_count} ${ui.tests}</span></div>
+        <div class="course-meta">${meta}</div>
         ${courseAction(course)}
       </article>
     `; }).join("");
