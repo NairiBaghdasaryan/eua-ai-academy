@@ -30,6 +30,8 @@
   const esc = value => String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
   const cache = {};
   const responses = new Map(); // Never uploaded or persisted to browser storage.
+  const completedChapters = new Set(); // Personal milestones, held in this open page only.
+  const learning = window.EuaLearning;
   let language = 'en', data, section, lesson, requestVersion = 0;
   const t = key => UI[language][key];
   function savedLanguage() { try { return localStorage.getItem('eua-ai-language'); } catch (_) { return 'en'; } }
@@ -60,9 +62,6 @@
   }
   function concept() {
     return `<section class="concept-lab" aria-labelledby="concept-title"><h2 id="concept-title">${t('conceptTitle')}</h2><p>${t('conceptNote')}</p><div class="concept-steps" role="group" aria-label="${t('conceptTitle')}">${UI[language].conceptLabels.map((label,i)=>`<button type="button" data-step="${i}" aria-controls="concept-explanation" aria-pressed="${i===0}">${label}</button>`).join('')}</div><div class="concept-explanation" id="concept-explanation" aria-live="polite">${UI[language].conceptText[0]}</div></section>`;
-  }
-  function downloads() {
-    return `<div class="download-strip"><a href="content/explorers/downloads/EUA_AI_Explorers_Practice_Pack_v1_1.zip" download>${t('pack')}</a><a href="content/explorers/downloads/AI_Cost_Workbook.xlsx" download>${t('workbook')}</a></div>`;
   }
   function selfCheck(index) {
     return `<section class="self-check" aria-labelledby="self-check-title"><h2 id="self-check-title">${t('check')}</h2><p class="check-note">${t('checkNote')}</p>${data.quizzes[index].map(([q,a],i) => {
@@ -114,11 +113,12 @@
     if (section.id==='7' && (first || lesson.id==='practice')) extras = costCalculator();
     if (section.id==='5' && first) extras = catalogue('tools');
     if (section.id==='8' && first) extras = catalogue('cases');
-    const showDownloads = ['guide-2','guide-3','guide-5','guide-9','7'].includes(section.id);
     let body = lesson.html;
     // A compact concept explorer interrupts the first reading at a natural paragraph break.
     if (section.id==='1' && first) { const cut=body.indexOf('</p>')+4; body=body.slice(0,cut)+extras+body.slice(cut); extras=''; }
-    $('#lesson').innerHTML = `<div class="lesson-kicker"><span>${section.chapter?`${t('chapter')} ${section.id.padStart(2,'0')}`:t('library')}</span><span>${lesson.minutes} ${t('reading')}</span></div><h1 class="lesson-title">${esc(lesson.id==='intro'?section.title:lesson.title)}</h1>${first&&section.description?`<p class="lesson-deck">${esc(section.description)}</p>`:''}${showDownloads?downloads():''}<div class="lesson-body">${body}</div>${extras}${Number.isInteger(lesson.quiz)?selfCheck(lesson.quiz):''}`;
+    const welcome = section.id==='guide-1' ? learning.welcome(language,route) : '';
+    const visual = section.chapter && first ? learning.example(section.id,language) : '';
+    $('#lesson').innerHTML = `${learning.position(section,lesson,language,route)}<div class="lesson-kicker"><span>${section.chapter?`${t('chapter')} ${section.id.padStart(2,'0')}`:['guide-1','guide-2'].includes(section.id)?t('start'):t('library')}</span><span>${lesson.minutes} ${t('reading')}</span></div><h1 class="lesson-title">${esc(lesson.id==='intro'?section.title:lesson.title)}</h1>${first&&section.description?`<p class="lesson-deck">${esc(section.description)}</p>`:''}${welcome}<div class="lesson-body">${body}</div>${visual}${extras}${Number.isInteger(lesson.quiz)?selfCheck(lesson.quiz):''}<div id="chapter-milestone">${learning.ending(section,lesson,data,language,route,completedChapters.has(section.id))}</div>`;
     $('#lesson').setAttribute('aria-busy','false');
     const sequence = data.sections.flatMap(s=>s.lessons.map(l=>({s,l})));
     const index = sequence.findIndex(x=>x.s.id===section.id&&x.l.id===lesson.id);
@@ -161,6 +161,14 @@
     }
   }
   document.addEventListener('click', event => {
+    const finishButton = event.target.closest('[data-finish-chapter]');
+    if (finishButton && finishButton.dataset.finishChapter===section.id && section.chapter && section.lessons.at(-1).id===lesson.id) {
+      completedChapters.add(section.id);
+      $('#chapter-milestone').innerHTML=learning.ending(section,lesson,data,language,route,true);
+      $('#finish-heading').focus();
+      $('#reader-status').textContent=learning.copy[language].congrats;
+      return;
+    }
     const languageButton = event.target.closest('[data-language]');
     if (languageButton) {
       const next = languageButton.dataset.language;
