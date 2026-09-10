@@ -26,7 +26,7 @@ The Word handbooks are unchanged. `tools/export_explorers.py` converts the two e
 
 The signed-out card grid uses `styles/explorers-overview.css`, `js/explorers-overview.js`, and eight banner paths in `landing/assets/explorers/`. Seven original banners were generated with the built-in image tool. Lesson 07 temporarily shares lesson 05's tools illustration because its generation was interrupted. Original images and the exact prompt set are in `output/imagegen/`. Card self-check numbers are question counts, not invented progress.
 
-Use the configured Python runtime with `python-docx`/`lxml` available to run the exporter. Run `node tools/test_explorers.cjs` for route parity, content counts, pricing, safety and asset checks. The website itself has no new package dependency or build step; serve `landing/` using the existing platform server or a static server.
+Use the configured Python runtime with `python-docx`/`lxml` available to run the exporter. Before publishing content changes, run `node tools/test_explorers.cjs` — it validates bilingual JSON parse, route parity, quiz policy (lessons 1–7 only), asset paths, Copilot product-vs-model placement, and rejects obsolete practice-pack / workbook download instructions. The website itself has no new package dependency or build step; serve `landing/` using the existing platform server or a static server.
 
 Each JSON reading unit has an ID, title, HTML content, estimated reading time, and optional quiz index. Preserve paired IDs when updating languages. If the Word structure changes, review the exporter's lesson/practice grouping before regenerating. Direct edits to generated JSON are overwritten by export.
 
