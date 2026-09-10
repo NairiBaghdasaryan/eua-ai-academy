@@ -133,8 +133,12 @@
   async function load(focus = false) {
     const version = ++requestVersion;
     if (document.body.dataset.requiresCourseAccess === 'true') {
-      const access = await window.EuaCourseAccess;
-      if (!access?.allowed) return;
+      const access = window.EuaCourseAccess ? await window.EuaCourseAccess : {allowed:false, reason:'login'};
+      if (!access?.allowed) {
+        const lesson = $('#lesson');
+        if (lesson) lesson.innerHTML = `<p class="loading-message">${language==='hy'?'Ուղղորդվում է մուտքի էջ…':'Redirecting to log in…'}</p>`;
+        return;
+      }
       window.EuaReaderDemo=access.demo;
     }
     const params = new URLSearchParams(location.search);
