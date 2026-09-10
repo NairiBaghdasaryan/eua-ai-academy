@@ -9,12 +9,13 @@
   <link rel="stylesheet" href="styles/eua.css">
 </head>
 <body class="auth-body">
+  <a class="skip-link" href="#auth-form" data-copy="skip">Skip to log in</a>
   <header class="site-header">
     <div class="container header-inner">
       <a href="index.html" class="brand">
         <span class="brand-monogram" aria-hidden="true">EUA</span>
         <span class="brand-copy">
-          <strong>EUA AI Academy</strong>
+          <strong data-copy="academyName">EUA AI Academy</strong>
           <span data-copy="initiative">An initiative of the European University of Armenia</span>
         </span>
       </a>
@@ -33,22 +34,40 @@
   </div>
 
   <main class="auth-main">
-    <div class="auth-card">
-      <p class="eyebrow" data-copy="academyName">EUA AI Academy</p>
-      <h1 data-copy="title">Understand it. Question it. Build with it.</h1>
-      <p class="auth-lead" data-copy="lead">Click Log in to enter the demo academy — no account needed.</p>
+    <aside class="auth-aside" aria-labelledby="auth-motto">
+      <p class="auth-aside-eyebrow" data-copy="asideEyebrow">EUA AI Academy</p>
+      <h1 id="auth-motto" data-copy="motto">Human judgment first.</h1>
+      <p class="auth-aside-lead" data-copy="asideLead">Learn how AI works, use it for real tasks, and keep people responsible for the result — in English and Armenian.</p>
+      <div class="auth-pillars">
+        <div class="auth-pillar">
+          <p class="auth-pillar-label" data-copy="missionLabel">Mission</p>
+          <p class="auth-pillar-title" data-copy="missionTitle">Make responsible AI capability practical and accessible across Armenia.</p>
+        </div>
+        <div class="auth-pillar">
+          <p class="auth-pillar-label" data-copy="visionLabel">Vision</p>
+          <p class="auth-pillar-title" data-copy="visionTitle">An Armenia where AI strengthens human judgment, opportunity, and progress.</p>
+        </div>
+      </div>
+      <p class="auth-belief" data-copy="belief">AI should expand human capability — not replace responsibility.</p>
+    </aside>
+
+    <div class="auth-card" id="auth-form">
+      <p class="eyebrow" data-copy="formEyebrow">My academy</p>
+      <h2 id="auth-heading" data-copy="title">Log in</h2>
+      <p class="auth-lead" id="auth-lead" data-copy="lead">Enter the demo academy with one click, or sign in with your account when the platform is available.</p>
 
       <div id="login-panel">
         <div class="form-group">
-          <label for="email" data-copy="email">Email (optional)</label>
-          <input type="email" id="email" autocomplete="email">
+          <label for="email" data-copy="email">Email</label>
+          <input type="email" id="email" autocomplete="email" placeholder="name@example.com" data-copy-placeholder="emailPlaceholder">
         </div>
         <div class="form-group">
-          <label for="password" data-copy="password">Password (optional)</label>
-          <input type="password" id="password" autocomplete="current-password">
+          <label for="password" data-copy="password">Password</label>
+          <input type="password" id="password" autocomplete="current-password" placeholder="••••••••" data-copy-placeholder="passwordPlaceholder">
         </div>
-        <button type="button" class="btn btn-primary btn-full" id="btn-login" data-copy="login">Enter demo</button>
-        <p class="auth-switch"><span data-copy="noAccount">No account?</span> <a href="#" id="show-register" data-copy="register">Register</a></p>
+        <p class="auth-hint" data-copy="demoHint">Demo access: leave the fields empty and continue.</p>
+        <button type="button" class="btn btn-primary btn-full" id="btn-login" data-copy="login">Continue to academy</button>
+        <p class="auth-switch"><span data-copy="noAccount">Need an account?</span> <a href="#" id="show-register" data-copy="register">Register</a></p>
       </div>
 
       <div id="register-panel" class="hidden">
@@ -61,7 +80,7 @@
           <input type="text" id="reg-last-name" autocomplete="family-name" required>
         </div>
         <div class="form-group">
-          <label for="reg-email" data-copy="email">Email</label>
+          <label for="reg-email" data-copy="emailRequired">Email</label>
           <input type="email" id="reg-email" autocomplete="email" required>
         </div>
         <div class="form-group">
@@ -69,10 +88,10 @@
           <input type="password" id="reg-password" autocomplete="new-password" required>
         </div>
         <button type="button" class="btn btn-primary btn-full" id="btn-register" data-copy="create">Create account</button>
-        <p class="auth-switch"><span data-copy="haveAccount">Have an account?</span> <a href="#" id="show-login" data-copy="login">Log in</a></p>
+        <p class="auth-switch"><span data-copy="haveAccount">Already have an account?</span> <a href="#" id="show-login" data-copy="loginLink">Log in</a></p>
       </div>
 
-      <p class="error-msg hidden" id="auth-error"></p>
+      <p class="error-msg hidden" id="auth-error" role="alert"></p>
     </div>
   </main>
   <script src="js/course-catalog.js"></script>

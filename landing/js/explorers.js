@@ -85,7 +85,7 @@
     const found = all.filter(x => (!category || x[field] === category) && Object.values(x).join(' ').toLocaleLowerCase().includes(query));
     $('#result-count').textContent = `${found.length} / ${all.length} ${t('results')}`;
     $('#catalogue-results').innerHTML = found.length ? found.map(x => kind === 'tools'
-      ? `<div class="catalogue-card"><span class="card-category">${esc(x.group)}</span><h3>${x.logo?`<img class="tool-logo" src="${esc(x.logo)}" alt="" loading="lazy">`:''}${esc(x.name)}</h3><p>${esc(x.use)}</p><a href="${esc(x.url)}" target="_blank" rel="noopener noreferrer">${t('website')}</a></div>`
+      ? `<div class="catalogue-card"><span class="card-category">${esc(x.group)}</span><h3>${x.logo?`<img class="tool-logo" src="${esc(x.logo)}" alt="" loading="lazy">`:''}${esc(x.name)}</h3><p><strong>${language==='hy'?'Հարմար առաջադրանքներ':'Suitable tasks'}.</strong> ${esc(x.use)}</p>${x.starter?`<p><strong>${language==='hy'?'Մեկնարկային վարժություն':'Starter exercise'}.</strong> ${esc(x.starter)}</p>`:''}${x.limitations?`<p><strong>${language==='hy'?'Սահմանափակումներ':'Limitations'}.</strong> ${esc(x.limitations)}</p>`:''}${x.armenian?`<p><strong>${language==='hy'?'Հայերեն':'Armenian'}.</strong> ${esc(x.armenian)}</p>`:''}${x.reviewed?`<p><strong>${language==='hy'?'Վերանայում':'Reviewed'}.</strong> ${esc(x.reviewed)}</p>`:''}<a href="${esc(x.url)}" target="_blank" rel="noopener noreferrer">${t('website')}</a></div>`
       : `<div class="catalogue-card"><span class="card-category">${String(x.id).padStart(2,'0')} · ${esc(x.category)}</span><h3>${esc(x.task)}</h3><p><strong>${t('suggestedTools')}:</strong> ${esc(x.tools)}</p><p>${esc(x.difficulty)} · ${esc(x.minutes)} ${language==='hy'?'րոպե':'min'}</p><details><summary>${t('details')}</summary><p><strong>${t('inputs')}:</strong> ${esc(x.inputs)}</p><p><strong>${t('outputLabel')}:</strong> ${esc(x.output)}</p><a href="${route('guide-3',String('ABCD'.indexOf(x.lab)+1))}">${t('lab')} ${esc(x.lab)} →</a></details></div>`).join('') : `<p>${t('noResults')}</p>`;
   }
   const defaults = { input:2000,output:500,inputRate:2,outputRate:8,tasks:1000,attempts:1.2,accepted:950,reviewMinutes:2,hourlyRate:12,fixed:20 };
@@ -109,13 +109,13 @@
     $('meta[name="description"]').content = `${t('title')}: ${section.title}. ${section.description||lesson.title} - Nairi Baghdasaryan, PhD.`;
     $('#breadcrumbs').innerHTML = `<a href="${route('guide-2','intro')}">${t('title')}</a><span aria-hidden="true">/</span><a href="${route(section.id,section.lessons[0].id)}">${esc(section.title)}</a>`;
     let extras = '';
-    if (section.id==='1' && first) extras = concept();
-    if (section.id==='7' && (first || lesson.id==='practice')) extras = costCalculator();
-    if (section.id==='5' && first) extras = catalogue('tools');
-    if (section.id==='8' && first) extras = catalogue('cases');
+    if (section.id==='1' && lesson.id==='2') extras = concept();
+    if (section.id==='7' && (lesson.id==='1' || lesson.id==='practice')) extras = costCalculator();
+    if (section.id==='5' && lesson.id==='8') extras = catalogue('tools');
+    if (section.id==='8' && (first || lesson.id==='14')) extras = catalogue('cases');
     let body = lesson.html;
-    // A compact concept explorer interrupts the first reading at a natural paragraph break.
-    if (section.id==='1' && first) { const cut=body.indexOf('</p>')+4; body=body.slice(0,cut)+extras+body.slice(cut); extras=''; }
+    // Concept explorer sits with the model-versus-application explanation in section 1.2.
+    if (section.id==='1' && lesson.id==='2') { const cut=body.indexOf('</p>')+4; body=body.slice(0,cut)+extras+body.slice(cut); extras=''; }
     const welcome = section.id==='guide-1' ? learning.welcome(language,route) : '';
     const visual = section.chapter && first ? learning.example(section.id,language) : '';
     const hero = section.chapter && first
@@ -127,6 +127,7 @@
     const index = sequence.findIndex(x=>x.s.id===section.id&&x.l.id===lesson.id);
     $('#lesson-pagination').innerHTML = [sequence[index-1],sequence[index+1]].map((item,i)=>item?`<a class="${i?'next':'previous'}" href="${route(item.s.id,item.l.id)}"><small>${t(i?'next':'previous')}</small><span>${esc(item.l.id==='intro'?item.s.title:item.l.title)}</span></a>`:'<span></span>').join('');
     filterCatalogue(); updateCost();
+    if (window.EuaExplorersLabs) window.EuaExplorersLabs.mount(language);
     $('#reader-status').textContent = `${section.title}: ${lesson.title}`;
   }
   async function load(focus = false) {
@@ -204,5 +205,6 @@
   });
   document.addEventListener('change',event=>{ if(event.target.matches('#catalogue-category')) filterCatalogue(); });
   window.addEventListener('popstate',()=>load(true));
+  if (window.EuaExplorersLabs) window.EuaExplorersLabs.bind(() => language);
   load();
 }());
