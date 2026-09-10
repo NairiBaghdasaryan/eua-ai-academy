@@ -145,7 +145,7 @@
     $('#lesson').setAttribute('aria-busy','true');
     try {
       if (!cache[selectedLanguage]) {
-        const response = await fetch(`content/explorers/${selectedLanguage}.json`);
+        const response = await fetch(`content/explorers/${selectedLanguage}.json?v=20260910-nav`);
         if (!response.ok) throw new Error('Course content unavailable');
         const content = await response.json();
         if (!Array.isArray(content.sections) || !content.sections.length) throw new Error('Invalid course content');
