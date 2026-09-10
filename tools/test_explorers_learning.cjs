@@ -21,7 +21,7 @@ for(const lang of ['en','hy']) {
       assert.ok(complete.includes(learning.copy[lang].congrats));
       assert.match(complete,/chapter-04.png/);
       assert.ok(complete.includes(learning.copy[lang].outcomes[Number(section.id)-1][1]));
-      const next=data.sections.find(s=>s.chapter && Number(s.id)===Number(section.id)+1)||data.sections.find(s=>s.id==='guide-3');
+      const next=data.sections.find(s=>s.chapter && Number(s.id)===Number(section.id)+1)||data.sections.find(s=>s.id==='guide-7');
       assert.ok(complete.includes(route(next.id,next.lessons[0].id)));
       const pos=learning.position(section,lesson,lang,route);
       assert.equal((pos.match(/aria-current="step"/g)||[]).length,1);

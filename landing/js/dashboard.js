@@ -67,9 +67,9 @@
     const container = document.getElementById("dashboard-courses");
     container.innerHTML = profile.courses.map((course) => {
       const localized = language === "hy" ? courseHy[course.slug] : [course.title, course.audience, course.summary];
-      if (course.slug === 'ai-explorers') localized[2] = language === 'hy' ? 'Ուսումնասիրեք ԱԲ-ը երկլեզու ձեռնարկի, տեսողական բացատրությունների և գործնական աշխատանքների միջոցով։' : 'Learn with the bilingual handbook, visual explanations, practical labs, and AI tool directory.';
+      if (course.slug === 'ai-explorers') localized[2] = language === 'hy' ? 'Ուսումնասիրեք ԱԲ-ը երկլեզու ձեռնարկի, տեսողական բացատրությունների և գործիքների ցանկի միջոցով։' : 'Learn with the bilingual handbook, visual explanations, and AI tool directory.';
       const meta = course.slug === 'ai-explorers'
-        ? (language === 'hy' ? '<span>8 դաս</span><span>4 գործնական աշխատանք</span><span>100 կիրառման գաղափար</span>' : '<span>8 lessons</span><span>4 practice labs</span><span>100 use cases</span>')
+        ? (language === 'hy' ? '<span>8 դաս</span><span>100 կիրառման գաղափար</span>' : '<span>8 lessons</span><span>100 use cases</span>')
         : `<span>${formatMinutes(course.video_minutes)}</span><span>${course.module_count} ${ui.modules}</span><span>${course.exam_count} ${ui.tests}</span>`;
       return `
       <article class="dashboard-course-card ${course.enrollment_status === "active" ? "is-enrolled" : ""}">
