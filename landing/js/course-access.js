@@ -4,8 +4,19 @@
  */
 (function () {
   'use strict';
-  async function checkAccess({fetchSession, isDemo}) {
+  function isGitHubPages() {
+    try { return /\.github\.io$/i.test(location.hostname); } catch (_) { return false; }
+  }
+  function markDemo() {
+    try { sessionStorage.setItem('eua-demo', '1'); } catch (_) {}
+  }
+  async function checkAccess({fetchSession, isDemo, staticDemoHost}) {
     if (isDemo()) return {allowed:true, demo:true};
+    // Public GitHub Pages build has no platform API; it is the labelled static demo.
+    if (typeof staticDemoHost === 'function' ? staticDemoHost() : false) {
+      markDemo();
+      return {allowed:true, demo:true};
+    }
     try {
       const session = await fetchSession('/api/auth/me');
       if (!session.user) return {allowed:false, reason:'login'};
@@ -19,6 +30,7 @@
   if (typeof document === 'undefined') return;
   window.EuaCourseAccess = checkAccess({
     isDemo:()=>{try{return sessionStorage.getItem('eua-demo')==='1';}catch(_){return false;}},
+    staticDemoHost:isGitHubPages,
     fetchSession:async path=>{
       const response=await fetch(path,{credentials:'same-origin',headers:{Accept:'application/json'}});
       if(!response.ok || !response.headers.get('content-type')?.includes('application/json')) throw new Error('Session unavailable');

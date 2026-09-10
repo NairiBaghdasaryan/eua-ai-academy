@@ -6,6 +6,7 @@ const {checkAccess}=require('../landing/js/course-access.js');
   let calls=0;
   const demo=await checkAccess({isDemo:()=>true,fetchSession:async()=>{calls++;throw new Error('not called');}});
   assert.deepEqual(demo,{allowed:true,demo:true});assert.equal(calls,0);
+  assert.deepEqual(await checkAccess({isDemo:()=>false,staticDemoHost:()=>true,fetchSession:async()=>{throw new Error('not called');}}),{allowed:true,demo:true});
   assert.deepEqual(await checkAccess({isDemo:()=>false,fetchSession:async()=>({user:null})}),{allowed:false,reason:'login'});
   assert.deepEqual(await checkAccess({isDemo:()=>false,fetchSession:async()=>{throw new Error('offline');}}),{allowed:false,reason:'login'});
   assert.deepEqual(await checkAccess({isDemo:()=>false,fetchSession:async()=>({user:{role:'admin'}})}),{allowed:true,demo:false});
