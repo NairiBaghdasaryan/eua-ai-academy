@@ -34,8 +34,15 @@
 .explorers-overview .curriculum-enroll{border-color:#6b8daf;color:white;margin-top:60px}
 .explorers-overview .curriculum-enroll span{color:#d5e1f2}
 .explorers-overview .assessment-section .eyebrow{font-size:var(--type-eyebrow)}
-.explorers-overview .author-name{margin:0 0 12px;font-size:var(--type-card);font-weight:700;letter-spacing:-.02em;line-height:1.3}
-.explorers-overview .assessment-section p:not(.eyebrow):not(.author-name){font-size:var(--type-body);line-height:1.7;color:var(--muted)}
+.explorers-overview .author-profile{display:grid;grid-template-columns:148px minmax(0,1fr);gap:28px 32px;align-items:start}
+.explorers-overview .author-photo{width:148px;height:148px;object-fit:cover;object-position:center top;border-radius:8px;background:#edf2f9}
+.explorers-overview .author-name{margin:0 0 8px;font-size:var(--type-card);font-weight:700;letter-spacing:-.02em;line-height:1.3}
+.explorers-overview .author-role{margin:0 0 14px;font-size:.9375rem;line-height:1.55;color:#315580;font-weight:600}
+.explorers-overview .author-copy p:not(.author-name):not(.author-role){margin:0 0 18px}
+.explorers-overview .author-link{display:inline-flex;align-items:center;gap:6px;color:#124da1;font-weight:650;font-size:.9375rem;text-decoration:none}
+.explorers-overview .author-link:hover{color:#071c3b;text-decoration:underline;text-underline-offset:4px}
+.explorers-overview .assessment-section p:not(.eyebrow):not(.author-name):not(.author-role){font-size:var(--type-body);line-height:1.7;color:var(--muted)}
+html[lang=hy] .author-role{line-height:1.65;letter-spacing:-.01em}
 html[lang=hy] .chapter-card h3{font-size:var(--type-card);line-height:1.4;letter-spacing:-.02em;min-height:72px}
 html[lang=hy] .chapter-table-head{font-size:.8125rem}
 html[lang=hy] .about-hero h1,
@@ -43,5 +50,5 @@ html[lang=hy] .detail-hero h1,
 html[lang=hy] .inperson-hero h1,
 html[lang=hy] .hero h1{letter-spacing:-.02em;line-height:1.22}
 @media(max-width:1050px){.explorers-overview .curriculum-modules{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:640px){.explorers-overview .curriculum-modules{grid-template-columns:1fr}.explorers-overview .detail-section{padding:52px 0}.chapter-card h3{min-height:0!important}.chapter-card-body{padding:24px}.explorers-overview .shell{width:calc(100% - 36px)}.explorers-overview .header-actions{gap:12px}}
+@media(max-width:640px){.explorers-overview .curriculum-modules{grid-template-columns:1fr}.explorers-overview .detail-section{padding:52px 0}.chapter-card h3{min-height:0!important}.chapter-card-body{padding:24px}.explorers-overview .shell{width:calc(100% - 36px)}.explorers-overview .header-actions{gap:12px}.explorers-overview .author-profile{grid-template-columns:112px minmax(0,1fr);gap:18px 20px}.explorers-overview .author-photo{width:112px;height:112px}}
 @media(prefers-reduced-motion:reduce){.chapter-card{transition:none}.chapter-card:hover{transform:none}}
