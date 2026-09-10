@@ -21,7 +21,7 @@ for(const lang of ['en','hy']) {
       assert.ok(complete.includes(learning.copy[lang].congrats));
       assert.match(complete,/chapter-04.png/);
       assert.ok(complete.includes(learning.copy[lang].outcomes[Number(section.id)-1][1]));
-      const next=data.sections.find(s=>s.chapter && Number(s.id)===Number(section.id)+1)||data.sections.find(s=>s.id==='guide-3');
+      const next=data.sections.find(s=>s.chapter && Number(s.id)===Number(section.id)+1)||data.sections.find(s=>s.id==='guide-7');
       assert.ok(complete.includes(route(next.id,next.lessons[0].id)));
       const pos=learning.position(section,lesson,lang,route);
       assert.equal((pos.match(/aria-current="step"/g)||[]).length,1);
@@ -64,4 +64,4 @@ async function readerFlow(lang) {
   assert.ok(node('#lesson').innerHTML.includes(learning.copy[nextLang].congrats),'Milestone survives language switch within this page');
   assert.ok(node('#lesson').innerHTML.includes(`chapter=2&lesson=1&lang=${nextLang}`));
 }
-(async()=>{await readerFlow('en');await readerFlow('hy');console.log('PASS: bilingual examples, visual outputs, all 8 chapter endings, exact next routes, explicit completion event, focus, and language switching.');})().catch(e=>{console.error(e);process.exitCode=1;});
+(async()=>{await readerFlow('en');await readerFlow('hy');console.log('PASS: bilingual examples, visual outputs, all 8 lesson endings, exact next routes, explicit completion event, focus, and language switching.');})().catch(e=>{console.error(e);process.exitCode=1;});

@@ -9,7 +9,7 @@
       welcomeAction:'Explore the learning pathway', position:'Your place in this lesson', section:'Section', of:'of',
       example:'SEE IT IN PRACTICE', note:'Illustrative teaching example, not a live AI response. Your results may differ.',
       input:'The task / input', result:'Illustrative result', reveal:'Reveal the example result', check:'Human checkpoint', try:'Now try it',
-      finishTitle:'Ready to move on?', finishText:'Review the lesson and any practice or self-check explanations, then finish when you feel ready.',
+      finishTitle:'Ready to move on?', finishText:'Review the lesson and any self-check explanations, then finish when you feel ready.',
       finish:'Finish lesson', congrats:'Well done, explorer!', covered:'You have explored', next:'Continue to',
       endNote:'A personal learning milestone, not a grade or certificate. Remembered only while this page stays open.', review:'Revisit this lesson',
       outcomes:[
@@ -20,7 +20,7 @@
         ['how to compare AI tools by task, quality, cost, and data controls.','Next, see how individual tools become supervised workflows and agents.'],
         ['the difference between chatbots, workflows, and agents, with human approval at key steps.','Let’s make those workflows practical by managing tokens, context, and costs.'],
         ['how to manage context, reuse prompts, and estimate the cost of a useful result.','Now explore 100 ways to apply what you have learned.'],
-        ['100 applications of AI and ways to turn an idea into a practical task.','You have reached the end of the eight core lessons. Next, test your skills in the practice labs.']
+        ['100 applications of AI and ways to turn an idea into a practical task.','You have reached the end of the eight core lessons. Next, continue with the epilogue and reference materials.']
       ]
     },
     hy: {
@@ -29,7 +29,7 @@
       welcomeAction:'Տեսնել ուսուցման ուղին', position:'Ձեր տեղը այս դասում', section:'Բաժին', of:'/',
       example:'ՏԵՍԵՔ ԳՈՐԾՆԱԿԱՆՈՒՄ', note:'Ուսումնական օրինակ է, ոչ ԱԲ-ի ուղիղ պատասխան։ Ձեր արդյունքները կարող են տարբերվել։',
       input:'Առաջադրանք / մուտք', result:'Արդյունքի օրինակ', reveal:'Բացել արդյունքի օրինակը', check:'Մարդու ստուգումը', try:'Հիմա փորձեք ինքներդ',
-      finishTitle:'Պատրա՞ստ եք շարունակել', finishText:'Վերանայեք դասը և առկա գործնական աշխատանքն ու ինքնաստուգման բացատրությունները։ Ավարտեք, երբ պատրաստ լինեք։',
+      finishTitle:'Պատրա՞ստ եք շարունակել', finishText:'Վերանայեք դասը և ինքնաստուգման բացատրությունները։ Ավարտեք, երբ պատրաստ լինեք։',
       finish:'Ավարտել դասը', congrats:'Շնորհավորում ենք, բացահայտո՛ղ։', covered:'Դուք ուսումնասիրեցիք՝', next:'Շարունակել՝',
       endNote:'Ուսուցման անձնական հանգրվան է, ոչ գնահատական կամ վկայական։ Հիշվում է միայն այս էջը բաց պահելու ընթացքում։', review:'Վերանայել այս դասը',
       outcomes:[
@@ -40,7 +40,7 @@
         ['ինչպես համեմատել ԱԲ գործիքներն ըստ առաջադրանքի, որակի, ծախսի և տվյալների վերահսկման։','Հաջորդիվ տեսնենք՝ ինչպես են գործիքները դառնում վերահսկվող աշխատանքային հոսքեր և գործակալներ։'],
         ['չաթբոտերի, աշխատանքային հոսքերի և գործակալների տարբերությունները՝ կարևոր քայլերում մարդու հաստատմամբ։','Այժմ կառավարենք թոքենները, համատեքստը և ծախսերը՝ այդ հոսքերն արդյունավետ կիրառելու համար։'],
         ['ինչպես կառավարել համատեքստը, կրկին օգտագործել հրահանգները և գնահատել օգտակար արդյունքի արժեքը։','Այժմ բացահայտեք սովորածը կիրառելու 100 հնարավորություն։'],
-        ['ԱԲ-ի 100 կիրառություն և գաղափարը գործնական առաջադրանք դարձնելու եղանակներ։','Դուք հասաք ութ հիմնական դասերի ավարտին։ Հաջորդիվ փորձարկեք ձեր հմտությունները գործնական աշխատանքներում։']
+        ['ԱԲ-ի 100 կիրառություն և գաղափարը գործնական առաջադրանք դարձնելու եղանակներ։','Դուք հասաք ութ հիմնական դասերի ավարտին։ Հաջորդիվ շարունակեք եզրափակիչը և տեղեկատու նյութերը։']
       ]
     }
   };
@@ -53,7 +53,7 @@
     ['Choose by the job, not the hype', 'You need a five-slide summary of an approved public report, with a source for every factual claim.', ['Find and verify evidence → A source-linked research tool', 'Draft the storyline → A general-purpose assistant', 'Lay out slides → A presentation tool', 'Check claims and design → You'], 'One product may cover several steps. Test citation accuracy, editing options, and data terms before choosing.', 'Run the same small task in two available tools. Compare factual accuracy and how much editing each output needs.'],
     ['A news brief with an approval gate', 'Design a daily brief using an approved list of public news sources. Do not publish automatically.', ['Collect → Retrieve items from approved sources', 'Filter → Keep relevant items and remove duplicates', 'Draft → Summarize each item with its source link', 'Approve → A person checks facts before sharing'], 'If a source fails or a claim has no evidence, flag it. Give the workflow only the permissions it needs.', 'Draw your own workflow. Mark exactly where it must stop and ask for approval.'],
     ['Shorter context, same acceptance criteria', 'Hypothetical comparison: a full document uses 4,000 input tokens. A checked, relevant excerpt uses 1,000. Both request a 300-token answer.', ['Full document → 4,000 input + 300 output tokens', 'Relevant excerpt → 1,000 input + 300 output tokens', 'Input reduction → 75% (not a measured quality improvement)'], 'The shorter version is only better if it preserves all necessary facts and passes the same checks. Total cost also depends on output rates, retries, and review.', 'Write three acceptance criteria. Compare a full-context prompt and a shorter version against those same criteria.'],
-    ['One topic, three useful outputs', 'Use an approved public workshop brief as the common source for a small communication project.', ['Presentation → A general assistant + a slide tool → Five-slide outline', 'Short video → A script assistant + a video editor → 30-second storyboard', 'Announcement → A writing assistant → A concise invitation'], 'Keep dates and claims consistent across formats. Check permissions for images, voices, and music before sharing.', 'Choose one output, define its audience and acceptance criteria, then use a related practice lab to build it.']
+    ['One topic, three useful outputs', 'Use an approved public workshop brief as the common source for a small communication project.', ['Presentation → A general assistant + a slide tool → Five-slide outline', 'Short video → A script assistant + a video editor → 30-second storyboard', 'Announcement → A writing assistant → A concise invitation'], 'Keep dates and claims consistent across formats. Check permissions for images, voices, and music before sharing.', 'Choose one output, define its audience and acceptance criteria, then build it with the tools you have available.']
   ];
   examples.hy = [
     ['Օգտակար նախագիծը դեռ ստուգված փաստ չէ', 'Աղբյուր՝ «Աշխատարանը մայիսի 15-ին է։ Գրանցումը պարտադիր է»։ Խնդրեք ԱԲ-ին գրել մեկ նախադասությամբ հրավեր։', ['Մասնակցեք մայիսի 15-ի աշխատարանին։', 'Մասնակցելուց առաջ գրանցվեք։', 'Վայրն ու ժամը աղբյուրում նշված չեն։'], 'Նախագիծը պահպանում է ամսաթիվն ու գրանցման պայմանը՝ առանց վայր հորինելու։ Հրապարակելուց առաջ հաստատեք աղբյուրի արդիականությունը։', 'ԱԲ-ին տվեք կարճ հորինված հայտարարություն։ Խնդրեք առանձնացնել հայտնի փաստերն ու բացակայող տեղեկությունները։'],
@@ -63,7 +63,7 @@
     ['Ընտրեք ըստ առաջադրանքի, ոչ աղմուկի', 'Ձեզ անհրաժեշտ է հաստատված հանրային զեկույցի հինգ սլայդանոց ամփոփում՝ յուրաքանչյուր փաստական պնդման աղբյուրով։', ['Գտնել և ստուգել ապացույցները → Աղբյուրների հղումներ տրամադրող հետազոտական գործիք', 'Կազմել կառուցվածքը → Ընդհանուր նշանակության օգնական', 'Ձևավորել սլայդները → Ներկայացումների գործիք', 'Ստուգել փաստերն ու ձևավորումը → Դուք'], 'Մեկ գործիքը կարող է ընդգրկել մի քանի քայլ։ Ընտրելուց առաջ փորձարկեք հղումների ճշտությունը, խմբագրման հնարավորությունները և տվյալների պայմանները։', 'Նույն փոքր առաջադրանքը կատարեք երկու հասանելի գործիքով։ Համեմատեք փաստերի ճշտությունն ու անհրաժեշտ խմբագրումների ծավալը։'],
     ['Լուրերի ամփոփում՝ մարդու հաստատմամբ', 'Նախագծեք ամենօրյա ամփոփում՝ հանրային լրատվական աղբյուրների հաստատված ցանկով։ Ինքնաշխատ մի հրապարակեք։', ['Հավաքել → Ստանալ նյութեր հաստատված աղբյուրներից', 'Զտել → Պահել առնչվող նյութերը և հեռացնել կրկնությունները', 'Կազմել → Ամփոփել յուրաքանչյուր նյութը՝ աղբյուրի հղումով', 'Հաստատել → Մարդը ստուգում է փաստերը՝ տարածելուց առաջ'], 'Եթե աղբյուրը չի աշխատում կամ պնդումը ապացույց չունի, նշեք դա։ Հոսքին տվեք միայն անհրաժեշտ թույլտվությունները։', 'Գծեք ձեր աշխատանքային հոսքը։ Նշեք՝ որտեղ այն պետք է կանգ առնի և հաստատում խնդրի։'],
     ['Կարճ համատեքստ, նույն ընդունման չափանիշները', 'Պայմանական համեմատություն՝ ամբողջ փաստաթուղթը 4 000 մուտքային թոքեն է, իսկ ստուգված, առնչվող հատվածը՝ 1 000։ Երկու դեպքում էլ պահանջվում է 300 թոքենանոց պատասխան։', ['Ամբողջ փաստաթուղթ → 4 000 մուտքային + 300 ելքային թոքեն', 'Առնչվող հատված → 1 000 մուտքային + 300 ելքային թոքեն', 'Մուտքի նվազում → 75% (որակի չափված բարելավում չէ)'], 'Կարճ տարբերակն ավելի լավն է միայն այն դեպքում, երբ պահպանում է անհրաժեշտ փաստերը և անցնում նույն ստուգումները։ Ընդհանուր ծախսը կախված է նաև ելքի գնից, կրկնափորձերից և ստուգումից։', 'Գրեք ընդունման երեք չափանիշ։ Դրանցով համեմատեք ամբողջական համատեքստով հրահանգն ու կարճ տարբերակը։'],
-    ['Մեկ թեմա, երեք օգտակար արդյունք', 'Օգտագործեք աշխատարանի մասին հաստատված հանրային տեղեկությունը՝ որպես հաղորդակցական փոքր նախագծի ընդհանուր աղբյուր։', ['Ներկայացում → Ընդհանուր օգնական + սլայդների գործիք → Հինգ սլայդի կառուցվածք', 'Կարճ տեսանյութ → Սցենարի օգնական + տեսախմբագրիչ → 30 վայրկյանանոց կադրային պլան', 'Հայտարարություն → Գրելու օգնական → Հակիրճ հրավեր'], 'Տարբեր ձևաչափերում պահեք նույն ամսաթվերն ու պնդումները։ Տարածելուց առաջ ստուգեք պատկերների, ձայների և երաժշտության օգտագործման թույլտվությունները։', 'Ընտրեք մեկ արդյունք, սահմանեք լսարանն ու ընդունման չափանիշները, ապա ստեղծեք այն առնչվող գործնական աշխատանքի օգնությամբ։']
+    ['Մեկ թեմա, երեք օգտակար արդյունք', 'Օգտագործեք աշխատարանի մասին հաստատված հանրային տեղեկությունը՝ որպես հաղորդակցական փոքր նախագծի ընդհանուր աղբյուր։', ['Ներկայացում → Ընդհանուր օգնական + սլայդների գործիք → Հինգ սլայդի կառուցվածք', 'Կարճ տեսանյութ → Սցենարի օգնական + տեսախմբագրիչ → 30 վայրկյանանոց կադրային պլան', 'Հայտարարություն → Գրելու օգնական → Հակիրճ հրավեր'], 'Տարբեր ձևաչափերում պահեք նույն ամսաթվերն ու պնդումները։ Տարածելուց առաջ ստուգեք պատկերների, ձայների և երաժշտության օգտագործման թույլտվությունները։', 'Ընտրեք մեկ արդյունք, սահմանեք լսարանն ու ընդունման չափանիշները, ապա ստեղծեք այն ձեր հասանելի գործիքներով։']
   ];
   function welcome(lang, route) {
     const c=copy[lang];
@@ -94,7 +94,7 @@
   function ending(section, lesson, data, lang, route, completed) {
     if (!section.chapter || section.lessons.at(-1).id!==lesson.id) return '';
     const c=copy[lang], outcome=c.outcomes[Number(section.id)-1];
-    const next=data.sections.find(s=>s.chapter && Number(s.id)===Number(section.id)+1) || data.sections.find(s=>s.id==='guide-3');
+    const next=data.sections.find(s=>s.chapter && Number(s.id)===Number(section.id)+1) || data.sections.find(s=>s.id==='guide-7');
     return `<section class="chapter-finish" aria-labelledby="finish-heading">${completed?`<div class="chapter-celebration"><img src="assets/explorers/chapter-04.png" width="1672" height="941" alt="" loading="lazy"><div><h2 id="finish-heading" tabindex="-1">${c.congrats}</h2><p>${c.covered} ${outcome[0]}</p><p>${outcome[1]}</p>${next?`<a class="learning-primary" href="${route(next.id,next.lessons[0].id)}">${c.next} ${esc(next.title)} →</a>`:''}<a class="chapter-review" href="${route(section.id,section.lessons[0].id)}">${c.review}</a></div></div>`:`<h2 id="finish-heading">${c.finishTitle}</h2><p>${c.finishText}</p><button class="learning-primary" type="button" data-finish-chapter="${section.id}">${c.finish} ✓</button>`}<p class="milestone-note">${c.endNote}</p></section>`;
   }
   const api={copy,examples,welcome,position,example,ending};

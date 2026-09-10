@@ -12,8 +12,8 @@ English reading uses Georgia with system sans-serif headings. Armenian uses Sylf
 
 ## Content and routes
 
-- Eight core lessons, with 105 paired reading units across the course and supporting materials.
-- Four complete labs, twelve planning briefs, worksheets, explained self-checks, glossary, epilogue, useful resources, and references.
+- Eight core lessons, with paired reading units across the course and supporting materials.
+- Explained self-checks in lessons, glossary, epilogue, useful resources, and references.
 - A searchable catalogue of 100 use cases and a 40-tool directory in each language, with the original handbook's logos reused when available.
 - An interactive four-step text-generation explanation and responsive HTML versions of the handbook's workflow diagrams.
 - A hypothetical USD cost calculator including retries, human review, fixed costs, and cost per accepted result. This is not live pricing or an API connection.
@@ -38,7 +38,7 @@ Each JSON reading unit has an ID, title, HTML content, estimated reading time, a
 
 The introduction reuses the course character from `assets/explorers/chapter-01.png`; completion panels reuse `chapter-04.png`. No new illustration was generated for this update. Examples distinguish source input, illustrative output, human verification, and learner practice. Structured visuals include supported/unsupported claims, an action table, a supervised workflow, and a hypothetical token comparison. No live AI service or vendor pricing is connected.
 
-The last section of each core lesson offers an explicit “Finish lesson” action. It reveals a topic-specific recap and a link to the next lesson; lesson 8 links to the practice labs. Milestones live only in page memory and survive in-page navigation and language switches, not reloads. They do not validate mastery, update account progress, award certificates, or gate the next lesson. Keyboard focus moves to the congratulatory heading and a live status announces it. The numbered lesson strip shows the current location, not completion percentage.
+The last section of each core lesson offers an explicit “Finish lesson” action. It reveals a topic-specific recap and a link to the next lesson; lesson 8 links to the epilogue. Milestones live only in page memory and survive in-page navigation and language switches, not reloads. They do not validate mastery, update account progress, award certificates, or gate the next lesson. Keyboard focus moves to the congratulatory heading and a live status announces it. The numbered lesson strip shows the current location, not completion percentage.
 
 Run `node tools/test_explorers_learning.cjs` for bilingual renderers, all lesson-end routes, the actual reader completion handler, focus, and language-switch behavior using a minimal document adapter. Browser-based visual QA was not performed in this update.
 
