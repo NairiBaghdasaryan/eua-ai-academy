@@ -11,7 +11,18 @@
     const total = api + review + v.fixed;
     return { perAttempt, api, review, total, perAccepted: v.accepted > 0 ? total / v.accepted : null };
   }
-  if (typeof module !== 'undefined' && module.exports) module.exports = { calculateCost };
+  // Deterministic order per question: stable on reload and across languages.
+  function choiceOrder(name, count) {
+    let seed = 2166136261;
+    for (const char of name) seed = Math.imul(seed ^ char.charCodeAt(0), 16777619) >>> 0;
+    const order = Array.from({length:count}, (_,i)=>i);
+    for (let i=count-1; i>0; i--) {
+      seed = (Math.imul(seed,1664525)+1013904223) >>> 0;
+      const j=seed%(i+1); [order[i],order[j]]=[order[j],order[i]];
+    }
+    return order;
+  }
+  if (typeof module !== 'undefined' && module.exports) module.exports = { calculateCost, choiceOrder };
   if (typeof document === 'undefined') return;
 
   const UI = {
@@ -112,7 +123,7 @@
     if (section.id==='1' && lesson.id==='2') extras = concept();
     if (section.id==='7' && (lesson.id==='1' || lesson.id==='practice')) extras = costCalculator();
     if (section.id==='5' && lesson.id==='8') extras = catalogue('tools');
-    if (section.id==='8' && (first || lesson.id==='14')) extras = catalogue('cases');
+    if (section.id==='8' && lesson.id==='14') extras = catalogue('cases');
     let body = lesson.html;
     // Concept explorer sits with the model-versus-application explanation in section 1.2.
     if (section.id==='1' && lesson.id==='2') { const cut=body.indexOf('</p>')+4; body=body.slice(0,cut)+extras+body.slice(cut); extras=''; }
@@ -128,6 +139,18 @@
     $('#lesson-pagination').innerHTML = [sequence[index-1],sequence[index+1]].map((item,i)=>item?`<a class="${i?'next':'previous'}" href="${route(item.s.id,item.l.id)}"><small>${t(i?'next':'previous')}</small><span>${esc(item.l.id==='intro'?item.s.title:item.l.title)}</span></a>`:'<span></span>').join('');
     filterCatalogue(); updateCost();
     if (window.EuaExplorersLabs) window.EuaExplorersLabs.mount(language);
+    // Reorder labels, not answer values. Keep classification scales consistent.
+    const questions = new Map();
+    document.querySelectorAll('#lesson input[type="radio"][name]').forEach(input=>{
+      if (/^(ledger-|lab-a-)/.test(input.name)) return;
+      const labels=questions.get(input.name)||[];
+      labels.push(input.closest('label')); questions.set(input.name,labels);
+    });
+    questions.forEach((labels,name)=>{
+      const parent=labels[0]?.parentElement;
+      if (!parent || labels.some(label=>!label || label.parentElement!==parent)) return;
+      choiceOrder(name,labels.length).forEach(index=>parent.appendChild(labels[index]));
+    });
     $('#reader-status').textContent = `${section.title}: ${lesson.title}`;
   }
   async function load(focus = false) {
@@ -149,7 +172,7 @@
     $('#lesson').setAttribute('aria-busy','true');
     try {
       if (!cache[selectedLanguage]) {
-        const response = await fetch(`content/explorers/${selectedLanguage}.json?v=20260910-nav`);
+        const response = await fetch(`content/explorers/${selectedLanguage}.json?v=20260911-labs`);
         if (!response.ok) throw new Error('Course content unavailable');
         const content = await response.json();
         if (!Array.isArray(content.sections) || !content.sections.length) throw new Error('Invalid course content');
