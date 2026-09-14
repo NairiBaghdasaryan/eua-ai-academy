@@ -57,7 +57,10 @@
       recordShow: 'Show completed example',
       recordEdit: 'Your editable record',
       recordSave: 'Save local draft',
-      recordSaved: 'Draft saved in this browser session.',
+      recordSaved: 'Draft saved in this tab for this language. It survives navigation and reloads, but is not saved to your account. Use fictional or public information only.',
+      recordFailed: 'The draft could not be saved in this browser. Copy it to your notes before leaving.',
+      recordEmpty: 'Enter a draft before saving.', recordClear: 'Delete saved draft', recordCleared: 'Saved draft deleted from this tab.',
+      recordStorage: 'Save keeps this language’s draft in this tab through navigation and reloads, not in your account. Use fictional or public information only. Unsaved edits are lost when you leave.',
       recordExample: 'Job: bilingual staff notice from Notice v2.\nRisk: internal staff, non-sensitive.\nEvidence: Notice v2 only.\nProduct type: approved general chat assistant.\nTest: same prompt in two assistants; TRACE claims.\nPrivacy/cost: confirm current plan retention on 10 Sep 2026; prefer free approved tier if quality passes.\nDecision: Tool A for drafting; human communications lead approves before send. Owner: you. Date: today.',
       compareTitle: 'Two-tool comparison with sample outputs',
       compareNote: 'If you have no account, use the samples. Judge evidence quality, not brand loyalty.',
@@ -122,7 +125,10 @@
       recordShow: 'Ցույց տալ լրացված օրինակը',
       recordEdit: 'Ձեր խմբագրելի գրառումը',
       recordSave: 'Պահել տեղային նախագիծ',
-      recordSaved: 'Նախագիծը պահված է այս դիտարկիչի նիստում։',
+      recordSaved: 'Նախագիծը պահված է այս ներդիրում՝ ընտրված լեզվով։ Այն պահպանվում է նավարկելիս և վերաբեռնելիս, բայց չի պահվում ձեր հաշվում։ Օգտագործեք միայն հորինված կամ հանրային տեղեկություն։',
+      recordFailed: 'Դիտարկիչում չհաջողվեց պահել նախագիծը։ Էջից հեռանալուց առաջ պատճենեք այն ձեր նշումներում։',
+      recordEmpty: 'Պահելուց առաջ գրեք նախագիծը։', recordClear: 'Ջնջել պահված նախագիծը', recordCleared: 'Պահված նախագիծը ջնջված է այս ներդիրից։',
+      recordStorage: 'Պահել կոճակը պահպանում է ընտրված լեզվի նախագիծն այս ներդիրում՝ նաև նավարկելուց և վերաբեռնելուց հետո, բայց ոչ ձեր հաշվում։ Օգտագործեք միայն հորինված կամ հանրային տեղեկություն։ Չպահված փոփոխությունները կկորչեն էջից հեռանալիս։',
       recordExample: 'Աշխատանք․ երկլեզու աշխատակազմի ծանուցում Notice v2-ից։\nՌիսկ․ ներքին, ոչ զգայուն։\nԱպացույց․ միայն Notice v2։\nԱրտադրանք․ հաստատված ընդհանուր զրույցի օգնական։\nԹեստ․ նույն հրահանգը երկու օգնականում․ TRACE պնդումները։\nԳաղտնիություն/արժեք․ հաստատել պլանի պահպանումը 10 սեպտեմբերի 2026-ին․ նախընտրել անվճար հաստատված մակարդակ, եթե որակը բավարար է։\nՈրոշում․ A գործիքը նախագծման համար․ հաղորդակցության պատասխանատուն հաստատում է ուղարկելուց առաջ։ Պատասխանատու՝ դուք։ Ամսաթիվ՝ այսօր։',
       compareTitle: 'Երկու գործիքի համեմատություն նմուշ ելքերով',
       compareNote: 'Եթե հաշիվ չունեք, օգտագործեք նմուշները։ Գնահատեք ապացույցի որակը, ոչ ապրանքանիշի հավատարմությունը։',
@@ -176,7 +182,7 @@
     return `<section class="try-lab" data-record-lab aria-labelledby="record-title"><h3 id="record-title">${c.recordTitle}</h3><p>${c.recordNote}</p>
       <details><summary>${esc(c.recordShow)}</summary><pre class="decision-example">${esc(c.recordExample)}</pre></details>
       <label class="prompt-field">${esc(c.recordEdit)}<textarea rows="8" data-record-draft></textarea></label>
-      <div class="try-actions"><button type="button" class="small-button" data-record-save>${c.recordSave}</button></div>
+      <p>${c.recordStorage}</p><div class="try-actions"><button type="button" class="small-button" data-record-save>${c.recordSave}</button><button type="button" class="small-button" data-record-clear>${c.recordClear}</button></div>
       <p class="try-summary" data-record-summary role="status" aria-live="polite"></p></section>`;
   }
 
@@ -247,13 +253,21 @@
         : 'Category: approved/protected environment only. Evaluation: privacy gate first, then quality. Do not use a public chatbot with student data.';
       return;
     }
+    const needsResearch = out === 1 || ev === 1;
+    const missingAccess = needsResearch ? tools !== 1 : out === 2 ? tools !== 2 : tools === 2;
+    if (missingAccess) {
+      summary.textContent = lang === 'hy'
+        ? 'Առաջադրանքի համար անհրաժեշտ հնարավորությունը չի հաստատվել ընտրված գործիքներում։ Տեքստի համար ստուգեք հաստատված զրույցի օգնականը, ընթացիկ աղբյուրների համար՝ հետազոտական հասանելիությունը, պատկերների համար՝ դիզայնի գործիքը։ Մի փոխեք առաջադրանքը միայն հասանելի գործիքին հարմարեցնելու համար։'
+        : 'The required capability is not confirmed in your available tools. Check approved chat access for text, research access for current sources, or design access for images. Do not change the task merely to match an available tool.';
+      return;
+    }
     if (out === 1 || ev === 1) {
       summary.textContent = lang === 'hy'
         ? 'Կատեգորիա․ հետազոտություն և սովորում (օր. Perplexity / մեջբերումներով ռեժիմ)։ Գնահատում․ բացել հղումները, ստուգել ամսաթիվն ու անկախությունը, ապա համեմատել երկու գործիք։'
         : 'Category: research & learning (for example Perplexity / cited mode). Evaluation: open citations, check date and independence, then compare two tools.';
       return;
     }
-    if (out === 2 || tools === 2) {
+    if (out === 2) {
       summary.textContent = lang === 'hy'
         ? 'Կատեգորիա․ պատկեր և դիզայն։ Գնահատում․ լիցենզիա, բրենդ, հասանելիություն․ փաստեր մի հորինեք պատկերից։'
         : 'Category: images & design. Evaluation: license, brand, accessibility; do not invent facts from an image.';
@@ -271,6 +285,16 @@
       const html = render(safe, slot.dataset.lab);
       if (html) slot.outerHTML = html;
     });
+    const draft = document.querySelector('[data-record-draft]');
+    if (draft) {
+      try {
+        const saved = global.sessionStorage.getItem(`eua-explorers-decision-${safe}`);
+        if (saved !== null) {
+          draft.value = saved;
+          document.querySelector('[data-record-summary]').textContent = pack(safe).recordSaved;
+        }
+      } catch (_) { /* Saving is optional; the editor remains usable. */ }
+    }
   }
 
   let bound = false;
@@ -316,7 +340,20 @@
       if (event.target.closest('[data-record-save]')) {
         const draft = document.querySelector('[data-record-draft]');
         const summary = document.querySelector('[data-record-summary]');
-        if (summary) summary.textContent = draft && draft.value.trim().length > 40 ? c.recordSaved : c.labReview;
+        if (!draft || !summary) return;
+        if (!draft.value.trim()) { summary.textContent = c.recordEmpty; return; }
+        try {
+          global.sessionStorage.setItem(`eua-explorers-decision-${lang}`, draft.value);
+          summary.textContent = c.recordSaved;
+        } catch (_) { summary.textContent = c.recordFailed; }
+      }
+      if (event.target.closest('[data-record-clear]')) {
+        const summary = document.querySelector('[data-record-summary]');
+        try {
+          global.sessionStorage.removeItem(`eua-explorers-decision-${lang}`);
+          document.querySelector('[data-record-draft]').value = '';
+          if (summary) summary.textContent = c.recordCleared;
+        } catch (_) { if (summary) summary.textContent = c.recordFailed; }
       }
     });
     document.addEventListener('input', (event) => {

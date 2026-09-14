@@ -29,6 +29,8 @@
       eventExplain: 'One-sentence trade-off',
       eventExplainPh: 'I choose … because … accepting …',
       eventCheck: 'Record choice',
+      eventRecorded: 'Response entered, not graded. Compare your reasoning with the guidance below; confirm budget, accessibility, booking, and setup requirements before choosing.',
+      eventMissing: 'Choose a venue and explain the trade-off before reviewing your response.',
       eventWhy: 'There is no single correct venue. A good answer names your weighted criteria and the trade-off you accept. Ask AI for alternatives before it ranks them for you.',
       tutorTitle: 'Hint → partial → complete',
       tutorNote: 'Problem: Notice v2 says capacity is “up to 20.” A draft says “at least 20 seats guaranteed.” What is wrong, and how do you fix the sentence?',
@@ -58,17 +60,17 @@
         { id: 'price', label: '“Brand A headphones cost AMD 45,000 at Shop X.”', options: ['Preference you decide', 'Fact you must verify'], answer: 1, why: 'Price and seller claims need verification.' }
       ],
       promptTitle: 'Editable prompt card',
-      promptNote: 'Fill one card. Load the Armenian example, then adapt it.',
+      promptNote: 'Fill one card. Load the example, then adapt it. This card stays on this page only; copy it to your own notes before leaving.',
       promptPurpose: 'Purpose', promptInput: 'Required input', promptTemplate: 'Template',
       promptExample: 'Example output', promptCheck: 'Checking instructions',
-      promptLoad: 'Load Armenian example', promptClear: 'Clear card',
-      promptSaved: 'Card updated locally in this browser session.',
+      promptLoad: 'Load English example', promptClear: 'Clear card',
+      promptSaved: 'Example loaded. Copy your edited card to your notes before leaving this page.',
       promptExampleFill: {
-        purpose: 'Ստուգել հայտարարության պնդումները հաստատված ծանուցմամբ',
-        input: 'Notice v2 տեքստ + հայտարարության նախագիծ',
-        template: 'Օգտագործելով միայն ծանուցումը՝ դասակարգիր յուրաքանչյուր պնդումը որպես հաստատված, հակասող կամ չնշված։ Ցույց տուր աղբյուրի նախադասությունը։ Մի հորինիր վերջնաժամկետ։',
-        example: 'Պնդում՝ «մինչև 20» → հաստատված (բաժին A)։ Պնդում՝ «վերջնաժամկետ հոկտեմբերի 10» → չնշված/հակասող։',
-        check: 'Բացել ծանուցումը։ Համեմատել մինչև/առնվազն։ Հեռացնել չհիմնավորված դաշտերը։ Անվանել հաստատողին։'
+        purpose: 'Check announcement claims against the approved notice',
+        input: 'Notice v2 text and an announcement draft',
+        template: 'Using only the notice, classify each claim as supported, contradicted, or not stated. Show the source passage. Do not invent a deadline.',
+        example: 'Claim: up to 20 participants - supported (A). Claim: deadline 10 October - not stated.',
+        check: 'Open the notice. Compare up to with at least. Remove unsupported details. Name the approver.'
       },
       practiceTitle: 'Writing track or data track',
       practiceNote: 'Choose Lab A–style writing or Lab B–style data. Produce the work and note what you corrected.',
@@ -104,6 +106,8 @@
       eventExplain: 'Մեկ նախադասությամբ փոխզիջումը',
       eventExplainPh: 'Ընտրում եմ … որովհետև … ընդունելով …',
       eventCheck: 'Գրանցել ընտրությունը',
+      eventRecorded: 'Պատասխանը մուտքագրված է, բայց չի գնահատվել։ Հիմնավորումը համեմատեք ստորև տրված ցուցումների հետ։ Ընտրելուց առաջ ստուգեք բյուջեն, մատչելիությունը, ամրագրման և նախապատրաստման պայմանները։',
+      eventMissing: 'Ընտրեք վայրը և բացատրեք փոխզիջումը, ապա վերանայեք պատասխանը։',
       eventWhy: 'Մեկ ճիշտ վայր չկա։ Լավ պատասխանը անվանում է ձեր չափանիշներն ու փոխզիջումը։',
       tutorTitle: 'Հուշում → մասնակի → ամբողջական',
       tutorNote: 'Խնդիր․ Notice v2-ում տարողությունը «մինչև 20» է։ Նախագիծը գրում է «երաշխավորված առնվազն 20 տեղ»։ Ի՞նչն է սխալ, և ինչպե՞ս ուղղել։',
@@ -137,7 +141,7 @@
       promptPurpose: 'Նպատակ', promptInput: 'Պահանջվող մուտք', promptTemplate: 'Ձևանմուշ',
       promptExample: 'Օրինակ ելք', promptCheck: 'Ստուգման հրահանգներ',
       promptLoad: 'Բեռնել հայերեն օրինակը', promptClear: 'Մաքրել քարտը',
-      promptSaved: 'Քարտը թարմացված է այս դիտարկիչի նիստում։',
+      promptSaved: 'Օրինակը բեռնված է։ Էջից հեռանալուց առաջ խմբագրված քարտը պատճենեք ձեր նշումներում։',
       promptExampleFill: {
         purpose: 'Ստուգել հայտարարության պնդումները հաստատված ծանուցմամբ',
         input: 'Notice v2 տեքստ + հայտարարության նախագիծ',
@@ -324,10 +328,9 @@
         if (why) {
           why.hidden = false;
           why.textContent = c.eventWhy;
-          why.classList.toggle('is-correct', !!(picked && explain && explain.value.trim().length > 12));
-          why.classList.toggle('is-review', !(picked && explain && explain.value.trim().length > 12));
+          why.classList.remove('is-correct', 'is-review');
         }
-        if (summary) summary.textContent = picked && explain && explain.value.trim().length > 12 ? c.labCorrect : c.labReview;
+        if (summary) summary.textContent = picked && explain && explain.value.trim() ? c.eventRecorded : c.eventMissing;
       }
       const mediaTab = event.target.closest('[data-media-tab]');
       if (mediaTab) {

@@ -22,7 +22,9 @@
       data: 'What can the table support?', dataOptions: ['Week 3 occupancy is 25% (5/20); three rows do not establish a cause', 'Occupancy is 5% because five people attended', 'AMD 25,000 means 25,000 participants'],
       claim: 'Which business claim may be used?', claimOptions: ['Most popular workshop', 'Guaranteed career results', 'Up to 20 places, supported by Notice v2'],
       choose: 'Feasibility card', input: 'Permitted input', output: 'Exact output', acceptance: 'Acceptance test', reviewer: 'Named reviewer',
-      decision: 'Evaluate choice', accepted: 'Feasible: all four fields are present. The reviewer still decides whether the task proceeds.', rejected: 'Reject or narrow the task: complete all four fields, or explicitly record missing data/permission/reviewer.',
+      decision: 'Review planning fields', accepted: 'All four fields are filled in. This is a completeness check, not approval. If data, permission, time, or a qualified reviewer is missing, stop or choose a lower-risk task.', rejected: 'Complete the four planning fields. Record any missing data, permission, time, or reviewer; do not proceed until those gaps are resolved.',
+      draftReview: 'Classifications match the reference. Your draft has not been graded. Compare its date, time, room, capacity, fee, deadline, and approval wording with Notice v2 before using it.',
+      draftMissing: 'Classifications match the reference. Enter a draft, then check each claim against Notice v2. Draft text is not automatically graded.',
       glossary: 'Search glossary', noTerms: 'No glossary terms match.'
     },
     hy: {
@@ -44,7 +46,9 @@
       data: 'Ի՞նչ է հաստատում աղյուսակը', dataOptions: ['3-րդ շաբաթվա զբաղվածությունը 25% է (5/20), իսկ երեք տողը պատճառ չի հաստատում', 'Զբաղվածությունը 5% է, քանի որ հինգ մարդ կա', '25,000 դրամը նշանակում է 25,000 մասնակից'],
       claim: 'Ո՞ր բիզնես պնդումը կարելի է օգտագործել', claimOptions: ['Ամենատարածված աշխատարանը', 'Երաշխավորված կարիերա', 'Մինչև 20 տեղ՝ Notice v2-ով հաստատված'],
       choose: 'Իրագործելիության քարտ', input: 'Թույլատրված մուտք', output: 'Հստակ ելք', acceptance: 'Ընդունման չափանիշ', reviewer: 'Անունով վերանայող',
-      decision: 'Գնահատել ընտրությունը', accepted: 'Իրագործելի է․ բոլոր չորս դաշտերը լրացված են։ Վերջնական որոշումը վերանայողինն է։', rejected: 'Մերժեք կամ նեղացրեք․ լրացրեք չորս դաշտը կամ գրանցեք տվյալների/թույլտվության/վերանայողի պակասը։',
+      decision: 'Ստուգել պլանավորման դաշտերը', accepted: 'Չորս դաշտերը լրացված են։ Սա լրացվածության ստուգում է, ոչ թույլտվություն։ Եթե տվյալները, թույլտվությունը, ժամանակը կամ որակավորված վերանայողը բացակայում են, կանգ առեք կամ ընտրեք ավելի ցածր ռիսկով առաջադրանք։', rejected: 'Լրացրեք պլանավորման չորս դաշտերը։ Նշեք բացակայող տվյալները, թույլտվությունը, ժամանակը կամ վերանայողին և մի շարունակեք՝ մինչև բացերը լրացվեն։',
+      draftReview: 'Դասակարգումները համապատասխանում են օրինակին։ Ձեր նախագիծը չի գնահատվել։ Օգտագործելուց առաջ ծանուցման 2-րդ տարբերակով ստուգեք ամսաթիվը, ժամը, սենյակը, տեղերի քանակը, վճարը, վերջնաժամկետը և հաստատման պայմանը։',
+      draftMissing: 'Դասակարգումները համապատասխանում են օրինակին։ Գրեք նախագիծը և յուրաքանչյուր պնդում ստուգեք ծանուցման 2-րդ տարբերակով։ Նախագծի տեքստն ավտոմատ չի գնահատվում։',
       glossary: 'Որոնել բառարանում', noTerms: 'Համընկնող եզր չկա։'
     }
   };
@@ -60,8 +64,8 @@
   function labA(lang) {
     const c = pack(lang);
     const claims = lang === 'hy'
-      ? [['40 մասնակից','Հակասող'],['Հոկտեմբերի 14','Հակասող'],['Հոկտեմբերի 10 վերջնաժամկետ','Հակասող'],['Անվճար','Հակասող'],['Երաշխավորված տեղ','Հակասող']]
-      : [['40 participants','Contradicted'],['14 October','Contradicted'],['10 October deadline','Contradicted'],['Free','Contradicted'],['Guaranteed seat','Contradicted']];
+      ? [['40 մասնակից','Հակասող'],['Հոկտեմբերի 14','Հակասող'],['Հոկտեմբերի 10 վերջնաժամկետ','Չնշված'],['Անվճար','Հակասող'],['Երաշխավորված տեղ','Հակասող']]
+      : [['40 participants','Contradicted'],['14 October','Contradicted'],['10 October deadline','Not stated'],['Free','Contradicted'],['Guaranteed seat','Contradicted']];
     const labels = lang === 'hy' ? ['Հաստատված','Հակասող','Չնշված'] : ['Supported','Contradicted','Not stated'];
     return `<section class="try-lab lab-workbench" data-lab-a><h3>${c.labA}</h3><div class="compare-pair"><article><strong>${esc(c.source)}</strong></article><article><strong>${esc(c.flawed)}</strong></article></div><div class="claim-grid">${claims.map(([claim, status], row) => `<fieldset><legend>${esc(claim)}</legend>${labels.map((label, index) => `<label><input type="radio" name="lab-a-${row}" value="${label === status ? 1 : 0}"> ${esc(label)}</label>`).join('')}</fieldset>`).join('')}</div><label class="prompt-field">${c.announcement}<textarea rows="4" data-lab-a-draft placeholder="${esc(c.draftPlaceholder)}"></textarea></label><div class="try-actions"><button type="button" class="small-button" data-lab-a-check>${c.check}</button><button type="button" class="small-button" data-lab-a-reset>${c.reset}</button></div><p class="try-summary" data-lab-a-summary role="status"></p></section>`;
   }
@@ -140,11 +144,10 @@
       }
       if (event.target.closest('[data-lab-a-check]')) {
         const choices = [...document.querySelectorAll('[data-lab-a] fieldset')];
-        const classificationsPass = choices.every((field) => field.querySelector('input:checked')?.value === '1');
+        const classificationsPass = choices.length === 5 && choices.every((field) => field.querySelector('input:checked')?.value === '1');
         const text = document.querySelector('[data-lab-a-draft]')?.value.trim() || '';
-        const factsPass = /20/.test(text) && /(15|հոկտեմբերի 15)/i.test(text) && !/(40|14 October|10 October|free|guaranteed|անվճար|երաշխավորված)/i.test(text);
         const summary = document.querySelector('[data-lab-a-summary]');
-        if (summary) summary.textContent = classificationsPass && factsPass ? c.correct : c.review;
+        if (summary) summary.textContent = !classificationsPass ? c.review : text ? c.draftReview : c.draftMissing;
       }
       if (event.target.closest('[data-lab-a-reset]')) {
         document.querySelectorAll('[data-lab-a] input').forEach((input) => { input.checked = false; });
@@ -197,7 +200,7 @@
 
   const base = global.EuaExplorersLabs || { mount() {}, bind() {} };
   const baseMount = base.mount.bind(base);
-  const baseBind = base.bind(base);
+  const baseBind = base.bind.bind(base);
   global.EuaExplorersLabs = {
     mount(lang) {
       baseMount(lang);
