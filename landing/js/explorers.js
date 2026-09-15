@@ -114,6 +114,7 @@
     output.innerHTML = `<p>${t('monthly')}</p><div class="cost-total">${money(result.total)}</div><p>${t('api')}: ${money(result.api)} · ${t('review')}: ${money(result.review)}</p><p>${result.perAccepted===null?t('noneAccepted'):`${t('perAccepted')}: <strong>${money(result.perAccepted)}</strong>`}</p>`;
   }
   function render() {
+    window.EuaTeachingVisuals?.stop();
     updateChrome(); navigation();
     const first = section.lessons[0].id === lesson.id;
     document.title = `${lesson.id==='intro'?section.title:lesson.title} | ${t('title')} | ${t('brand')}`;
@@ -125,6 +126,7 @@
     if (section.id==='5' && lesson.id==='8') extras = catalogue('tools');
     if (section.id==='8' && lesson.id==='14') extras = catalogue('cases');
     let body = lesson.html;
+    body = body.replace(/<div data-teaching-slot="(\d+)"><\/div>/g,(_,id)=>window.EuaTeachingVisuals?.render(id,language)||'');
     // Concept explorer sits with the model-versus-application explanation in section 1.2.
     if (section.id==='1' && lesson.id==='2') { const cut=body.indexOf('</p>')+4; body=body.slice(0,cut)+extras+body.slice(cut); extras=''; }
     const welcome = section.id==='guide-1' ? learning.welcome(language,route) : '';
@@ -172,7 +174,7 @@
     $('#lesson').setAttribute('aria-busy','true');
     try {
       if (!cache[selectedLanguage]) {
-        const response = await fetch(`content/explorers/${selectedLanguage}.json?v=20260911-labs`);
+        const response = await fetch(`content/explorers/${selectedLanguage}.json?v=20260914-teaching`);
         if (!response.ok) throw new Error('Course content unavailable');
         const content = await response.json();
         if (!Array.isArray(content.sections) || !content.sections.length) throw new Error('Invalid course content');
@@ -233,5 +235,6 @@
   document.addEventListener('change',event=>{ if(event.target.matches('#catalogue-category')) filterCatalogue(); });
   window.addEventListener('popstate',()=>load(true));
   if (window.EuaExplorersLabs) window.EuaExplorersLabs.bind(() => language);
+  window.EuaTeachingVisuals?.bind();
   load();
 }());

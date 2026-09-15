@@ -86,8 +86,11 @@ for (const lang of ['en', 'hy']) {
   assert.match(modelFamilies, /product directory|գործիքների ցանկում/i);
 
   const productDirectory = content.sections.find((s) => s.id === '5').lessons.find((l) => l.id === '8').html;
-  assert.match(productDirectory, /Microsoft Copilot/);
-  assert.match(productDirectory, /Product system|Արտադրանքային համակարգ/);
+  assert.ok(fs.readFileSync(path.join(root,'landing/js/explorers.js'),'utf8').includes("if (section.id==='5' && lesson.id==='8') extras = catalogue('tools');"));
+  assert.doesNotMatch(productDirectory, /class="directory-entry"/);
+  const copilot = content.tools.find(tool => tool.name === 'Microsoft Copilot');
+  assert.ok(copilot, 'The shared, searchable product directory must include Copilot');
+  assert.match(copilot.use, /Product system|Արտադրանքային համակարգ/);
 
   for (const section of content.sections) {
     assert.ok(section.lessons.length > 0);
