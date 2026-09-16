@@ -4,6 +4,7 @@ const sources=['foundations','practice','professional','applications','guides'];
 const notes=sources.flatMap(name=>JSON.parse(fs.readFileSync(`landing/content/explorers/teaching-${name}.json`,'utf8')));
 const byKey=new Map(notes.map(n=>[n.key,n]));
 const studios=new Map(['core','professional'].flatMap(name=>JSON.parse(fs.readFileSync(`landing/content/explorers/studios-${name}.json`,'utf8'))).map(n=>[n.key,n]));
+const lectureNotes=new Map(JSON.parse(fs.readFileSync('landing/content/explorers/lecture-informed.json','utf8')).map(n=>[n.key,n]));
 if(byKey.size!==notes.length)throw Error('Duplicate teaching topic');
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const paragraphs=s=>s.split('\n\n').map(p=>`<p>${esc(p)}</p>`).join('');
@@ -21,6 +22,10 @@ function studio(n,i){
  html+=`<aside class="studio-result"><h3>${label('A worked result, not a live AI response','Լուծված օրինակ, ոչ իրական ԱԲ պատասխան')}</h3><p>${esc(n.result[i])}</p></aside><div class="studio-comparison"><table><caption>${label('What changes the decision?','Ի՞նչն է փոխում որոշումը։')}</caption><thead><tr><th scope="col">${label('Observation','Դիտարկում')}</th><th scope="col">${label('Interpretation','Մեկնաբանություն')}</th></tr></thead><tbody>${n.comparisons.map(row=>`<tr><th scope="row">${esc(row[0][i])}</th><td>${esc(row[1][i])}</td></tr>`).join('')}</tbody></table></div><aside class="studio-transfer"><h3>${label('Now change one condition','Հիմա փոխեք մեկ պայման')}</h3><p>${esc(n.challenge[i])}</p><details class="teaching-reflection"><summary>${label('Compare after your own attempt','Համեմատեք՝ ինքնուրույն փորձելուց հետո')}</summary><p>${esc(n.answer[i])}</p></details></aside></section>`;
  return html;
 }
+function lectureBox(n,i){
+ const label=(en,hy)=>i?hy:en;
+ return `<section class="lecture-informed" data-lecture-informed="${n.key}"><p class="lecture-eyebrow">${label('APPLY THE LECTURE KNOWLEDGE','ԿԻՐԱՌԵՔ ԴԱՍԱԽՈՍՈՒԹՅԱՆ ԳԻՏԵԼԻՔԸ')}</p><h2>${esc(n.title[i])}</h2>${paragraphs(n.text[i])}<aside class="lecture-try"><h3>${label('Try it with a safe example','Փորձեք անվտանգ օրինակով')}</h3><p>${esc(n.try[i])}</p></aside><details class="lecture-check"><summary>${label('Check before you continue','Ստուգեք՝ նախքան շարունակելը')}</summary><p>${esc(n.check[i])}</p></details></section>`;
+}
 function chart(hy){return `<figure class="teaching-chart"><figcaption>${hy?'Հորինված հարցման պատասխանների քանակը':'Fictional survey response counts'}</figcaption>${[['A',40],['B',35],['C',25]].map(([n,v])=>`<div class="teaching-bar"><span>${n}</span><i style="width:${v*2}%" aria-hidden="true"></i><strong>${v}</strong></div>`).join('')}<p>${hy?'Նույն սանդղակ՝ 0-50 պատասխան։ Գումար՝ 40 + 35 + 25 = 100։ Համեմատեք սա օգնականի սխալ՝ 120 գումարի հետ։':'Shared scale: 0-50 responses. Total: 40 + 35 + 25 = 100. Compare this with the assistant’s incorrect total of 120.'}</p></figure>`;}
 let patch='*** Begin Patch\n',report=[];
 for(const lang of ['en','hy']){
@@ -37,6 +42,11 @@ for(const lang of ['en','hy']){
   if(key==='guide-2/intro')added+=`<figure class="teaching-path"><img src="assets/explorers/chapter-01.png" alt="" width="1672" height="941" loading="lazy"><figcaption><strong>${i?'Ձեր ուսումնառության ուղին':'Your learning pathway'}</strong><ol><li>${i?'Հասկանալ և ստուգել՝ դասեր 1-3':'Understand and verify: lessons 1-3'}</li><li>${i?'Կիրառել և ընտրել՝ դասեր 4-5':'Apply and choose: lessons 4-5'}</li><li>${i?'Կառուցել վերահսկվող հոսք՝ դասեր 6-7':'Build a supervised workflow: lessons 6-7'}</li><li>${i?'Ընտրել ձեր կիրառությունը՝ դաս 8':'Choose your application: lesson 8'}</li></ol></figcaption></figure>`;
   added+=`<aside class="teaching-example"><h3>${i?'Օրինակը՝ քայլ առ քայլ':'Follow the example'}</h3><p>${esc(n.example[i])}</p></aside><details class="teaching-reflection"><summary>${esc(n.question[i])}</summary><p>${esc(n.answer[i])}</p></details>`;
   if(ref)added+=`<p class="teaching-source"><a href="${ref[2]}" target="_blank" rel="noopener noreferrer">${esc(ref[i])} ↗</a></p>`;
+  const lecture=lectureNotes.get(key);
+  if(lecture){
+   for(const field of ['title','text','try','check'])if(!lecture[field]?.[i])throw Error(`${key} missing lecture-informed ${lang} ${field}`);
+   added+=lectureBox(lecture,i);
+  }
   added+='</section>';
   if(studios.has(key))added+=studio(studios.get(key),i);
   if(key==='guide-9/intro')added+=`<aside class="teaching-example"><h3>${i?'Դասընթացներ՝ ուսումնառությունը շարունակելու համար':'Courses for continued learning'}</h3><p>${i?'Այս արտաքին դասընթացների հանրային ծրագրերն օգտագործվել են որպես ուսուցման ձևավորման հղումներ։ EUA-ի օրինակներն ինքնուրույն են․ գործընկերություն կամ հավաստագրման համարժեքություն չի ենթադրվում։ Մուտքի պայմանները ստուգեք համապատասխան կայքում։':'These external courses’ public outlines informed the teaching-design review. EUA examples are original; no affiliation or equivalent certification is implied. Check each site for access conditions.'}</p><ul><li><a href="https://www.deeplearning.ai/courses/ai-prompting-for-everyone" target="_blank" rel="noopener noreferrer">${i?'ԱԲ հրահանգներ բոլորի համար (AI Prompting for Everyone)':'AI Prompting for Everyone'} · DeepLearning.AI</a></li><li><a href="https://course.elementsofai.com/" target="_blank" rel="noopener noreferrer">${i?'ԱԲ հիմունքներ (Elements of AI)':'Elements of AI'}</a></li><li><a href="https://grow.google/ai-professional/" target="_blank" rel="noopener noreferrer">${i?'ԱԲ մասնագիտական վկայականի ծրագիր (Google AI Professional Certificate)':'Google AI Professional Certificate'}</a></li></ul></aside>`;

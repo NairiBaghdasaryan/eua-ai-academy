@@ -6,6 +6,7 @@ const visual=require('../landing/js/explorers-visuals.js');
 const sets=Object.fromEntries(['en','hy'].map(l=>[l,require(`../landing/content/explorers/${l}.json`)]));
 const notes=['foundations','practice','professional','applications','guides'].flatMap(n=>require(`../landing/content/explorers/teaching-${n}.json`));
 const studios=['core','professional'].flatMap(n=>require(`../landing/content/explorers/studios-${n}.json`));
+const lectureInformed=require('../landing/content/explorers/lecture-informed.json');
 assert.equal(studios.length,8);
 assert.equal(new Set(studios.map(n=>n.key.split('/')[0])).size,8);
 for(const studio of studios){
@@ -17,6 +18,13 @@ for(const studio of studios){
   assert.equal(studio.comparisons.length,3);
   for(const pair of [...studio.steps,...studio.comparisons])for(const field of pair){assert.equal(field.length,2);assert.match(field[1],/[Ա-ֆ]/);}
 }
+assert.equal(lectureInformed.length,18);
+assert.equal(new Set(lectureInformed.map(n=>n.key)).size,18);
+for(const note of lectureInformed)for(const field of ['title','text','try','check']) {
+  assert.equal(note[field].length,2,`${note.key} ${field}`);
+  assert.ok(note[field].every(x=>typeof x==='string'&&x.trim()));
+  assert.match(note[field][1],/[Ա-ֆ]/,`${note.key}: Armenian ${field}`);
+}
 assert.equal(notes.length,65);
 assert.equal(new Set(notes.map(n=>n.key)).size,65);
 for(const note of notes)for(const field of ['title','story','explain','example','question','answer']) {
@@ -25,10 +33,16 @@ for(const note of notes)for(const field of ['title','story','explain','example',
   assert.match(note[field][1],/[Ա-ֆ]/,`${note.key}: Armenian ${field}`);
 }
 for(const lang of ['en','hy']) {
-  let enriched=0,walkthroughs=0,practice=0,studioCount=0;
+  let enriched=0,walkthroughs=0,practice=0,studioCount=0,lectureCount=0;
   for(const section of sets[lang].sections)for(const lesson of section.lessons) {
     const key=`${section.id}/${lesson.id}`;
     const n=notes.find(x=>x.key===key);
+    if(lectureInformed.some(x=>x.key===key)){
+      lectureCount++;
+      assert.equal((lesson.html.match(/data-lecture-informed=/g)||[]).length,1,key);
+      assert.match(lesson.html,/lecture-try/);
+      assert.match(lesson.html,/lecture-check/);
+    }
     if(studios.some(s=>s.key===key)){
       studioCount++;
       assert.equal((lesson.html.match(/data-chapter-studio=/g)||[]).length,1,key);
@@ -52,7 +66,7 @@ for(const lang of ['en','hy']) {
       assert.doesNotMatch(html,/undefined|onclick=|<script/);
     }
   }
-  assert.equal(enriched,65);assert.equal(practice,7);assert.equal(walkthroughs,14);assert.equal(studioCount,8);
+  assert.equal(enriched,65);assert.equal(practice,7);assert.equal(walkthroughs,14);assert.equal(studioCount,8);assert.equal(lectureCount,18);
   assert.doesNotMatch(JSON.stringify(sets[lang]),/Emergency number: 123|Շտապ համար՝ 123|name and one background cue/);
 }
 assert.equal(visual.render('missing','en'),'');
@@ -105,5 +119,5 @@ async function startup(lang,chapter,lesson) {
 }
 (async()=>{
   for(const lang of ['en','hy'])for(const s of sets[lang].sections)for(const l of s.lessons)await startup(lang,s.id,l.id);
-  console.log('PASS: 65 paired teaching pages, 8 bilingual chapter studios, 7 retained practice pages, 14 walkthrough placements per language; idempotency; playback/reset/reduced motion; all 144 routes start with the real lab chain.');
+  console.log('PASS: 65 paired teaching pages, 18 bilingual lecture-informed blocks, 8 chapter studios, 7 retained practice pages, 14 walkthrough placements per language; idempotency; playback/reset/reduced motion; all 144 routes start with the real lab chain.');
 })().catch(e=>{console.error(e);process.exitCode=1;});
